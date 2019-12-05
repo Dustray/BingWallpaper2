@@ -30,8 +30,8 @@
                     <ColumnDefinition ></ColumnDefinition>
                     <ColumnDefinition Width="110"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Margin="6,6,3,3" Background="#9fff" VerticalContentAlignment="Center" FontSize="14" Foreground="#555" />
-                <Button  Grid.Row="0" Grid.Column="4" Margin="3,6,6,3" Background="#9fff" Content="选 择" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"  Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="14" />
+                <TextBox Name="tbImageSavePath" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Margin="6,6,3,3" Background="#9fff" VerticalContentAlignment="Center" FontSize="14" Foreground="#555" />
+                <Button Name="btnChoosePath" Grid.Row="0" Grid.Column="4" Margin="3,6,6,3" Background="#9fff" Content="选 择" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"  Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="14" Click="btnChoosePath_Click" />
                 <ComboBox  Grid.Row="1" Grid.Column="0" Margin="6,3,3,6" Background="#9fff" VerticalContentAlignment="Center" FontSize="14">
                     <ComboBoxItem Content="1920*1200"/>
                     <ComboBoxItem Content="1920*1080" IsSelected="True"/>
@@ -46,7 +46,7 @@
                     <ComboBoxItem Content="跨区"/>
                 </ComboBox>
                 <CheckBox Grid.Row="1" Grid.Column="3" Margin="3,3,3,6" Content="开机自动设置" VerticalAlignment="Center" HorizontalAlignment="Right" VerticalContentAlignment="Center" Background="Transparent" FontSize="14"  Foreground="#a000"/>
-                <Button  Grid.Row="1" Grid.Column="4" Margin="3,3,6,6" Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Content="设为壁纸" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" FontSize="14" />
+                <Button Name="btnSetWallpaper" Grid.Row="1" Grid.Column="4" Margin="3,3,6,6" Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Content="设为壁纸" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" FontSize="14" />
             </Grid>
         </Border>
     </Grid>
