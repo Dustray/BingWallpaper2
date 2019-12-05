@@ -23,6 +23,12 @@ namespace BingWallpaper
         public MainWindow()
         {
             InitializeComponent();
+            InitializeUI();
+        }
+
+        private void InitializeUI()
+        {
+            Title = $"每日必应壁纸2 version_{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()}";
         }
     }
 }
