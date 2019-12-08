@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BingWallpaper.Core
+namespace BingWallpaper.Core.Model
 {
-    public class Class1
+    /// <summary>
+    /// 壁纸模式类型
+    /// </summary>
+    public enum WallpaperModeType
     {
+
     }
 }

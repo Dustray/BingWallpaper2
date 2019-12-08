@@ -24,10 +24,10 @@
                     <RowDefinition Height="40"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition ></ColumnDefinition>
-                    <ColumnDefinition ></ColumnDefinition>
-                    <ColumnDefinition ></ColumnDefinition>
-                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition Width="110"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <TextBox Name="tbImageSavePath" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Margin="6,6,3,3" Background="#9fff" VerticalContentAlignment="Center" FontSize="14" Foreground="#555" />
