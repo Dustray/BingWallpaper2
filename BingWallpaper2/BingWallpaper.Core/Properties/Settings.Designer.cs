@@ -25,10 +25,10 @@ namespace BingWallpaper.Core.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string WallpaperSize {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int WallpaperSize {
             get {
-                return ((string)(this["WallpaperSize"]));
+                return ((int)(this["WallpaperSize"]));
             }
             set {
                 this["WallpaperSize"] = value;
@@ -37,10 +37,10 @@ namespace BingWallpaper.Core.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string WallpaperStyle {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int WallpaperStyle {
             get {
-                return ((string)(this["WallpaperStyle"]));
+                return ((int)(this["WallpaperStyle"]));
             }
             set {
                 this["WallpaperStyle"] = value;

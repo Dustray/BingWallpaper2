@@ -115,6 +115,12 @@
   <ItemGroup>
     <Resource Include="logo.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BingWallpaper.Core\BingWallpaper.Core.csproj">
+      <Project>{ACD252D2-B005-4CA4-8B2D-648E4128D099}</Project>
+      <Name>BingWallpaper.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy $(TargetPath) /B /Y  $(SolutionDir)\Dist\$(TargetFileName) /B</PostBuildEvent>
