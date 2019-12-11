@@ -43,6 +43,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -65,6 +66,7 @@
     </Compile>
     <Compile Include="Utilities\AppSettingOperation.cs" />
     <Compile Include="Utilities\XMLUtility.cs" />
+    <Compile Include="WallpaperManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

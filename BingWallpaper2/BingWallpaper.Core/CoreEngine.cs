@@ -20,8 +20,8 @@ namespace BingWallpaper.Core
         /// <summary>
         /// 单例模式
         /// </summary>
-        public static CoreEngine Current 
-        { 
+        public static CoreEngine Current
+        {
             get
             {
                 lock (_lockObj)
@@ -32,16 +32,18 @@ namespace BingWallpaper.Core
                     }
                     return _current;
                 }
-            } 
+            }
         }
 
         #endregion
 
-        public ObservableCollection<ImageSizeModel> ImageSizeList { get; set; } = new ObservableCollection<ImageSizeModel>();
-        public ObservableCollection<WallpaperStyleModel> WallpaperStyleList { get; set; } = new ObservableCollection<WallpaperStyleModel>();
-
-        public AppSettingOperation AppSetting { get; private set; } = new AppSettingOperation();
+        #region 私有方法
         private CoreEngine()
+        {
+            initList();
+        }
+
+        private void initList()
         {
             ImageSizeList.Add(new ImageSizeModel("1920*1200", ImageSizeType._1200p));
             ImageSizeList.Add(new ImageSizeModel("1920*1080", ImageSizeType._1080p));
@@ -53,7 +55,22 @@ namespace BingWallpaper.Core
             WallpaperStyleList.Add(new WallpaperStyleModel("平铺", WallpaperModeType.Tiling));
             WallpaperStyleList.Add(new WallpaperStyleModel("居中", WallpaperModeType.Center));
             WallpaperStyleList.Add(new WallpaperStyleModel("跨区", WallpaperModeType.Span));
-
         }
+        #endregion
+
+        /// <summary>
+        /// 图片尺寸列表
+        /// </summary>
+        public ObservableCollection<ImageSizeModel> ImageSizeList { get; set; } = new ObservableCollection<ImageSizeModel>();
+        /// <summary>
+        /// 壁纸类型列表
+        /// </summary>
+        public ObservableCollection<WallpaperStyleModel> WallpaperStyleList { get; set; } = new ObservableCollection<WallpaperStyleModel>();
+        /// <summary>
+        /// 应用设置
+        /// </summary>
+        public AppSettingOperation AppSetting { get; private set; } = new AppSettingOperation();
+
+        public 
     }
 }
