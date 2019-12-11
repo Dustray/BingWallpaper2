@@ -11,7 +11,7 @@ namespace BingWallpaper.Core
 {
     class WallpaperManager
     {
-        public string GetURL()
+        public string GetBingURL()
         {
             string InfoUrl = "http://cn.bing.com/HPImageArchive.aspx?idx=0&n=1";
             string ImageUrl;
@@ -51,34 +51,78 @@ namespace BingWallpaper.Core
             }
         }
 
-        private void SetWallpaper()
+        /// <summary>
+        /// 从本地或网络设置墙纸
+        /// </summary>
+        /// <param name="forceFromWeb">强制从网络获取</param>
+        public void SetWallpaper(bool forceFromWeb=false)
         {
-            var bingUrl = GetURL();
-            if (string.IsNullOrEmpty(bingUrl))
-                return;
-            var imageFolderPath = CoreEngine.Current.AppSetting.GetImagePath;
+
+            var imageFolderPath = CoreEngine.Current.AppSetting.GetImagePath();
             string imageFilePath = Path.Combine(imageFolderPath, $"bing{DateTime.Now.ToString("yyyyMMdd")}.jpg");
-            if (!File.Exists(imageFilePath))//不存在文件
+            if (forceFromWeb||!File.Exists(imageFilePath))//本地不存在文件
             {
+                var bingUrl = GetBingURL();
+                if (string.IsNullOrEmpty(bingUrl))
+                    return;
                 Bitmap bmpWallpaper;
                 WebRequest webreq = WebRequest.Create(bingUrl);
                 WebResponse webres = webreq.GetResponse();
                 using (Stream stream = webres.GetResponseStream())
                 {
-
                     bmpWallpaper = (Bitmap)Image.FromStream(stream);
-                    //stream.Close();
                     if (!Directory.Exists(imageFolderPath))
                     {
                         Directory.CreateDirectory(imageFolderPath);
                     }
                     bmpWallpaper.Save(imageFilePath, ImageFormat.Jpeg);
-                    //Console.WriteLine(ConfigOperation.getXmlValue(path, "ImageSavePath"));
                 }
             }
             SystemParametersInfo(20, 1, imageFilePath, 1);
         }
 
+        /// <summary>
+        /// 从本地或网络获取当天最新的图片Bitmap
+        /// </summary>
+        /// <param name="forceFromWeb">强制从网络获取</param>
+        /// <returns></returns>
+        public Bitmap GetWallpaperImage(bool forceFromWeb = false)
+        {
+            var imageFolderPath = CoreEngine.Current.AppSetting.GetImagePath();
+            string imageFilePath = Path.Combine(imageFolderPath, $"bing{DateTime.Now.ToString("yyyyMMdd")}.jpg");
+            if (forceFromWeb || !File.Exists(imageFilePath))//不存在文件
+            {
+                var bingUrl = GetBingURL();
+                if (string.IsNullOrEmpty(bingUrl))
+                    return null;
+                Bitmap bmpWallpaper;
+                WebRequest webreq = WebRequest.Create(bingUrl);
+                WebResponse webres = webreq.GetResponse();
+                using (Stream stream = webres.GetResponseStream())
+                {
+                    bmpWallpaper = (Bitmap)Image.FromStream(stream);
+                    if (!Directory.Exists(imageFolderPath))
+                    {
+                        Directory.CreateDirectory(imageFolderPath);
+                    }
+                    bmpWallpaper.Save(imageFilePath, ImageFormat.Jpeg);
+                    return bmpWallpaper;
+                }
+            }
+            else
+            {
+                Bitmap bitmap;
+                try
+                {
+                    bitmap = new Bitmap(imageFilePath);
+                }
+                catch
+                {
+                    return null;//文件读取失败
+                }
+                return bitmap;
+            }
+        }
         #region 系统调用
         [DllImport("user32.dll", EntryPoint = "SystemParametersInfo")]
         public static extern int SystemParametersInfo(

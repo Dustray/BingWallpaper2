@@ -3,6 +3,7 @@ using BingWallpaper.Core.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -70,7 +71,16 @@ namespace BingWallpaper.Core
         /// 应用设置
         /// </summary>
         public AppSettingOperation AppSetting { get; private set; } = new AppSettingOperation();
-
-        public 
+        /// <summary>
+        /// 设置壁纸
+        /// </summary>
+        /// <param name="forceFromWeb">强制从网络获取</param>
+        public void SetWallpaper(bool forceFromWeb = false) => new WallpaperManager().SetWallpaper(forceFromWeb);
+        /// <summary>
+        /// 获取壁纸图片
+        /// </summary>
+        /// <param name="forceFromWeb">强制从网络获取</param>
+        /// <returns></returns>
+        public Bitmap GetWallpaperImage(bool forceFromWeb = false) => new WallpaperManager().GetWallpaperImage(forceFromWeb);
     }
 }

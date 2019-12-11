@@ -2,6 +2,7 @@
 using BingWallpaper.Core.Properties;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,7 +53,18 @@ namespace BingWallpaper.Core.Utilities
         /// <summary>
         /// 获取图片保存路径
         /// </summary>
-        public  string GetImagePath => Settings.Default.ImageSavePath;
+        public string GetImagePath()
+        {
+            var path = Settings.Default.ImageSavePath;
+            if (string.IsNullOrEmpty(path))
+            {
+                return Path.Combine(Environment.CurrentDirectory, "Image");
+            }
+            else
+            {
+                return path;
+            }
+        }
         /// <summary>
         /// 设置图片保存路径
         /// </summary>

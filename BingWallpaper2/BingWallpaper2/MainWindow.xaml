@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BingWallpaper2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" MinHeight="450" MinWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
@@ -13,7 +13,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Image Grid.Row="0" Grid.Column="0" Source="pack://siteoforigin:,,,/Resources/bing20190822.jpg" Stretch="UniformToFill" />
+        <Image Name="ImgPreview" Grid.Row="0" Grid.Column="0" Source="pack://siteoforigin:,,,/Resources/bing20190822.jpg" Stretch="UniformToFill" />
         <Border VerticalAlignment="Bottom" Margin="10" CornerRadius="6" Background="#99ffffff">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="10" Color="#9111" Direction="270" ShadowDepth="1"/>
@@ -45,8 +45,8 @@
                     <ComboBoxItem Content="居中" Tag="5"/>
                     <ComboBoxItem Content="跨区" Tag="6"/>-->
                 </ComboBox>
-                <CheckBox Name="ckbAutoRun" Grid.Row="1" Grid.Column="3" Margin="3,3,3,6" Content="开机自动设置" VerticalAlignment="Center" HorizontalAlignment="Right" VerticalContentAlignment="Center" Background="Transparent" FontSize="14"  Foreground="#a000"/>
-                <Button Name="btnSetWallpaper" Grid.Row="1" Grid.Column="4" Margin="3,3,6,6" Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Content="设为壁纸" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" FontSize="14" />
+                <CheckBox Name="ckbAutoRun" Grid.Row="1" Grid.Column="3" Margin="3,3,3,6" Content="开机自动设置" VerticalAlignment="Center" HorizontalAlignment="Right" VerticalContentAlignment="Center" Background="Transparent" FontSize="14"  Foreground="#a000" Checked="ckbAutoRun_Checked" Unchecked="ckbAutoRun_Checked"/>
+                <Button Name="btnSetWallpaper" Grid.Row="1" Grid.Column="4" Margin="3,3,6,6" Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Content="设为壁纸" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" FontSize="14" Click="btnSetWallpaper_Click" />
             </Grid>
         </Border>
     </Grid>

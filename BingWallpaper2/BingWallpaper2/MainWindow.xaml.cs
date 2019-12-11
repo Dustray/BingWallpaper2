@@ -1,6 +1,7 @@
 ﻿
 using BingWallpaper.Core;
 using BingWallpaper.Core.Model;
+using BingWallpaper.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,6 +27,9 @@ namespace BingWallpaper
             InitializeUI();
         }
 
+        /// <summary>
+        /// 初始化界面
+        /// </summary>
         private void InitializeUI()
         {
             Title = $"每日必应壁纸2 version_{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()}";
@@ -38,10 +42,18 @@ namespace BingWallpaper
             cbWallpaperStyle.DisplayMemberPath = "Name";
             cbWallpaperStyle.SelectedIndex = CoreEngine.Current.WallpaperStyleList.ToList().FindIndex(s => s.Type == CoreEngine.Current.AppSetting.GetStyleMode);
 
-            var path = CoreEngine.Current.AppSetting.GetImagePath;
-            tbImageSavePath.Text = string.IsNullOrEmpty(path) ? Path.Combine(Environment.CurrentDirectory,"Image"): path;
+            var path = CoreEngine.Current.AppSetting.GetImagePath();
+            tbImageSavePath.Text = path;
+            ImgPreview.Source = new WPFSupportFormat().ChangeBitmapToImageSource(CoreEngine.Current.GetWallpaperImage());
         }
 
+        #region 成员事件
+
+        /// <summary>
+        /// 选择路径按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnChoosePath_Click(object sender, RoutedEventArgs e)
         {
             var browserDialog = new FolderBrowserDialog();
@@ -51,17 +63,52 @@ namespace BingWallpaper
                 tbImageSavePath.Text = chooseDir;
             }
         }
+        /// <summary>
+        /// 设置壁纸按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSetWallpaper_Click(object sender, RoutedEventArgs e)
+        {
+            CoreEngine.Current.SetWallpaper();
+        }
 
+        /// <summary>
+        /// 图片尺寸选择事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbImageSize_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             var item = (ImageSizeModel)cbImageSize.SelectedItem;
             CoreEngine.Current.AppSetting.SetSizeMode(item.Type);
+            CoreEngine.Current.SetWallpaper(true);
         }
 
+        /// <summary>
+        /// 壁纸模式选择事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbWallpaperStyle_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             var item = (WallpaperStyleModel)cbWallpaperStyle.SelectedItem;
             CoreEngine.Current.AppSetting.SetStyleMode(item.Type);
+            new RegeditUtil().SetWallpaperStyle(item.Type);
+        }
+
+        #endregion
+
+        private void ckbAutoRun_Checked(object sender, RoutedEventArgs e)
+        {
+            if ((bool)ckbAutoRun.IsChecked)
+            {
+                new RegeditUtil().SetAutoRun(true);//设置自动运行
+            }
+            else
+            {
+                new RegeditUtil().SetAutoRun(false);//设置不自动运行
+            }
         }
     }
 }
