@@ -61,6 +61,7 @@ namespace BingWallpaper
             {
                 string chooseDir = browserDialog.SelectedPath.Trim();
                 tbImageSavePath.Text = chooseDir;
+                CoreEngine.Current.AppSetting.SetImagePath(chooseDir);
             }
         }
         /// <summary>
