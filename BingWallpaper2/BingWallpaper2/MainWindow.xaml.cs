@@ -18,6 +18,7 @@ namespace BingWallpaper
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool _doNotInvokeCheckMethod = true;
         /// <summary>
         /// 
         /// </summary>
@@ -45,6 +46,8 @@ namespace BingWallpaper
             var path = CoreEngine.Current.AppSetting.GetImagePath();
             tbImageSavePath.Text = path;
             ImgPreview.Source = new WPFSupportFormat().ChangeBitmapToImageSource(CoreEngine.Current.GetWallpaperImage());
+            ckbAutoRun.IsChecked = new RegeditUtil().GetAutoRun();
+            _doNotInvokeCheckMethod = false;
         }
 
         #region 成员事件
@@ -102,6 +105,7 @@ namespace BingWallpaper
 
         private void ckbAutoRun_Checked(object sender, RoutedEventArgs e)
         {
+            if (_doNotInvokeCheckMethod) return;
             if ((bool)ckbAutoRun.IsChecked)
             {
                 new RegeditUtil().SetAutoRun(true);//设置自动运行

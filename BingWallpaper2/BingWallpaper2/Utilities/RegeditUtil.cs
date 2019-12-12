@@ -97,7 +97,7 @@ namespace BingWallpaper.Utilities
                 else
                 {
                     if (reg.GetValue(regName) != null)
-                        reg.DeleteValue(regName,true);
+                        reg.DeleteValue(regName);
                 }
                 reg?.Close();
             }
@@ -107,6 +107,42 @@ namespace BingWallpaper.Utilities
                 return false;
             }
             return true;
+        }
+
+        /// <summary>
+        /// 查询注册表，获取程序是否开机自动运行
+        /// </summary>
+        /// <param name="autoRun"></param>
+        public bool GetAutoRun()
+        {
+            RegistryKey reg = null;
+            try
+            {
+                var fileName = Path.Combine(Environment.CurrentDirectory, "BingWallpaperAuto.exe");
+                if (!File.Exists(fileName)) return false;
+
+                string regName = "BingWallpaperAuto";
+                reg = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
+                if (reg == null)
+                {
+                    return false;
+                }
+                if (reg.GetValue(regName) == null)
+                {
+                    reg?.Close();
+                    return false;
+                }
+                else
+                {
+                    reg?.Close();
+                    return true;
+                }
+            }
+            catch
+            {
+                reg?.Close();
+                return false;
+            }
         }
     }
 }
