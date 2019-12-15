@@ -6,6 +6,7 @@ using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace BingWallpaper.Core
 {
@@ -55,22 +56,21 @@ namespace BingWallpaper.Core
         /// 从本地或网络设置墙纸
         /// </summary>
         /// <param name="forceFromWeb">强制从网络获取</param>
-        public void SetWallpaper(bool forceFromWeb=false)
+        public async void SetWallpaper(bool forceFromWeb=false)
         {
 
             var imageFolderPath = CoreEngine.Current.AppSetting.GetImagePath();
-            string imageFilePath = Path.Combine(imageFolderPath, $"bing{DateTime.Now.ToString("yyyyMMdd")}.jpg");
+            var imageFilePath = Path.Combine(imageFolderPath, $"bing{DateTime.Now.ToString("yyyyMMdd")}.jpg");
             if (forceFromWeb||!File.Exists(imageFilePath))//本地不存在文件
             {
                 var bingUrl = GetBingURL();
                 if (string.IsNullOrEmpty(bingUrl))
                     return;
-                Bitmap bmpWallpaper;
-                WebRequest webreq = WebRequest.Create(bingUrl);
-                WebResponse webres = webreq.GetResponse();
-                using (Stream stream = webres.GetResponseStream())
+                var webreq = WebRequest.Create(bingUrl);
+                var webres = await webreq.GetResponseAsync();//.GetResponse();
+                using (var stream = webres.GetResponseStream())
                 {
-                    bmpWallpaper = (Bitmap)Image.FromStream(stream);
+                    var bmpWallpaper = (Bitmap)Image.FromStream(stream);
                     if (!Directory.Exists(imageFolderPath))
                     {
                         Directory.CreateDirectory(imageFolderPath);
@@ -86,21 +86,20 @@ namespace BingWallpaper.Core
         /// </summary>
         /// <param name="forceFromWeb">强制从网络获取</param>
         /// <returns></returns>
-        public Bitmap GetWallpaperImage(bool forceFromWeb = false)
+        public async Task<Bitmap> GetWallpaperImage(bool forceFromWeb = false)
         {
             var imageFolderPath = CoreEngine.Current.AppSetting.GetImagePath();
-            string imageFilePath = Path.Combine(imageFolderPath, $"bing{DateTime.Now.ToString("yyyyMMdd")}.jpg");
+            var imageFilePath = Path.Combine(imageFolderPath, $"bing{DateTime.Now.ToString("yyyyMMdd")}.jpg");
             if (forceFromWeb || !File.Exists(imageFilePath))//不存在文件
             {
                 var bingUrl = GetBingURL();
                 if (string.IsNullOrEmpty(bingUrl))
                     return null;
-                Bitmap bmpWallpaper;
-                WebRequest webreq = WebRequest.Create(bingUrl);
-                WebResponse webres = webreq.GetResponse();
-                using (Stream stream = webres.GetResponseStream())
+                var webreq = WebRequest.Create(bingUrl);
+                var webres = await webreq.GetResponseAsync();
+                using (var stream = webres.GetResponseStream())
                 {
-                    bmpWallpaper = (Bitmap)Image.FromStream(stream);
+                    var bmpWallpaper = (Bitmap)Image.FromStream(stream);
                     if (!Directory.Exists(imageFolderPath))
                     {
                         Directory.CreateDirectory(imageFolderPath);

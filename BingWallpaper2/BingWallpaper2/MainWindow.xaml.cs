@@ -7,9 +7,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
+using System.Windows.Media;
 
 namespace BingWallpaper
 {
@@ -45,9 +47,12 @@ namespace BingWallpaper
 
             var path = CoreEngine.Current.AppSetting.GetImagePath();
             tbImageSavePath.Text = path;
-            ImgPreview.Source = new WPFSupportFormat().ChangeBitmapToImageSource(CoreEngine.Current.GetWallpaperImage());
             ckbAutoRun.IsChecked = new RegeditUtil().GetAutoRun();
+            
+            ImgPreview.Source = new WPFSupportFormat().ChangeBitmapToImageSource( CoreEngine.Current.GetWallpaperImage().Result);
+               
             _doNotInvokeCheckMethod = false;
+           
         }
 
         #region 成员事件
@@ -114,6 +119,12 @@ namespace BingWallpaper
             {
                 new RegeditUtil().SetAutoRun(false);//设置不自动运行
             }
+        }
+
+        private void BeginInvoke(Action action)
+        {
+            
+            action?.Invoke();
         }
     }
 }
