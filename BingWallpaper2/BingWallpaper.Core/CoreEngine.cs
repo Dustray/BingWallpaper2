@@ -78,6 +78,7 @@ namespace BingWallpaper.Core
         /// <param name="forceFromWeb">强制从网络获取</param>
         public void SetWallpaper(bool forceFromWeb = false)
         {
+            var locker = new object();
             using (var work = new BackgroundWorker())
             {
                 work.RunWorkerCompleted += new RunWorkerCompletedEventHandler((object work_sender, RunWorkerCompletedEventArgs work_e) =>
@@ -85,7 +86,10 @@ namespace BingWallpaper.Core
                 });
                 work.DoWork += new DoWorkEventHandler((object work_sender, DoWorkEventArgs work_e) =>
                 {
+                    lock(locker)
+                    {
                     new WallpaperManager().SetWallpaper(forceFromWeb);
+                    }
                 });
                 work.RunWorkerAsync();
             }

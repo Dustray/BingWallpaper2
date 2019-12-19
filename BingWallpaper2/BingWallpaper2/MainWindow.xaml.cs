@@ -104,6 +104,7 @@ namespace BingWallpaper
         /// <param name="e"></param>
         private void cbImageSize_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
+            if (_doNotInvokeCheckMethod) return;
             var item = (ImageSizeModel)cbImageSize.SelectedItem;
             CoreEngine.Current.AppSetting.SetSizeMode(item.Type);
             CoreEngine.Current.SetWallpaper(true);

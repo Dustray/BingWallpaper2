@@ -37,13 +37,13 @@ namespace BingWallpaper.Core
                 // 取得匹配项列表
                 ImageUrl = "http://www.bing.com" + matches[0].Groups["imgUrl"].Value;
 
-                if (CoreEngine.Current.AppSetting.GetSizeMode == Model.ImageSizeType._1080p)
+                if (CoreEngine.Current.AppSetting.GetSizeMode == Model.ImageSizeType._720p)
                 {
-                    ImageUrl = ImageUrl.Replace("1366x768", "1920x1080");
+                    ImageUrl = ImageUrl.Replace("1920x1080", "1366x768");
                 }
                 else if (CoreEngine.Current.AppSetting.GetSizeMode == Model.ImageSizeType._1200p)
                 {
-                    ImageUrl = ImageUrl.Replace("1366x768", "1920x1200");
+                    ImageUrl = ImageUrl.Replace("1920x1080", "1920x1200");
                 }
                 return ImageUrl;
             }
