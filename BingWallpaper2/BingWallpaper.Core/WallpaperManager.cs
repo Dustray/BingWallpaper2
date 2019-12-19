@@ -6,9 +6,6 @@ using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
-
 namespace BingWallpaper.Core
 {
     class WallpaperManager
@@ -59,7 +56,6 @@ namespace BingWallpaper.Core
         /// <param name="forceFromWeb">强制从网络获取</param>
         public void SetWallpaper(bool forceFromWeb=false)
         {
-            Thread.Sleep(5000);
             var imageFolderPath = CoreEngine.Current.AppSetting.GetImagePath();
             var imageFilePath = Path.Combine(imageFolderPath, $"bing{DateTime.Now.ToString("yyyyMMdd")}.jpg");
             if (forceFromWeb||!File.Exists(imageFilePath))//本地不存在文件
@@ -111,6 +107,7 @@ namespace BingWallpaper.Core
                             Directory.CreateDirectory(imageFolderPath);
                         }
                         bmpWallpaper.Save(imageFilePath, ImageFormat.Jpeg);
+
                         return bmpWallpaper;
                     }
                 }

@@ -88,7 +88,7 @@ namespace BingWallpaper.Core
                 {
                     lock(locker)
                     {
-                    new WallpaperManager().SetWallpaper(forceFromWeb);
+                        new WallpaperManager().SetWallpaper(forceFromWeb);
                     }
                 });
                 work.RunWorkerAsync();

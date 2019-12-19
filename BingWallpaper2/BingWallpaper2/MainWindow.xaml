@@ -13,7 +13,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Image Name="ImgPreview" Grid.Row="0" Grid.Column="0" Source="pack://siteoforigin:,,,/Resources/bing20190822.jpg" Stretch="UniformToFill" />
+        <Image Name="ImgPreview" Grid.Row="0" Grid.Column="0" Stretch="UniformToFill" />
         <Border VerticalAlignment="Bottom" Margin="10" CornerRadius="6" Background="#99ffffff">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="10" Color="#9111" Direction="270" ShadowDepth="1"/>

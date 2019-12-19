@@ -57,6 +57,7 @@ namespace BingWallpaper
                 work.RunWorkerCompleted += new RunWorkerCompletedEventHandler((object work_sender, RunWorkerCompletedEventArgs work_e) =>
                 {
                     ImgPreview.Source = new WPFSupportFormat().ChangeBitmapToImageSource(bitmap);
+                    bitmap?.Dispose();
                 });
                 work.DoWork += new DoWorkEventHandler((object work_sender, DoWorkEventArgs work_e) =>
                 {
@@ -65,7 +66,6 @@ namespace BingWallpaper
                 work.RunWorkerAsync();
             }
             //ImgPreview.Source = new WPFSupportFormat().ChangeBitmapToImageSource( CoreEngine.Current.GetWallpaperImage());
-               
             _doNotInvokeCheckMethod = false;
            
         }
@@ -122,8 +122,6 @@ namespace BingWallpaper
             new RegeditUtil().SetWallpaperStyle(item.Type);
         }
 
-        #endregion
-
         private void ckbAutoRun_Checked(object sender, RoutedEventArgs e)
         {
             if (_doNotInvokeCheckMethod) return;
@@ -137,10 +135,6 @@ namespace BingWallpaper
             }
         }
 
-        private void BeginInvoke(Action action)
-        {
-            
-            action?.Invoke();
-        }
+        #endregion
     }
 }
