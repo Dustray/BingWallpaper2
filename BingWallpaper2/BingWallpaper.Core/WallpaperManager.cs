@@ -6,6 +6,7 @@ using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BingWallpaper.Core
@@ -56,9 +57,9 @@ namespace BingWallpaper.Core
         /// 从本地或网络设置墙纸
         /// </summary>
         /// <param name="forceFromWeb">强制从网络获取</param>
-        public async void SetWallpaper(bool forceFromWeb=false)
+        public void SetWallpaper(bool forceFromWeb=false)
         {
-
+            Thread.Sleep(5000);
             var imageFolderPath = CoreEngine.Current.AppSetting.GetImagePath();
             var imageFilePath = Path.Combine(imageFolderPath, $"bing{DateTime.Now.ToString("yyyyMMdd")}.jpg");
             if (forceFromWeb||!File.Exists(imageFilePath))//本地不存在文件
@@ -66,16 +67,19 @@ namespace BingWallpaper.Core
                 var bingUrl = GetBingURL();
                 if (string.IsNullOrEmpty(bingUrl))
                     return;
-                var webreq = WebRequest.Create(bingUrl);
-                var webres = await webreq.GetResponseAsync();//.GetResponse();
-                using (var stream = webres.GetResponseStream())
+                var webreq = (HttpWebRequest)WebRequest.Create(bingUrl);
+                webreq.Method = "Get";
+                using (var webres = webreq.GetResponse())//GetResponse
                 {
-                    var bmpWallpaper = (Bitmap)Image.FromStream(stream);
-                    if (!Directory.Exists(imageFolderPath))
+                    using (var stream = webres.GetResponseStream())
                     {
-                        Directory.CreateDirectory(imageFolderPath);
+                        var bmpWallpaper = (Bitmap)Image.FromStream(stream);
+                        if (!Directory.Exists(imageFolderPath))
+                        {
+                            Directory.CreateDirectory(imageFolderPath);
+                        }
+                        bmpWallpaper.Save(imageFilePath, ImageFormat.Jpeg);
                     }
-                    bmpWallpaper.Save(imageFilePath, ImageFormat.Jpeg);
                 }
             }
             SystemParametersInfo(20, 1, imageFilePath, 1);
@@ -86,7 +90,7 @@ namespace BingWallpaper.Core
         /// </summary>
         /// <param name="forceFromWeb">强制从网络获取</param>
         /// <returns></returns>
-        public async Task<Bitmap> GetWallpaperImage(bool forceFromWeb = false)
+        public Bitmap GetWallpaperImage(bool forceFromWeb = false)
         {
             var imageFolderPath = CoreEngine.Current.AppSetting.GetImagePath();
             var imageFilePath = Path.Combine(imageFolderPath, $"bing{DateTime.Now.ToString("yyyyMMdd")}.jpg");
@@ -95,17 +99,20 @@ namespace BingWallpaper.Core
                 var bingUrl = GetBingURL();
                 if (string.IsNullOrEmpty(bingUrl))
                     return null;
-                var webreq = WebRequest.Create(bingUrl);
-                var webres = await webreq.GetResponseAsync();
-                using (var stream = webres.GetResponseStream())
+                var webreq = (HttpWebRequest)WebRequest.Create(bingUrl);
+                webreq.Method = "Get";
+                using (var webres = webreq.GetResponse())//GetResponse
                 {
-                    var bmpWallpaper = (Bitmap)Image.FromStream(stream);
-                    if (!Directory.Exists(imageFolderPath))
+                    using (var stream = webres.GetResponseStream())
                     {
-                        Directory.CreateDirectory(imageFolderPath);
+                        var bmpWallpaper = (Bitmap)Image.FromStream(stream);
+                        if (!Directory.Exists(imageFolderPath))
+                        {
+                            Directory.CreateDirectory(imageFolderPath);
+                        }
+                        bmpWallpaper.Save(imageFilePath, ImageFormat.Jpeg);
+                        return bmpWallpaper;
                     }
-                    bmpWallpaper.Save(imageFilePath, ImageFormat.Jpeg);
-                    return bmpWallpaper;
                 }
             }
             else

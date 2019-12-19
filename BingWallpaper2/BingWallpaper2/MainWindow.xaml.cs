@@ -4,6 +4,8 @@ using BingWallpaper.Core.Model;
 using BingWallpaper.Utilities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -21,6 +23,7 @@ namespace BingWallpaper
     public partial class MainWindow : Window
     {
         private bool _doNotInvokeCheckMethod = true;
+        
         /// <summary>
         /// 
         /// </summary>
@@ -48,8 +51,20 @@ namespace BingWallpaper
             var path = CoreEngine.Current.AppSetting.GetImagePath();
             tbImageSavePath.Text = path;
             ckbAutoRun.IsChecked = new RegeditUtil().GetAutoRun();
-            
-            ImgPreview.Source = new WPFSupportFormat().ChangeBitmapToImageSource( CoreEngine.Current.GetWallpaperImage().Result);
+            Bitmap bitmap = null;
+            using (var work = new BackgroundWorker())
+            {
+                work.RunWorkerCompleted += new RunWorkerCompletedEventHandler((object work_sender, RunWorkerCompletedEventArgs work_e) =>
+                {
+                    ImgPreview.Source = new WPFSupportFormat().ChangeBitmapToImageSource(bitmap);
+                });
+                work.DoWork += new DoWorkEventHandler((object work_sender, DoWorkEventArgs work_e) =>
+                {
+                    bitmap = CoreEngine.Current.GetWallpaperImage();
+                });
+                work.RunWorkerAsync();
+            }
+            //ImgPreview.Source = new WPFSupportFormat().ChangeBitmapToImageSource( CoreEngine.Current.GetWallpaperImage());
                
             _doNotInvokeCheckMethod = false;
            
