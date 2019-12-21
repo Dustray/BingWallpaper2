@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UpdateConfig>
+    <AppID>1252289295</AppID>
+    <BucketName>filesystem-1252289295</BucketName>
+    <Region>ap-shanghai</Region>
+    <ConnectionTimeoutMs>50000</ConnectionTimeoutMs>
+    <ReadWriteTimeoutMs>50000</ReadWriteTimeoutMs>
+    <SecretId>VYUVkuYEWpkZevGHJghjkUgGKhhGgvgG</SecretId>
+    <SecretKey>wztruGninBgctrXEEXcghioopGTrds</SecretKey>
+    <DurationSecond>50000</DurationSecond>
+    <UpdatePath>ProgramUpdateFile/BingWallpaper/</UpdatePath>
+</UpdateConfig>

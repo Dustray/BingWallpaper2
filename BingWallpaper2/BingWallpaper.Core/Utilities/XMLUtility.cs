@@ -9,7 +9,7 @@ using System.Xml;
 
 namespace BingWallpaper.Core.Utilities
 {
-    class XMLUtility
+    public class XMLUtility
     {
         /// <summary>
         /// 加载指定XML文件并序列化为指定泛型对象

@@ -2,18 +2,11 @@
 using BingWallpaper.Core;
 using BingWallpaper.Core.Model;
 using BingWallpaper.Utilities;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
-using System.Windows.Media;
 
 namespace BingWallpaper
 {
@@ -31,7 +24,10 @@ namespace BingWallpaper
         {
             InitializeComponent();
             InitializeUI();
+            CheckUpdate();
         }
+
+        #region 初始化
 
         /// <summary>
         /// 初始化界面
@@ -67,8 +63,33 @@ namespace BingWallpaper
             }
             //ImgPreview.Source = new WPFSupportFormat().ChangeBitmapToImageSource( CoreEngine.Current.GetWallpaperImage());
             _doNotInvokeCheckMethod = false;
-           
         }
+
+        /// <summary>
+        /// 检查更新
+        /// </summary>
+        private void CheckUpdate()
+        {
+            string updatePath = null;
+            using (var work = new BackgroundWorker())
+            {
+                work.DoWork += new DoWorkEventHandler(async (object work_sender, DoWorkEventArgs work_e) =>
+                {
+                    var update = await new UpdateUtil().FindNewUpdate();
+                    updatePath = update.path;
+                });
+                work.RunWorkerCompleted += new RunWorkerCompletedEventHandler((object work_sender, RunWorkerCompletedEventArgs work_e) =>
+                {
+                    if (null != updatePath)
+                    {
+                        BrdUpdate.Visibility = Visibility.Visible;
+                    }
+                });
+                work.RunWorkerAsync();
+            }
+        }
+
+        #endregion
 
         #region 成员事件
 
@@ -136,5 +157,10 @@ namespace BingWallpaper
         }
 
         #endregion
+
+        private void BtnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            new UpdateWindow().Show();
+        }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BingWallpaper2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" MinHeight="450" MinWidth="800">
+        Title="MainWindow" Height="450" Width="800" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
@@ -14,6 +14,23 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Image Name="ImgPreview" Grid.Row="0" Grid.Column="0" Stretch="UniformToFill" />
+        <Grid VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <Grid Margin="10">
+                    <Border CornerRadius="20" Background="#9fff">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="20" Color="#6999" Direction="270" ShadowDepth="1"/>
+                        </Border.Effect>
+                        <Button Name="BtnUpdate" Width="40" Height="40" Content="Up" Click="BtnUpdate_Click" Background="{x:Null}" BorderBrush="{x:Null}"/>
+                    </Border>
+                    <Border Name="BrdUpdate" Visibility="Hidden" Width="5" Height="6" Margin="6" CornerRadius="3" Background="Red" VerticalAlignment="Top" HorizontalAlignment="Right"></Border>
+                </Grid>
+            </StackPanel>
+        </Grid>
         <Border VerticalAlignment="Bottom" Margin="10" CornerRadius="6" Background="#99ffffff">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="10" Color="#9111" Direction="270" ShadowDepth="1"/>
@@ -32,7 +49,7 @@
                 </Grid.ColumnDefinitions>
                 <TextBox Name="tbImageSavePath" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Margin="6,6,3,3" Background="#9fff" VerticalContentAlignment="Center" FontSize="14" Foreground="#555" />
                 <Button Name="btnChoosePath" Grid.Row="0" Grid.Column="4" Margin="3,6,6,3" Background="#9fff" Content="选 择" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"  Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="14" Click="btnChoosePath_Click" />
-                <ComboBox Name="cbImageSize" Grid.Row="1" Grid.Column="0" Margin="13,3,162,6" Background="#9fff" VerticalContentAlignment="Center" FontSize="14" SelectionChanged="cbImageSize_SelectionChanged" Grid.ColumnSpan="2" >
+                <ComboBox Name="cbImageSize" Grid.Row="1" Grid.Column="0" Margin="6,3,3,6" Background="#9fff" VerticalContentAlignment="Center" FontSize="14" SelectionChanged="cbImageSize_SelectionChanged" >
                     <!--<ComboBoxItem Content="1920*1200" Tag="1"/>
                     <ComboBoxItem Content="1920*1080" Tag="2" IsSelected="True"/>
                     <ComboBoxItem Content="1366*768" Tag="3"/>-->

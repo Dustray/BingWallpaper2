@@ -77,7 +77,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\SecretEtt.cs" />
+    <Compile Include="Models\UpdateModel.cs" />
+    <Compile Include="SuperEngine.cs" />
+    <Compile Include="UpdateWindow.xaml.cs">
+      <DependentUpon>UpdateWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\RegeditUtil.cs" />
+    <Compile Include="Utilities\UpdateUtil.cs" />
     <Compile Include="Utilities\WPFSupportFormat.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -91,6 +98,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UpdateWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -120,11 +131,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\bing20190822.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="logo.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -132,6 +138,12 @@
       <Project>{ACD252D2-B005-4CA4-8B2D-648E4128D099}</Project>
       <Name>BingWallpaper.Core</Name>
     </ProjectReference>
+    <PackageReference Include="Tencent.QCloud.Cos.Sdk" Version="5.4.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\UpdateConfig.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
