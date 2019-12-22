@@ -71,18 +71,25 @@ namespace BingWallpaper
         private void CheckUpdate()
         {
             string updatePath = null;
+            string updateVersion = null;
             using (var work = new BackgroundWorker())
             {
                 work.DoWork += new DoWorkEventHandler(async (object work_sender, DoWorkEventArgs work_e) =>
                 {
                     var update = await new UpdateUtil().FindNewUpdate();
                     updatePath = update.path;
+                    updateVersion = update.version;
                 });
                 work.RunWorkerCompleted += new RunWorkerCompletedEventHandler((object work_sender, RunWorkerCompletedEventArgs work_e) =>
                 {
                     if (null != updatePath)
                     {
                         BrdUpdate.Visibility = Visibility.Visible;
+                        BtnUpdate.ToolTip=$"更新：有新版本（{updateVersion}）";
+                    }
+                    else
+                    {
+                        BtnUpdate.ToolTip="更新：已是最新版本";
                     }
                 });
                 work.RunWorkerAsync();

@@ -25,7 +25,7 @@
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="20" Color="#6999" Direction="270" ShadowDepth="1"/>
                         </Border.Effect>
-                        <Button Name="BtnUpdate" Width="40" Height="40" Content="Up" Click="BtnUpdate_Click" Background="{x:Null}" BorderBrush="{x:Null}"/>
+                        <Button Name="BtnUpdate" Width="40" Height="40" Content="&#xE74A;" FontFamily="Segoe MDL2 Assets" Click="BtnUpdate_Click" Background="{x:Null}" BorderBrush="{x:Null}"/>
                     </Border>
                     <Border Name="BrdUpdate" Visibility="Hidden" Width="5" Height="6" Margin="6" CornerRadius="3" Background="Red" VerticalAlignment="Top" HorizontalAlignment="Right"></Border>
                 </Grid>
