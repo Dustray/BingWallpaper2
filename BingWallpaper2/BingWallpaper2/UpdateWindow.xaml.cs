@@ -1,4 +1,5 @@
 ﻿using BingWallpaper.Utilities;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
@@ -107,10 +108,18 @@ namespace BingWallpaper
         /// <param name="e"></param>
         private void BtnOK_Click(object sender, RoutedEventArgs e)
         {
-            Process m_Process = new Process();
-            m_Process.StartInfo.FileName = Path.GetFullPath($"Update.exe");
-            m_Process.Start();
-            System.Environment.Exit(0);
+            try
+            {
+                Process m_Process = new Process();
+                m_Process.StartInfo.FileName = Path.GetFullPath($"Update.exe");
+                m_Process.Start();
+                System.Environment.Exit(0);
+            }
+            catch
+            {
+                MessageBox.Show("缺少更新文件，无法完成更新，请手动下载最新程序。");
+                Environment.Exit(0);
+            }
         }
 
         /// <summary>
