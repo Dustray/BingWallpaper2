@@ -122,7 +122,7 @@ namespace BingWallpaper
         /// <param name="e"></param>
         private void btnSetWallpaper_Click(object sender, RoutedEventArgs e)
         {
-            CoreEngine.Current.SetWallpaper();
+            CoreEngine.Current.SetWallpaperAsync();
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace BingWallpaper
             if (_doNotInvokeCheckMethod) return;
             var item = (ImageSizeModel)cbImageSize.SelectedItem;
             CoreEngine.Current.AppSetting.SetSizeMode(item.Type);
-            CoreEngine.Current.SetWallpaper(true);
+            CoreEngine.Current.SetWallpaperAsync(true);
         }
 
         /// <summary>
