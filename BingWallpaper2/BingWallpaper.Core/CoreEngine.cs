@@ -73,7 +73,7 @@ namespace BingWallpaper.Core
         /// </summary>
         public AppSettingOperation AppSetting { get; private set; } = new AppSettingOperation();
         /// <summary>
-        /// 设置壁纸
+        /// 异步设置壁纸
         /// </summary>
         /// <param name="forceFromWeb">强制从网络获取</param>
         public void SetWallpaperAsync(bool forceFromWeb = false)
@@ -93,6 +93,14 @@ namespace BingWallpaper.Core
                 });
                 work.RunWorkerAsync();
             }
+        }
+        /// <summary>
+        /// 设置壁纸
+        /// </summary>
+        /// <param name="forceFromWeb">强制从网络获取</param>
+        public void SetWallpaper(bool forceFromWeb = false)
+        {
+            new WallpaperManager().SetWallpaper(forceFromWeb);
         }
         /// <summary>
         /// 获取壁纸图片

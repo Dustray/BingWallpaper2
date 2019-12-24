@@ -11,7 +11,7 @@ namespace BingWallpaperAuto
     {
         static void Main(string[] args)
         {
-            CoreEngine.Current.SetWallpaperAsync();
+            CoreEngine.Current.SetWallpaper();
         }
     }
 }
