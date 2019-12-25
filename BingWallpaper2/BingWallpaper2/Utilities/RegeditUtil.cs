@@ -118,7 +118,7 @@ namespace BingWallpaper.Utilities
             RegistryKey reg = null;
             try
             {
-                var fileName = Path.Combine(Environment.CurrentDirectory, "BingWallpaperAuto.exe");
+                var fileName = Path.Combine(Environment.CurrentDirectory, "自动设置.exe");
                 if (!File.Exists(fileName)) return false;
 
                 string regName = "BingWallpaperAuto";
