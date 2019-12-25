@@ -4,12 +4,12 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("BingWallpaperAuto")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("自动设置壁纸")]
+[assembly: AssemblyDescription("获取每日必应壁纸作为电脑桌面壁纸，并支持开机自动设置。")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BingWallpaperAuto")]
-[assembly: AssemblyCopyright("Copyright ©  2019")]
+[assembly: AssemblyProduct("BingWallpaper2")]
+[assembly: AssemblyCopyright("Copyright ©  2019 dustray.cn")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("Update")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("获取每日必应壁纸作为电脑桌面壁纸，并支持开机自动设置。")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Update")]
-[assembly: AssemblyCopyright("Copyright ©  2019")]
+[assembly: AssemblyProduct("BingWallpaper2")]
+[assembly: AssemblyCopyright("Copyright ©  2019 dustray.cn")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
