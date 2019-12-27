@@ -14,9 +14,15 @@ namespace Update
             var model = LoadConfig();
             if (null == model)
             {
+                MessageBox.Show("更新失败，未找到配置文件。");
                 return;
             }
             var filePath = Path.GetFullPath(model.SourceFile/*@"Temp\newupdate.ztmp"*/);
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show("更新失败，未找到更新文件。");
+                return;
+            }
             var programPath = Environment.CurrentDirectory;
             var unzipPath = programPath;
             if (IntPtr.Size == 4)
@@ -37,7 +43,14 @@ namespace Update
                     {
                         for (var i = 0; i < tmp.ArchiveFileData.Count; i++)
                         {
-                            tmp.ExtractFiles(unzipPath, tmp.ArchiveFileData[i].Index);
+                            try
+                            {
+                                tmp.ExtractFiles(unzipPath, tmp.ArchiveFileData[i].Index);
+                            }
+                            catch
+                            {
+
+                            }
                         }
                         try
                         {
@@ -54,7 +67,7 @@ namespace Update
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("更新失败，未找到更新文件。"+e);
+                    MessageBox.Show("更新失败，缺少更新组件。");
                     return;
                 }
             }
