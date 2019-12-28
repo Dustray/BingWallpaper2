@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Forms;
 
 namespace BingWallpaper
@@ -16,6 +17,7 @@ namespace BingWallpaper
     public partial class MainWindow : Window
     {
         private bool _doNotInvokeCheckMethod = true;
+        private bool _isPackUp = true;
         
         /// <summary>
         /// 
@@ -63,6 +65,7 @@ namespace BingWallpaper
             }
             //ImgPreview.Source = new WPFSupportFormat().ChangeBitmapToImageSource( CoreEngine.Current.GetWallpaperImage());
             _doNotInvokeCheckMethod = false;
+            PackUp(_isPackUp);
         }
 
         /// <summary>
@@ -85,6 +88,7 @@ namespace BingWallpaper
                     if (null != updatePath)
                     {
                         BrdUpdate.Visibility = Visibility.Visible;
+                        BrdAllRedPoint.Visibility = Visibility.Visible;
                         BtnUpdate.ToolTip=$"更新：有新版本（{updateVersion}）";
                     }
                     else
@@ -163,24 +167,63 @@ namespace BingWallpaper
             }
         }
 
-        #endregion
-
+        /// <summary>
+        /// 升级按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)
         {
             new UpdateWindow().Show();
         }
 
+        /// <summary>
+        /// 打开图片文件夹按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnOpenImageFolder_Click(object sender, RoutedEventArgs e)
         {
             string v_OpenFolderPath = tbImageSavePath.Text;
             System.Diagnostics.Process.Start("explorer.exe", v_OpenFolderPath);
         }
 
+        /// <summary>
+        /// 关于按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnAbout_Click(object sender, RoutedEventArgs e)
         {
             var about = new AboutWindow();
             about.Owner = this;
             about.Show();
         }
+
+        /// <summary>
+        /// 收起/展开按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnPackUp_Click(object sender, RoutedEventArgs e)
+        {
+            _isPackUp = !_isPackUp;
+            PackUp(_isPackUp);
+        }
+
+        #endregion
+
+        #region 成员方法
+        private void PackUp(bool isPackUp)
+        {
+            foreach(var ctl in SpToolBar.Children)
+            {
+                var ctlEle = ctl as Grid;
+                if (null != ctlEle.Tag && ctlEle.Tag.ToString() == "UnPack") continue;
+                ctlEle.Visibility = isPackUp ? Visibility.Collapsed : Visibility.Visible;
+            }
+            BtnPackUp.Content = isPackUp ? ((char)0xE974).ToString() : ((char)0xE973).ToString();
+        }
+        #endregion
     }
 }

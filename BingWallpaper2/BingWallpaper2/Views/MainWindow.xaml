@@ -19,13 +19,22 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <StackPanel Orientation="Horizontal">
-                <Grid Margin="10 10 5 10">
+            <StackPanel Name="SpToolBar" Orientation="Horizontal">
+                <Grid Margin="10 10 5 10" Tag="UnPack">
                     <Border CornerRadius="20" Background="#9eee">
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="20" Color="#6999" Direction="270" ShadowDepth="1"/>
                         </Border.Effect>
-                        <Button Name="BtnOpenImageFolder" Content="&#xE838;" ToolTip="打开图片文件夹" FontFamily="Segoe MDL2 Assets" FontSize="14" Style="{StaticResource BtnInfoStyle}" Click="BtnOpenImageFolder_Click" />
+                        <Button Name="BtnPackUp" Content="&#xE96F;" ToolTip="收起" FontSize="14" Style="{StaticResource BtnInfoStyle}" Click="BtnPackUp_Click" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                    </Border>
+                    <Border Name="BrdAllRedPoint" Visibility="Hidden" Width="6" Height="6" Margin="6" CornerRadius="3" Background="Red" VerticalAlignment="Top" HorizontalAlignment="Right"></Border>
+                </Grid>
+                <Grid Margin="5 10">
+                    <Border CornerRadius="20" Background="#9eee">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="20" Color="#6999" Direction="270" ShadowDepth="1"/>
+                        </Border.Effect>
+                        <Button Name="BtnOpenImageFolder" Content="&#xED25;" ToolTip="打开图片文件夹" FontSize="14" Style="{StaticResource BtnInfoStyle}" Click="BtnOpenImageFolder_Click" />
                     </Border>
                 </Grid>
                 <Grid Margin="5 10">
@@ -33,7 +42,7 @@
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="20" Color="#6999" Direction="270" ShadowDepth="1"/>
                         </Border.Effect>
-                        <Button Name="BtnUpdate" Content="&#xE74A;" FontFamily="Segoe MDL2 Assets" FontSize="14" Click="BtnUpdate_Click" Style="{StaticResource BtnInfoStyle}" />
+                        <Button Name="BtnUpdate" Content="&#xE74A;" FontSize="14" Click="BtnUpdate_Click" Style="{StaticResource BtnInfoStyle}" />
                     </Border>
                     <Border Name="BrdUpdate" Visibility="Hidden" Width="6" Height="6" Margin="6" CornerRadius="3" Background="Red" VerticalAlignment="Top" HorizontalAlignment="Right"></Border>
                 </Grid>
@@ -42,7 +51,7 @@
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="20" Color="#6999" Direction="270" ShadowDepth="1"/>
                         </Border.Effect>
-                        <Button Name="BtnAbout" Content="&#xEDB1;" ToolTip="打开图片文件夹" FontFamily="Segoe MDL2 Assets" FontSize="14" Style="{StaticResource BtnInfoStyle}" Click="BtnAbout_Click" />
+                        <Button Name="BtnAbout" Content="&#xE11B;" ToolTip="关于" FontSize="14" Style="{StaticResource BtnInfoStyle}" Click="BtnAbout_Click" />
                     </Border>
                 </Grid>
             </StackPanel>

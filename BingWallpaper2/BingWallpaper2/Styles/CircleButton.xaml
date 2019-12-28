@@ -7,7 +7,8 @@
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Background" Value="{x:Null}"/>
         <Setter Property="BorderBrush" Value="{x:Null}"/>
-        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+        <Setter Property="Cursor" Value="Hand"/> 
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
