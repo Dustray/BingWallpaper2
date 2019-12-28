@@ -49,6 +49,18 @@
             升级包更新路径
             </summary>
         </member>
+        <member name="M:BingWallpaper.SuperEngine.IsVersionNewer(System.String)">
+            <summary>
+            是否存在更新
+            </summary>
+            <param name="version"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BingWallpaper.SuperEngine.Initialization">
+            <summary>
+            全局初始化
+            </summary>
+        </member>
         <member name="M:BingWallpaper.SuperEngine.CreateCosXML">
             <summary>
             初始化腾讯云配置

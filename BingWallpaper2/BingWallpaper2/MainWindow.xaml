@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BingWallpaper2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen">
+        Title="每日必应壁纸" Height="450" Width="800" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
@@ -21,11 +21,11 @@
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Horizontal">
                 <Grid Margin="10">
-                    <Border CornerRadius="20" Background="#9fff">
+                    <Border CornerRadius="20" Background="#9eee">
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="20" Color="#6999" Direction="270" ShadowDepth="1"/>
                         </Border.Effect>
-                        <Button Name="BtnUpdate" Width="40" Height="40" Content="&#xE74A;" FontFamily="Segoe MDL2 Assets" Click="BtnUpdate_Click" Background="{x:Null}" BorderBrush="{x:Null}"/>
+                        <Button Name="BtnUpdate" Content="&#xE74A;" FontFamily="Segoe MDL2 Assets" FontSize="14" Click="BtnUpdate_Click" Style="{StaticResource BtnInfoStyle}" />
                     </Border>
                     <Border Name="BrdUpdate" Visibility="Hidden" Width="5" Height="6" Margin="6" CornerRadius="3" Background="Red" VerticalAlignment="Top" HorizontalAlignment="Right"></Border>
                 </Grid>
@@ -48,7 +48,7 @@
                     <ColumnDefinition Width="110"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <TextBox Name="tbImageSavePath" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Margin="6,6,3,3" Background="#9fff" VerticalContentAlignment="Center" FontSize="14" Foreground="#555" />
-                <Button Name="btnChoosePath" Grid.Row="0" Grid.Column="4" Margin="3,6,6,3" Background="#9fff" Content="选 择" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"  Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="14" Click="btnChoosePath_Click" />
+                <Button Name="btnChoosePath" Grid.Row="0" Grid.Column="4" Margin="3,6,6,3" Background="#9fff" Content="选 择" Cursor="Hand" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"  Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="14" Click="btnChoosePath_Click" />
                 <ComboBox Name="cbImageSize" Grid.Row="1" Grid.Column="0" Margin="6,3,3,6" Background="#9fff" VerticalContentAlignment="Center" FontSize="14" SelectionChanged="cbImageSize_SelectionChanged" >
                     <!--<ComboBoxItem Content="1920*1200" Tag="1"/>
                     <ComboBoxItem Content="1920*1080" Tag="2" IsSelected="True"/>
@@ -63,7 +63,7 @@
                     <ComboBoxItem Content="跨区" Tag="6"/>-->
                 </ComboBox>
                 <CheckBox Name="ckbAutoRun" Grid.Row="1" Grid.Column="3" Margin="3,3,3,6" Content="开机自动设置" VerticalAlignment="Center" HorizontalAlignment="Right" VerticalContentAlignment="Center" Background="Transparent" FontSize="14"  Foreground="#a000" Checked="ckbAutoRun_Checked" Unchecked="ckbAutoRun_Checked"/>
-                <Button Name="btnSetWallpaper" Grid.Row="1" Grid.Column="4" Margin="3,3,6,6" Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Content="设为壁纸" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" FontSize="14" Click="btnSetWallpaper_Click" />
+                <Button Name="btnSetWallpaper" Grid.Row="1" Grid.Column="4" Margin="3,3,6,6" Cursor="Hand" Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Content="设为壁纸" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" FontSize="14" Click="btnSetWallpaper_Click" />
             </Grid>
         </Border>
     </Grid>

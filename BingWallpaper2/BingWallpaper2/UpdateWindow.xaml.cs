@@ -17,6 +17,7 @@ namespace BingWallpaper
         {
             InitializeComponent();
             CheckUpdate();
+            Title = $"检查更新 当前{SuperEngine.Current.Version}";
         }
         /// <summary>
         /// 检查更新

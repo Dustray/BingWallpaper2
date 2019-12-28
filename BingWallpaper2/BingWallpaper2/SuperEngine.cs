@@ -24,18 +24,29 @@ namespace BingWallpaper
 
         #endregion
 
+        #region 引擎属性
         public UpdateModel GlobalConfig { get; private set; }
 
         public CosXmlServer CosXml { get; set; }
 
+        public string Version => System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        #endregion
+
+        #region 引擎方法
+
+        /// <summary>
+        /// 是否存在更新
+        /// </summary>
+        /// <param name="version"></param>
+        /// <returns></returns>
         public bool IsVersionNewer(string version)
         {
             var oldVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             var oldVersionArray = oldVersion.Split('.');
             var newVersionArray = version.Split('.');
-            for(int i = 0; i < oldVersionArray.Length|| i < newVersionArray.Length; i++)
+            for (int i = 0; i < oldVersionArray.Length || i < newVersionArray.Length; i++)
             {
-                if(int.Parse(newVersionArray[i])> int.Parse(oldVersionArray[i]))
+                if (int.Parse(newVersionArray[i]) > int.Parse(oldVersionArray[i]))
                 {
                     return true;
                 }
@@ -43,11 +54,18 @@ namespace BingWallpaper
             return false;
         }
 
+        #endregion
+
+        #region 私有方法
+
+        /// <summary>
+        /// 全局初始化
+        /// </summary>
         private async void Initialization()
         {
             var fullPath = Path.GetFullPath(@"Config\UpdateConfig.xml");
             if (!File.Exists(fullPath)) return;
-            GlobalConfig =await XMLUtility.LoadXMLAsync<UpdateModel>(fullPath);
+            GlobalConfig = await XMLUtility.LoadXMLAsync<UpdateModel>(fullPath);
             CreateCosXML();
         }
 
@@ -80,5 +98,7 @@ namespace BingWallpaper
             //初始化 CosXmlServer
             CosXml = new CosXmlServer(config, cosCredentialProvider);
         }
+
+        #endregion
     }
 }
