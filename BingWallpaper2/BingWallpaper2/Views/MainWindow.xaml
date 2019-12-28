@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BingWallpaper2"
+        xmlns:local="clr-namespace:BingWallpaper"
         mc:Ignorable="d"
         Title="每日必应壁纸" Height="450" Width="800" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen">
     <Grid>
@@ -20,7 +20,15 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Horizontal">
-                <Grid Margin="10">
+                <Grid Margin="10 10 5 10">
+                    <Border CornerRadius="20" Background="#9eee">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="20" Color="#6999" Direction="270" ShadowDepth="1"/>
+                        </Border.Effect>
+                        <Button Name="BtnOpenImageFolder" Content="&#xE838;" ToolTip="打开图片文件夹" FontFamily="Segoe MDL2 Assets" FontSize="14" Style="{StaticResource BtnInfoStyle}" Click="BtnOpenImageFolder_Click" />
+                    </Border>
+                </Grid>
+                <Grid Margin="5 10">
                     <Border CornerRadius="20" Background="#9eee">
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="20" Color="#6999" Direction="270" ShadowDepth="1"/>
@@ -28,6 +36,14 @@
                         <Button Name="BtnUpdate" Content="&#xE74A;" FontFamily="Segoe MDL2 Assets" FontSize="14" Click="BtnUpdate_Click" Style="{StaticResource BtnInfoStyle}" />
                     </Border>
                     <Border Name="BrdUpdate" Visibility="Hidden" Width="6" Height="6" Margin="6" CornerRadius="3" Background="Red" VerticalAlignment="Top" HorizontalAlignment="Right"></Border>
+                </Grid>
+                <Grid Margin="5 10">
+                    <Border CornerRadius="20" Background="#9eee">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="20" Color="#6999" Direction="270" ShadowDepth="1"/>
+                        </Border.Effect>
+                        <Button Name="BtnAbout" Content="&#xEDB1;" ToolTip="打开图片文件夹" FontFamily="Segoe MDL2 Assets" FontSize="14" Style="{StaticResource BtnInfoStyle}" Click="BtnAbout_Click" />
+                    </Border>
                 </Grid>
             </StackPanel>
         </Grid>

@@ -169,5 +169,18 @@ namespace BingWallpaper
         {
             new UpdateWindow().Show();
         }
+
+        private void BtnOpenImageFolder_Click(object sender, RoutedEventArgs e)
+        {
+            string v_OpenFolderPath = tbImageSavePath.Text;
+            System.Diagnostics.Process.Start("explorer.exe", v_OpenFolderPath);
+        }
+
+        private void BtnAbout_Click(object sender, RoutedEventArgs e)
+        {
+            var about = new AboutWindow();
+            about.Owner = this;
+            about.Show();
+        }
     }
 }

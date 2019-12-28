@@ -132,5 +132,17 @@ namespace BingWallpaper
         {
             Close();
         }
+
+        /// <summary>
+        /// 手动下载
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnDownload_Click(object sender, RoutedEventArgs e)
+        {
+            var proc = new Process();
+            proc.StartInfo.FileName = "https://github.com/Dustray/BingWallpaper2/releases";
+            proc.Start();
+        }
     }
 }

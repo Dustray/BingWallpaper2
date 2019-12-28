@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BingWallpaper2"
+        xmlns:local="clr-namespace:BingWallpaper"
         mc:Ignorable="d"
         Title="检查更新" Height="450" Width="800" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen">
     <Grid Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}">
@@ -19,7 +19,8 @@
         </Grid.ColumnDefinitions>
         <TextBlock Name="TbTitle" Grid.Row="0" Grid.ColumnSpan="3" Text="更新进度" FontSize="25" Foreground="White" Margin="20 0 20 0" VerticalAlignment="Bottom" />
         <TextBlock Name="TbMainContent" Grid.Row="1" Grid.ColumnSpan="3" Text="正在检查..." FontSize="120" Foreground="White" Margin="20 0 20 0" VerticalAlignment="Center"/>
-        <Button Name="BtnOK" Grid.Column="1" Grid.Row="2" Content="重启以更新" FontSize="25" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" BorderThickness="1" Margin="20" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="20 10" Background="{x:Null}" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" Click="BtnOK_Click" Visibility="Hidden"/>
-        <Button Name="BtnCancel" Grid.Column="2" Grid.Row="2" Content="返 回" FontSize="25" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" BorderThickness="1" Margin="30 20" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="20 10" Background="{x:Null}" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" Click="BtnCancel_Click" Visibility="Hidden"/>
+        <Button Name="BtnDownload" Grid.Column="0" Grid.Row="2" Content="手动下载" FontSize="25" Foreground="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" BorderThickness="1" Margin="20" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="20 10" Background="{x:Null}" BorderBrush="{x:Null}" Click="BtnDownload_Click"  Cursor="Hand" />
+        <Button Name="BtnOK" Grid.Column="1" Grid.Row="2" Content="重启以更新" FontSize="25" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" BorderThickness="1" Margin="20" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="20 10" Background="{x:Null}" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" Click="BtnOK_Click"  Visibility="Hidden" Cursor="Hand" />
+        <Button Name="BtnCancel" Grid.Column="2" Grid.Row="2" Content="返 回" FontSize="25" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" BorderThickness="1" Margin="30 20" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="20 10" Background="{x:Null}" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" Click="BtnCancel_Click" Visibility="Hidden" Cursor="Hand" />
     </Grid>
 </Window>
