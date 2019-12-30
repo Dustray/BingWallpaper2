@@ -52,7 +52,7 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition Width="110"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <TextBox Name="tbImageSavePath" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Margin="6,6,3,3" Background="#9fff" VerticalContentAlignment="Center" FontSize="14" Foreground="#555" />
+                <TextBox Name="tbImageSavePath" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Margin="6,6,3,3" Padding="5 0 5 0" Background="#9fff" VerticalContentAlignment="Center" FontSize="14" Foreground="#555" />
                 <Button Name="btnChoosePath" Grid.Row="0" Grid.Column="4" Margin="3,6,6,3" Background="#9fff" Content="选 择" Cursor="Hand" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"  Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="14" Click="btnChoosePath_Click" />
                 <ComboBox Name="cbImageSize" Grid.Row="1" Grid.Column="0" Margin="6,3,3,6" Background="#9fff" VerticalContentAlignment="Center" FontSize="14" SelectionChanged="cbImageSize_SelectionChanged" >
                     <!--<ComboBoxItem Content="1920*1200" Tag="1"/>

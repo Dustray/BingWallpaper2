@@ -115,6 +115,14 @@
     <Compile Include="Utilities\RegeditUtil.cs" />
     <Compile Include="Utilities\UpdateUtil.cs" />
     <Compile Include="Utilities\WPFSupportFormat.cs" />
+    <Page Include="Styles\LightButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\BlueButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\AboutWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
