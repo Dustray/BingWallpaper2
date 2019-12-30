@@ -55,17 +55,37 @@
         </member>
         <member name="P:BingWallpaper.Core.Model.AppSetting.WallpaperSize">
             <summary>
-            
+            壁纸尺寸
             </summary>
         </member>
         <member name="P:BingWallpaper.Core.Model.AppSetting.WallpaperStyle">
             <summary>
-            
+            壁纸样式
             </summary>
         </member>
         <member name="P:BingWallpaper.Core.Model.AppSetting.ImageSavePath">
             <summary>
-            
+            图片保存路径
+            </summary>
+        </member>
+        <member name="T:BingWallpaper.Core.Model.ImageSizeModel">
+            <summary>
+            图片尺寸模板
+            </summary>
+        </member>
+        <member name="M:BingWallpaper.Core.Model.ImageSizeModel.#ctor(System.String,BingWallpaper.Core.Model.ImageSizeType)">
+            <summary>
+            图片尺寸模板
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.Core.Model.ImageSizeModel.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.Core.Model.ImageSizeModel.Type">
+            <summary>
+            类型
             </summary>
         </member>
         <member name="T:BingWallpaper.Core.Model.ImageSizeType">
@@ -123,6 +143,26 @@
             跨区
             </summary>
         </member>
+        <member name="T:BingWallpaper.Core.Model.WallpaperStyleModel">
+            <summary>
+            壁纸样式模板
+            </summary>
+        </member>
+        <member name="M:BingWallpaper.Core.Model.WallpaperStyleModel.#ctor(System.String,BingWallpaper.Core.Model.WallpaperModeType)">
+            <summary>
+            壁纸样式模板
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.Core.Model.WallpaperStyleModel.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.Core.Model.WallpaperStyleModel.Type">
+            <summary>
+            类型
+            </summary>
+        </member>
         <member name="P:BingWallpaper.Core.Utilities.AppSettingOperation.GetSizeMode">
             <summary>
             获取图片尺寸
@@ -158,6 +198,11 @@
             </summary>
             <param name="path"></param>
         </member>
+        <member name="T:BingWallpaper.Core.Utilities.XMLUtility">
+            <summary>
+            XML配置文件解析工具
+            </summary>
+        </member>
         <member name="M:BingWallpaper.Core.Utilities.XMLUtility.LoadXMLAsync``1(System.String)">
             <summary>
             加载指定XML文件并序列化为指定泛型对象
@@ -166,6 +211,21 @@
             <typeparam name="T">泛型对象</typeparam>
             <param name="xmlFilePath">XML文件路径(绝对路径)</param>
             <returns>加载结果</returns>
+        </member>
+        <member name="M:BingWallpaper.Core.Utilities.XMLUtility.CreateOrSaveXMLAsync``1(System.String,``0)">
+            <summary>
+            创建或保存XML文件
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="xmlFilePath"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BingWallpaper.Core.WallpaperManager.GetBingURL">
+            <summary>
+            获取图片路径
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:BingWallpaper.Core.WallpaperManager.SetWallpaper(System.Boolean)">
             <summary>

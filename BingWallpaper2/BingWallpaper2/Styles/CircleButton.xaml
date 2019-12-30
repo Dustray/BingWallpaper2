@@ -8,21 +8,34 @@
         <Setter Property="Background" Value="{x:Null}"/>
         <Setter Property="BorderBrush" Value="{x:Null}"/>
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
-        <Setter Property="Cursor" Value="Hand"/> 
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" /><!--去除虚线框-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
-                        <TextBlock Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <Border x:Name="border" Background="#9eee" BorderBrush="{TemplateBinding BorderBrush}"  BorderThickness="0" CornerRadius="20" SnapsToDevicePixels="True">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="10" Color="#6888" Direction="270" ShadowDepth="1"/>
+                        </Border.Effect>
+                        <ContentPresenter Content="{TemplateBinding ContentControl.Content}"  HorizontalAlignment="Center" VerticalAlignment="Center" ></ContentPresenter>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="#7ccc"/>
-                            <Setter TargetName="border" Property="CornerRadius" Value="20"/>
+                            <Setter TargetName="border" Property="Background" Value="#9fff"/>
+                            <Setter TargetName="border" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect BlurRadius="20" Color="#6888" Direction="270" ShadowDepth="1" />
+                                </Setter.Value>
+                            </Setter>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="#7aaa"/>
-                            <Setter TargetName="border" Property="CornerRadius" Value="20"/>
+                            <Setter TargetName="border" Property="Background" Value="#9eee"/>
+                            <Setter TargetName="border" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect  BlurRadius="15" Color="#6888" Direction="270" ShadowDepth="1"/>
+                                </Setter.Value>
+                            </Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

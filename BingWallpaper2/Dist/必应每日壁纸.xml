@@ -4,6 +4,11 @@
         <name>必应每日壁纸</name>
     </assembly>
     <members>
+        <member name="T:BingWallpaper.Models.UpdateModel">
+            <summary>
+            程序升级信息模板
+            </summary>
+        </member>
         <member name="P:BingWallpaper.Models.UpdateModel.AppID">
             <summary>
             腾讯云账户的账户标识 APPID
@@ -49,6 +54,21 @@
             升级包更新路径
             </summary>
         </member>
+        <member name="P:BingWallpaper.SuperEngine.GlobalConfig">
+            <summary>
+            应用全局配置
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.SuperEngine.CosXml">
+            <summary>
+            腾讯云 对象存储配置对象
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.SuperEngine.Version">
+            <summary>
+            当前程序版本
+            </summary>
+        </member>
         <member name="M:BingWallpaper.SuperEngine.IsVersionNewer(System.String)">
             <summary>
             是否存在更新
@@ -74,6 +94,25 @@
             AboutWindow
             </summary>
         </member>
+        <member name="M:BingWallpaper.AboutWindow.#ctor">
+            <summary>
+            关于窗体
+            </summary>
+        </member>
+        <member name="M:BingWallpaper.AboutWindow.tbOpenBlog_MouseUp(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            打开博客网站按钮点击事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:BingWallpaper.AboutWindow.BtnClose_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            关闭窗体按钮点击事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
         <member name="M:BingWallpaper.AboutWindow.InitializeComponent">
             <summary>
             InitializeComponent
@@ -87,10 +126,33 @@
             UpdateWindow
             </summary>
         </member>
+        <member name="M:BingWallpaper.UpdateWindow.#ctor">
+            <summary>
+            升级窗体
+            </summary>
+        </member>
         <member name="M:BingWallpaper.UpdateWindow.CheckUpdate">
             <summary>
             检查更新
             </summary>
+        </member>
+        <member name="M:BingWallpaper.UpdateWindow.ThereHasUpdate(System.String,System.String)">
+            <summary>
+            有更新
+            </summary>
+            <param name="path"></param>
+            <param name="version"></param>
+        </member>
+        <member name="M:BingWallpaper.UpdateWindow.ThereNoUpdate">
+            <summary>
+            无更新
+            </summary>
+        </member>
+        <member name="M:BingWallpaper.UpdateWindow.ExecuteUpdate(System.String)">
+            <summary>
+            执行更新
+            </summary>
+            <param name="url"></param>
         </member>
         <member name="M:BingWallpaper.UpdateWindow.BtnOK_Click(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
@@ -118,6 +180,11 @@
             InitializeComponent
             </summary>
         </member>
+        <member name="T:BingWallpaper.Utilities.RegeditUtil">
+            <summary>
+            注册表工具
+            </summary>
+        </member>
         <member name="M:BingWallpaper.Utilities.RegeditUtil.SetWallpaperStyle(BingWallpaper.Core.Model.WallpaperModeType)">
             <summary>
             设置注册表壁纸样式
@@ -133,12 +200,28 @@
             <summary>
             查询注册表，获取程序是否开机自动运行
             </summary>
-            <param name="autoRun"></param>
+        </member>
+        <member name="T:BingWallpaper.Utilities.UpdateUtil">
+            <summary>
+            程序升级检查工具
+            </summary>
         </member>
         <member name="M:BingWallpaper.Utilities.UpdateUtil.FindNewUpdate">
             <summary>
             查找新版本更新文件路径
             </summary>
+            <returns></returns>
+        </member>
+        <member name="T:BingWallpaper.Utilities.WPFSupportFormat">
+            <summary>
+            WPF支持格式
+            </summary>
+        </member>
+        <member name="M:BingWallpaper.Utilities.WPFSupportFormat.ChangeBitmapToImageSource(System.Drawing.Bitmap)">
+            <summary>
+            将Bitmap转换为WPF支持的图片资源格式
+            </summary>
+            <param name="bitmap"></param>
             <returns></returns>
         </member>
         <member name="T:BingWallpaper.App">
@@ -169,7 +252,7 @@
         </member>
         <member name="M:BingWallpaper.MainWindow.#ctor">
             <summary>
-            
+            主窗体
             </summary>
         </member>
         <member name="M:BingWallpaper.MainWindow.InitializeUI">
@@ -210,6 +293,13 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
+        <member name="M:BingWallpaper.MainWindow.ckbAutoRun_Checked(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            自动运行选择框事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
         <member name="M:BingWallpaper.MainWindow.BtnUpdate_Click(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
             升级按钮点击事件
@@ -237,6 +327,12 @@
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
+        </member>
+        <member name="M:BingWallpaper.MainWindow.PackUp(System.Boolean)">
+            <summary>
+            工具栏收起/展开
+            </summary>
+            <param name="isPackUp"></param>
         </member>
         <member name="M:BingWallpaper.MainWindow.InitializeComponent">
             <summary>

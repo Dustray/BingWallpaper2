@@ -21,58 +21,24 @@
             </Grid.ColumnDefinitions>
             <StackPanel Name="SpToolBar" Orientation="Horizontal">
                 <Grid Margin="10 10 5 10" Tag="UnPack">
-                    <Border CornerRadius="20" Background="#9eee">
-                        <Border.Effect>
-                            <DropShadowEffect BlurRadius="20" Color="#6999" Direction="270" ShadowDepth="1"/>
-                        </Border.Effect>
-                        <Button Name="BtnPackUp" Content="&#xE96F;" ToolTip="收起" FontSize="14" Style="{StaticResource BtnInfoStyle}" Click="BtnPackUp_Click" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
-                    </Border>
+                    <Button Name="BtnPackUp" Content="&#xE96F;" ToolTip="收起" Style="{StaticResource BtnInfoStyle}" Click="BtnPackUp_Click" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
                     <Border Name="BrdAllRedPoint" Visibility="Hidden" Width="6" Height="6" Margin="6" CornerRadius="3" Background="Red" VerticalAlignment="Top" HorizontalAlignment="Right"></Border>
                 </Grid>
                 <Grid Margin="5 10">
-                    <Border CornerRadius="20" Background="#9eee">
-                        <Border.Effect>
-                            <DropShadowEffect BlurRadius="20" Color="#6999" Direction="270" ShadowDepth="1"/>
-                        </Border.Effect>
-                        <Button Name="BtnOpenImageFolder" Content="&#xED25;" ToolTip="打开图片文件夹" FontSize="14" Style="{StaticResource BtnInfoStyle}" Click="BtnOpenImageFolder_Click" />
-                    </Border>
+                    <Button Name="BtnOpenImageFolder" Content="&#xED25;" ToolTip="打开图片文件夹" Style="{StaticResource BtnInfoStyle}" Click="BtnOpenImageFolder_Click" />
                 </Grid>
                 <Grid Margin="5 10">
-                    <Border CornerRadius="20" Background="#9eee">
-                        <Border.Effect>
-                            <DropShadowEffect BlurRadius="20" Color="#6999" Direction="270" ShadowDepth="1"/>
-                        </Border.Effect>
-                        <Button Name="BtnUpdate" Content="&#xE74A;" FontSize="14" Click="BtnUpdate_Click" Style="{StaticResource BtnInfoStyle}" />
-                    </Border>
+                    <Button Name="BtnUpdate" Content="&#xE74A;" Style="{StaticResource BtnInfoStyle}" Click="BtnUpdate_Click" />
                     <Border Name="BrdUpdate" Visibility="Hidden" Width="6" Height="6" Margin="6" CornerRadius="3" Background="Red" VerticalAlignment="Top" HorizontalAlignment="Right"></Border>
                 </Grid>
                 <Grid Margin="5 10">
-                    <Border CornerRadius="20" Background="#9eee">
-                        <Border.Effect>
-                            <DropShadowEffect BlurRadius="20" Color="#6999" Direction="270" ShadowDepth="1"/>
-                        </Border.Effect>
-                        <Button Name="BtnAbout" Content="&#xE11B;" ToolTip="关于" FontSize="14" Style="{StaticResource BtnInfoStyle}" Click="BtnAbout_Click" />
-                    </Border>
+                    <Button Name="BtnAbout" Content="&#xE11B;" ToolTip="关于" Style="{StaticResource BtnInfoStyle}" Click="BtnAbout_Click" />
                 </Grid>
-                <!--<Grid Margin="5 10">
-                    <Button x:Name="btn" Content="&#xE74A;"  Style="{StaticResource BtnInfoStyle}" >
-                        <Button.Template >
-                            <ControlTemplate TargetType="{x:Type Button}" >
-                                <Border x:Name="border" Background="#9eee" BorderThickness="0" CornerRadius="20">
-                                    <Border.Effect>
-                                        <DropShadowEffect BlurRadius="20" Color="#6999" Direction="270" ShadowDepth="1"/>
-                                    </Border.Effect>
-                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" ></ContentPresenter>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-                </Grid>-->
             </StackPanel>
         </Grid>
         <Border VerticalAlignment="Bottom" Margin="10" CornerRadius="8" Background="#9fff">
             <Border.Effect>
-                <DropShadowEffect BlurRadius="10" Color="#9111" Direction="270" ShadowDepth="1"/>
+                <DropShadowEffect BlurRadius="10" Color="#6888" Direction="270" ShadowDepth="1"/>
             </Border.Effect>
             <Grid>
                 <Grid.RowDefinitions>
