@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace BingWallpaper.Utilities
 {
+    /// <summary>
+    /// 注册表工具
+    /// </summary>
     class RegeditUtil
     {
         /// <summary>
@@ -112,7 +115,6 @@ namespace BingWallpaper.Utilities
         /// <summary>
         /// 查询注册表，获取程序是否开机自动运行
         /// </summary>
-        /// <param name="autoRun"></param>
         public bool GetAutoRun()
         {
             RegistryKey reg = null;

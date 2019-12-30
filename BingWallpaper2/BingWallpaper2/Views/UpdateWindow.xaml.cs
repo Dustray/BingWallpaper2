@@ -13,6 +13,9 @@ namespace BingWallpaper
     /// </summary>
     public partial class UpdateWindow : Window
     {
+        /// <summary>
+        /// 升级窗体
+        /// </summary>
         public UpdateWindow()
         {
             InitializeComponent();
@@ -48,13 +51,20 @@ namespace BingWallpaper
                 work.RunWorkerAsync();
             }
         }
-
+        /// <summary>
+        /// 有更新
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="version"></param>
         private void ThereHasUpdate(string path,string version)
         {
             TbTitle.Text = $"正在更新（Version {version}）：";
             TbMainContent.Text = "正在下载"; 
             ExecuteUpdate(path);
         }
+        /// <summary>
+        /// 无更新
+        /// </summary>
         private void ThereNoUpdate()
         {
             TbTitle.Text = "恭喜呢";
@@ -62,6 +72,10 @@ namespace BingWallpaper
             BtnCancel.Visibility = Visibility.Visible;
         }
 
+        /// <summary>
+        /// 执行更新
+        /// </summary>
+        /// <param name="url"></param>
         private void ExecuteUpdate(string url)
         {
             bool success = false;
@@ -102,6 +116,7 @@ namespace BingWallpaper
                 work.RunWorkerAsync();
             }
         }
+
         /// <summary>
         /// 重启
         /// </summary>
@@ -114,7 +129,7 @@ namespace BingWallpaper
                 Process m_Process = new Process();
                 m_Process.StartInfo.FileName = Path.GetFullPath($"Update.exe");
                 m_Process.Start();
-                System.Environment.Exit(0);
+                Environment.Exit(0);
             }
             catch
             {

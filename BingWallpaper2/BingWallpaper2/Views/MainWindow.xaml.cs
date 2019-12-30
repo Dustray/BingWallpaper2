@@ -20,7 +20,7 @@ namespace BingWallpaper
         private bool _isPackUp = true;
         
         /// <summary>
-        /// 
+        /// 主窗体
         /// </summary>
         public MainWindow()
         {
@@ -36,7 +36,7 @@ namespace BingWallpaper
         /// </summary>
         private void InitializeUI()
         {
-            Title = $"每日必应壁纸2 version_{SuperEngine.Current.Version}";
+            Title = $"每日必应壁纸2 version_{SuperEngine.Current.Version}（预览）";
             
             cbImageSize.ItemsSource = CoreEngine.Current.ImageSizeList;
             cbImageSize.DisplayMemberPath = "Name";
@@ -154,6 +154,11 @@ namespace BingWallpaper
             new RegeditUtil().SetWallpaperStyle(item.Type);
         }
 
+        /// <summary>
+        /// 自动运行选择框事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ckbAutoRun_Checked(object sender, RoutedEventArgs e)
         {
             if (_doNotInvokeCheckMethod) return;
@@ -214,6 +219,10 @@ namespace BingWallpaper
         #endregion
 
         #region 成员方法
+        /// <summary>
+        /// 工具栏收起/展开
+        /// </summary>
+        /// <param name="isPackUp"></param>
         private void PackUp(bool isPackUp)
         {
             foreach(var ctl in SpToolBar.Children)

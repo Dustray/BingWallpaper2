@@ -10,10 +10,18 @@ using System.Windows.Media.Imaging;
 
 namespace BingWallpaper.Utilities
 {
+    /// <summary>
+    /// WPF支持格式
+    /// </summary>
     public class WPFSupportFormat
     {
         [System.Runtime.InteropServices.DllImport("gdi32.dll")]
         private static extern bool DeleteObject(IntPtr hObject);
+        /// <summary>
+        /// 将Bitmap转换为WPF支持的图片资源格式
+        /// </summary>
+        /// <param name="bitmap"></param>
+        /// <returns></returns>
         public  ImageSource ChangeBitmapToImageSource(Bitmap bitmap)
         {
             IntPtr hBitmap = bitmap.GetHbitmap();

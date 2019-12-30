@@ -10,6 +10,10 @@ namespace BingWallpaper.Core
 {
     class WallpaperManager
     {
+        /// <summary>
+        /// 获取图片路径
+        /// </summary>
+        /// <returns></returns>
         public string GetBingURL()
         {
             string InfoUrl = "http://cn.bing.com/HPImageArchive.aspx?idx=0&n=1";

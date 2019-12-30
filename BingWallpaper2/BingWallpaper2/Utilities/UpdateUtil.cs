@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace BingWallpaper.Utilities
 {
+    /// <summary>
+    /// 程序升级检查工具
+    /// </summary>
     public class UpdateUtil
     {
         /// <summary>
@@ -71,7 +74,8 @@ namespace BingWallpaper.Utilities
                 //请求失败
                 Console.WriteLine("CosServerException: " + serverEx.GetInfo());
             }
-            return null;
+            tcsResult.SetResult((null, null));
+            return tcsResult.Task;
         }
     }
 }

@@ -20,12 +20,20 @@ namespace BingWallpaper
     /// </summary>
     public partial class AboutWindow : Window
     {
+        /// <summary>
+        /// 关于窗体
+        /// </summary>
         public AboutWindow()
         {
             InitializeComponent();
-            tbVersion.Text = SuperEngine.Current.Version;
+            tbVersion.Text = $"{SuperEngine.Current.Version}（预览）";
         }
 
+        /// <summary>
+        /// 打开博客网站按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tbOpenBlog_MouseUp(object sender, MouseButtonEventArgs e)
         {
             var proc = new Process();
@@ -33,6 +41,11 @@ namespace BingWallpaper
             proc.Start();
         }
 
+        /// <summary>
+        /// 关闭窗体按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
             Close();

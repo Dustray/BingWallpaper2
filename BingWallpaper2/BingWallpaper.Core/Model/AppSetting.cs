@@ -12,15 +12,15 @@ namespace BingWallpaper.Core.Model
     public class AppSetting
     {
         /// <summary>
-        /// 
+        /// 壁纸尺寸
         /// </summary>
         public string WallpaperSize { get; set; }
         /// <summary>
-        /// 
+        /// 壁纸样式
         /// </summary>
         public string WallpaperStyle { get; set; }
         /// <summary>
-        /// 
+        /// 图片保存路径
         /// </summary>
         public string ImageSavePath { get; set; }
     }

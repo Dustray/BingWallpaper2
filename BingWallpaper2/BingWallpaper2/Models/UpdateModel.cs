@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace BingWallpaper.Models
 {
+    /// <summary>
+    /// 程序升级信息模板
+    /// </summary>
     public class UpdateModel
     {
         /// <summary>

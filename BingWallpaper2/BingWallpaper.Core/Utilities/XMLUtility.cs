@@ -9,6 +9,9 @@ using System.Xml;
 
 namespace BingWallpaper.Core.Utilities
 {
+    /// <summary>
+    /// XML配置文件解析工具
+    /// </summary>
     public class XMLUtility
     {
         /// <summary>
@@ -45,6 +48,13 @@ namespace BingWallpaper.Core.Utilities
             return tcsResult.Task;
         }
 
+        /// <summary>
+        /// 创建或保存XML文件
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="xmlFilePath"></param>
+        /// <param name="t"></param>
+        /// <returns></returns>
         public static Task CreateOrSaveXMLAsync<T>(string xmlFilePath,T t)
         {
             var tcsResult = new TaskCompletionSource<T>();

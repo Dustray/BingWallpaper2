@@ -25,11 +25,22 @@ namespace BingWallpaper
         #endregion
 
         #region 引擎属性
+
+        /// <summary>
+        /// 应用全局配置
+        /// </summary>
         public UpdateModel GlobalConfig { get; private set; }
 
+        /// <summary>
+        /// 腾讯云 对象存储配置对象
+        /// </summary>
         public CosXmlServer CosXml { get; set; }
 
+        /// <summary>
+        /// 当前程序版本
+        /// </summary>
         public string Version => System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+
         #endregion
 
         #region 引擎方法
