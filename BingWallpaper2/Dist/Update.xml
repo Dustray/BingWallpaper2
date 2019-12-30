@@ -13,5 +13,30 @@
             <param name="xmlFilePath">XML文件路径(绝对路径)</param>
             <returns>加载结果</returns>
         </member>
+        <member name="P:Update.SevenModel.SourceFile">
+            <summary>
+            源文件（压缩包）
+            </summary>
+        </member>
+        <member name="P:Update.SevenModel.TargetFile">
+            <summary>
+            目标文件
+            </summary>
+        </member>
+        <member name="P:Update.SevenModel.dllx86">
+            <summary>
+            7zdllx86文件相对路径
+            </summary>
+        </member>
+        <member name="P:Update.SevenModel.dllx64">
+            <summary>
+            7zdllx64文件相对路径
+            </summary>
+        </member>
+        <member name="P:Update.SevenModel.LauncherProgram">
+            <summary>
+            启动程序
+            </summary>
+        </member>
     </members>
 </doc>

@@ -36,7 +36,7 @@ namespace BingWallpaper
         /// </summary>
         private void InitializeUI()
         {
-            Title = $"每日必应壁纸2 version_{SuperEngine.Current.Version}（预览）";
+            Title = $"每日必应壁纸2 version_{SuperEngine.Current.Version}（预览版）";
             
             cbImageSize.ItemsSource = CoreEngine.Current.ImageSizeList;
             cbImageSize.DisplayMemberPath = "Name";

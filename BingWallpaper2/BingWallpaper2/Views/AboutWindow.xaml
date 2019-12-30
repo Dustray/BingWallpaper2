@@ -17,7 +17,7 @@
             <TextBlock Text="&#xF1AD;" FontFamily="Segoe MDL2 Assets" Margin="0 0 10 0" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" FontSize="35"/>
             <TextBlock Text="关于" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" FontSize="25"/>
         </StackPanel>
-        <Grid Grid.Row="1" Margin="10">
+        <Grid Grid.Row="1" Margin="20 10">
             <Grid.RowDefinitions>
                 <RowDefinition ></RowDefinition>
                 <RowDefinition></RowDefinition>
@@ -28,17 +28,14 @@
                 <ColumnDefinition Width="70"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="名称："  VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" FontSize="20"/>
-            <TextBlock Grid.Row="0" Grid.Column="1" Text="每日必应壁纸"  VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" FontSize="20"/>
-
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="版本："  VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" FontSize="20"/>
-            <TextBlock Grid.Row="1" Grid.Column="1" Text="2.0.0.0" Name="tbVersion" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" FontSize="20"/>
-
-            <TextBlock Grid.Row="2" Grid.Column="0" Text="作者："  VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" FontSize="20"/>
-            <TextBlock Grid.Row="2" Grid.Column="1" Text="Dustray"  VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" FontSize="20"/>
-
-            <TextBlock Grid.Row="3" Grid.Column="0" Text="博客："  VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" FontSize="20"/>
-            <TextBlock Grid.Row="3" Grid.Column="1" Text="https://dustray.cn/" Name="tbOpenBlog" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" FontSize="20" MouseUp="tbOpenBlog_MouseUp" Cursor="Hand"/>
+            <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" FontSize="18" Text="名称："/>
+            <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" FontSize="18" Text="每日必应壁纸"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" FontSize="18" Text="版本："/>
+            <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" FontSize="18" Text="2.0.0.0" Name="tbVersion"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" FontSize="18" Text="作者："/>
+            <TextBlock Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" FontSize="18" Text="Dustray"/>
+            <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" FontSize="18" Text="博客："/>
+            <TextBlock Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" FontSize="18" Text="https://dustray.cn/" Name="tbOpenBlog" MouseUp="tbOpenBlog_MouseUp" Cursor="Hand"/>
         </Grid>
         <Button Name="BtnClose" Grid.Row="2" Height="40" Width="80" Content="关 闭" FontSize="18" Background="{x:Null}" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" Cursor="Hand" Click="BtnClose_Click"/>
 
