@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BingWallpaper"
         mc:Ignorable="d"
-        Title="每日必应壁纸" Height="450" Width="800" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen">
+        Title="每日必应壁纸" Height="450" Width="800" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen" WindowStyle="None" StateChanged="Window_StateChanged" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
@@ -13,13 +13,13 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Image Name="ImgPreview" Grid.Row="0" Grid.Column="0" Stretch="UniformToFill" />
+        <Image Name="ImgPreview" Grid.Row="0" Grid.Column="0" Stretch="UniformToFill" MouseLeftButtonDown="ImgPreview_MouseLeftButtonDown" />
         <Grid VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <StackPanel Name="SpToolBar" Orientation="Horizontal">
+            <StackPanel Name="SpToolBar" Orientation="Horizontal" >
                 <Grid Margin="10 10 5 10" Tag="UnPack">
                     <Button Name="BtnPackUp" Content="&#xE96F;" ToolTip="收起" Style="{StaticResource BtnInfoStyle}" Click="BtnPackUp_Click" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
                     <Border Name="BrdAllRedPoint" Visibility="Hidden" Width="6" Height="6" Margin="6" CornerRadius="3" Background="Red" VerticalAlignment="Top" HorizontalAlignment="Right"></Border>
@@ -33,6 +33,17 @@
                 </Grid>
                 <Grid Margin="5 10">
                     <Button Name="BtnAbout" Content="&#xE11B;" ToolTip="关于" Style="{StaticResource BtnInfoStyle}" Click="BtnAbout_Click" />
+                </Grid>
+            </StackPanel>
+            <StackPanel Name="SpToolBar2" Orientation="Horizontal" Grid.Column="1" FlowDirection="RightToLeft">
+                <Grid Margin="10 10 5 10">
+                    <Button Name="BtnClose" Content="&#xEF2C;" ToolTip="关闭" Style="{StaticResource BtnInfoStyle}" Click="BtnClose_Click" />
+                </Grid>
+                <Grid Margin="5 10">
+                    <Button Name="BtnMaxi" Content="&#xEF2E;" ToolTip="最大化" Style="{StaticResource BtnInfoStyle}" Click="BtnMaxi_Click" />
+                </Grid>
+                <Grid Margin="5 10">
+                    <Button Name="BtnMini" Content="&#xEF2D;" ToolTip="最小化" Style="{StaticResource BtnInfoStyle}" Click="BtnMini_Click"  />
                 </Grid>
             </StackPanel>
         </Grid>
@@ -54,7 +65,7 @@
                 </Grid.ColumnDefinitions>
                 <TextBox Name="tbImageSavePath" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Margin="6,6,3,3" Padding="5 0 5 0" Background="#9fff" VerticalContentAlignment="Center" FontSize="14" Foreground="#555" />
                 <Button Name="btnChoosePath" Grid.Row="0" Grid.Column="4" Margin="3,6,6,3" Background="#9fff" Content="选 择" Cursor="Hand" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"  Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="14" Click="btnChoosePath_Click" />
-                <ComboBox Name="cbImageSize" Grid.Row="1" Grid.Column="0" Margin="6,3,3,6" Background="#9fff" VerticalContentAlignment="Center" FontSize="14" SelectionChanged="cbImageSize_SelectionChanged" >
+                <ComboBox Name="cbImageSize" Grid.Row="1" Grid.Column="0" Margin="6,3,3,6" Background="#9fff" VerticalContentAlignment="Center" FontSize="14" SelectionChanged="cbImageSize_SelectionChanged">
                     <!--<ComboBoxItem Content="1920*1200" Tag="1"/>
                     <ComboBoxItem Content="1920*1080" Tag="2" IsSelected="True"/>
                     <ComboBoxItem Content="1366*768" Tag="3"/>-->

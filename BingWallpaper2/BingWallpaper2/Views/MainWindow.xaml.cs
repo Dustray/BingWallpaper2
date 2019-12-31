@@ -18,7 +18,7 @@ namespace BingWallpaper
     {
         private bool _doNotInvokeCheckMethod = true;
         private bool _isPackUp = true;
-        
+        private bool _isWindowNormal = true;
         /// <summary>
         /// 主窗体
         /// </summary>
@@ -212,7 +212,6 @@ namespace BingWallpaper
         /// <param name="e"></param>
         private void BtnPackUp_Click(object sender, RoutedEventArgs e)
         {
-            _isPackUp = !_isPackUp;
             PackUp(_isPackUp);
         }
 
@@ -225,14 +224,60 @@ namespace BingWallpaper
         /// <param name="isPackUp"></param>
         private void PackUp(bool isPackUp)
         {
-            foreach(var ctl in SpToolBar.Children)
+            _isPackUp = !_isPackUp;
+            foreach (var ctl in SpToolBar.Children)
             {
                 var ctlEle = ctl as Grid;
                 if (null != ctlEle.Tag && ctlEle.Tag.ToString() == "UnPack") continue;
                 ctlEle.Visibility = isPackUp ? Visibility.Collapsed : Visibility.Visible;
             }
-            BtnPackUp.Content = isPackUp ? ((char)0xE974).ToString() : ((char)0xE973).ToString();
+            BtnPackUp.Content = isPackUp ? ((char)0xF0D5).ToString() : ((char)0xF0D6).ToString();
         }
         #endregion
+
+        private void ImgPreview_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void BtnMaxi_Click(object sender, RoutedEventArgs e)
+        {
+            if (_isWindowNormal)
+            {
+                WindowState = WindowState.Maximized;
+            }
+            else
+            {
+                WindowState = WindowState.Normal;
+            }
+        }
+
+        private void BtnMini_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void Window_StateChanged(object sender, System.EventArgs e)
+        {
+            var w = sender as Window;
+            var state = w.WindowState;
+            if(state == WindowState.Normal)
+            {
+                BtnMaxi.Content = ((char)0xEF2E).ToString();
+                BtnMaxi.ToolTip = "最大化";
+                _isWindowNormal = true;
+            }
+            else if (state == WindowState.Maximized)
+            {
+                BtnMaxi.Content = ((char)0xEF2F).ToString();
+                BtnMaxi.ToolTip = "向下还原";
+                _isWindowNormal = false;
+            }
+        }
     }
 }
