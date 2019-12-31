@@ -41,7 +41,8 @@ namespace Update
                 {
                     using (var tmp = new SevenZipExtractor(filePath))
                     {
-                        for (var i = 0; i < tmp.ArchiveFileData.Count; i++)
+                        int i = 0;
+                        for ( i = 0; i < tmp.ArchiveFileData.Count; i++)
                         {
                             try
                             {

@@ -37,7 +37,7 @@ namespace BingWallpaper
         private void InitializeUI()
         {
             Title = $"每日必应壁纸2 version_{SuperEngine.Current.Version}（预览版）";
-            
+
             cbImageSize.ItemsSource = CoreEngine.Current.ImageSizeList;
             cbImageSize.DisplayMemberPath = "Name";
             cbImageSize.SelectedIndex = CoreEngine.Current.ImageSizeList.ToList().FindIndex(s => s.Type == CoreEngine.Current.AppSetting.GetSizeMode);
@@ -89,11 +89,11 @@ namespace BingWallpaper
                     {
                         BrdUpdate.Visibility = Visibility.Visible;
                         BrdAllRedPoint.Visibility = Visibility.Visible;
-                        BtnUpdate.ToolTip=$"更新：有新版本（{updateVersion}）";
+                        BtnUpdate.ToolTip = $"更新：有新版本（{updateVersion}）";
                     }
                     else
                     {
-                        BtnUpdate.ToolTip="更新：已是最新版本";
+                        BtnUpdate.ToolTip = "更新：已是最新版本";
                     }
                 });
                 work.RunWorkerAsync();
@@ -215,6 +215,72 @@ namespace BingWallpaper
             PackUp(_isPackUp);
         }
 
+        /// <summary>
+        /// 背景图片拖拽事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ImgPreview_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+        /// <summary>
+        /// 关闭按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+        /// <summary>
+        /// 最大化按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnMaxi_Click(object sender, RoutedEventArgs e)
+        {
+            if (_isWindowNormal)
+            {
+                WindowState = WindowState.Maximized;
+            }
+            else
+            {
+                WindowState = WindowState.Normal;
+            }
+        }
+
+        /// <summary>
+        /// 最小化按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnMini_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+        /// <summary>
+        /// 窗体状态变化事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_StateChanged(object sender, System.EventArgs e)
+        {
+            var w = sender as Window;
+            var state = w.WindowState;
+            if (state == WindowState.Normal)
+            {
+                BtnMaxi.Content = ((char)0xEF2E).ToString();
+                BtnMaxi.ToolTip = "最大化";
+                _isWindowNormal = true;
+            }
+            else if (state == WindowState.Maximized)
+            {
+                BtnMaxi.Content = ((char)0xEF2F).ToString();
+                BtnMaxi.ToolTip = "向下还原";
+                _isWindowNormal = false;
+            }
+        }
         #endregion
 
         #region 成员方法
@@ -231,53 +297,10 @@ namespace BingWallpaper
                 if (null != ctlEle.Tag && ctlEle.Tag.ToString() == "UnPack") continue;
                 ctlEle.Visibility = isPackUp ? Visibility.Collapsed : Visibility.Visible;
             }
-            BtnPackUp.Content = isPackUp ? ((char)0xF0D5).ToString() : ((char)0xF0D6).ToString();
+            BtnPackUp.Content = isPackUp ? ((char)0xF0D6).ToString() : ((char)0xF0D5).ToString();
+            BtnPackUp.ToolTip = isPackUp ? "展开":"收起";
         }
         #endregion
 
-        private void ImgPreview_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            DragMove();
-        }
-
-        private void BtnClose_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        private void BtnMaxi_Click(object sender, RoutedEventArgs e)
-        {
-            if (_isWindowNormal)
-            {
-                WindowState = WindowState.Maximized;
-            }
-            else
-            {
-                WindowState = WindowState.Normal;
-            }
-        }
-
-        private void BtnMini_Click(object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState.Minimized;
-        }
-
-        private void Window_StateChanged(object sender, System.EventArgs e)
-        {
-            var w = sender as Window;
-            var state = w.WindowState;
-            if(state == WindowState.Normal)
-            {
-                BtnMaxi.Content = ((char)0xEF2E).ToString();
-                BtnMaxi.ToolTip = "最大化";
-                _isWindowNormal = true;
-            }
-            else if (state == WindowState.Maximized)
-            {
-                BtnMaxi.Content = ((char)0xEF2F).ToString();
-                BtnMaxi.ToolTip = "向下还原";
-                _isWindowNormal = false;
-            }
-        }
     }
 }

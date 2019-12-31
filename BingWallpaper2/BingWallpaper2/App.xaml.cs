@@ -13,5 +13,14 @@ namespace BingWallpaper
     /// </summary>
     public partial class App : Application
     {
+        bool createdNew;
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            System.Threading.Mutex mutex = new System.Threading.Mutex(true, "BingWallpaper", out createdNew);
+            if (!createdNew)
+            {
+
+            }
+        }
     }
 }
