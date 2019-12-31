@@ -58,7 +58,7 @@ namespace BingWallpaper.Core.Utilities
             var path = Settings.Default.ImageSavePath;
             if (string.IsNullOrEmpty(path))
             {
-                return Path.Combine(Environment.CurrentDirectory, "Image");
+                return Path.Combine(System.Windows.Forms.Application.StartupPath, "Image");
             }
             else
             {

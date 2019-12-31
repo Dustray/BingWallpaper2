@@ -7,7 +7,7 @@
     <ProjectGuid>{B2FCA762-40D0-4173-AE80-88C7CF729806}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>BingWallpaperAuto</RootNamespace>
-    <AssemblyName>自动设置</AssemblyName>
+    <AssemblyName>AutoRunning</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -22,7 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\Dist\自动设置.xml</DocumentationFile>
+    <DocumentationFile>..\Dist\AutoRunning.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,6 +49,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
