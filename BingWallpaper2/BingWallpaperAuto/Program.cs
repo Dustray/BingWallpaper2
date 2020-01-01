@@ -18,6 +18,7 @@ namespace BingWallpaperAuto
             }catch(Exception e)
             {
 
+                MessageBox.Show("失败"+e.ToString());
             }
         }
     }

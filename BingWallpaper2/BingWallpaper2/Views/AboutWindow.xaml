@@ -13,7 +13,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="60"></RowDefinition>
         </Grid.RowDefinitions>
-        <Border Grid.Row="0" Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}">
+        <Border Grid.Row="0" Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" MouseLeftButtonDown="HeadBar_MouseLeftButtonDown">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="20" Color="#6888" Direction="270" ShadowDepth="1" />
             </Border.Effect>

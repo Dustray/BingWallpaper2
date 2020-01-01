@@ -50,5 +50,10 @@ namespace BingWallpaper
         {
             Close();
         }
+
+        private void HeadBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 }
