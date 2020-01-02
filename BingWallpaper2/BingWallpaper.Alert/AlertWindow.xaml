@@ -1,9 +1,9 @@
-﻿<Window x:Class="BitLockerUI.Utils.AlertWindow"
+﻿<Window x:Class="BingWallpaper.Popup.AlertWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BitLockerUI.Utils"
+        xmlns:local="clr-namespace:BingWallpaper.Popup"
         mc:Ignorable="d"
         Title="AlertWindow" Window.SizeToContent="Height" Width="500" Loaded="Window_Loaded" 
         Background="{x:Null}" Visibility="Visible" AllowsTransparency="True" WindowStyle="None" MouseEnter="Window_MouseEnter" MouseLeave="Window_MouseLeave">

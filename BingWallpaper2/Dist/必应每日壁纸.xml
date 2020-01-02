@@ -328,6 +328,41 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
+        <member name="M:BingWallpaper.MainWindow.ImgPreview_MouseLeftButtonDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            背景图片拖拽事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:BingWallpaper.MainWindow.BtnClose_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            关闭按钮点击事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:BingWallpaper.MainWindow.BtnMaxi_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            最大化按钮点击事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:BingWallpaper.MainWindow.BtnMini_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            最小化按钮点击事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:BingWallpaper.MainWindow.Window_StateChanged(System.Object,System.EventArgs)">
+            <summary>
+            窗体状态变化事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
         <member name="M:BingWallpaper.MainWindow.PackUp(System.Boolean)">
             <summary>
             工具栏收起/展开

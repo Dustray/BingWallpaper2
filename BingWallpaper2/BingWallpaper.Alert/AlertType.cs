@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BingWallpaper.Alert
+namespace BingWallpaper.Popup
 {
     public enum AlertType
     {

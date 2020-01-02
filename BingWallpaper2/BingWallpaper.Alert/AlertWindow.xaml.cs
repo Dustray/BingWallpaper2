@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Timers;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 
-namespace BitLockerUI.Utils
+namespace BingWallpaper.Popup
 {
     /// <summary>
     /// AlertWindow.xaml 的交互逻辑
@@ -21,7 +22,7 @@ namespace BitLockerUI.Utils
         private int _timerTount = 0;
         public int _timerSeconds = 3000;
 
-        public AlertWindow(string content)
+        public AlertWindow(string title, string content, AlertType alertType, List<UserButton> userButtonList, AlertConfig alertConfig)
         {
             InitializeComponent();
             this.ShowInTaskbar = false;
@@ -92,10 +93,11 @@ namespace BitLockerUI.Utils
         }
 
         #endregion
+
         private void OnTimerCallback(object source, ElapsedEventArgs e)
         {
             _timerTount += 100;
-            if (_timerTount == _timerSeconds)
+            if (_timerTount >= _timerSeconds)
             {
                 Invoke(this, CloseAlert);
             }
