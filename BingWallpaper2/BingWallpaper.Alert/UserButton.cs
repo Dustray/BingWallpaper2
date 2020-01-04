@@ -19,22 +19,22 @@ namespace BingWallpaper.Popup
         /// <summary>
         /// 按钮显示内容
         /// </summary>
-        public string ButtonContent { get; set; }
+        public string ButtonContent { get; set; } = "";
 
         /// <summary>
         /// 背景颜色
         /// </summary>
-        public Color BackgroundColor { get; set; }
+        public Color BackgroundColor { get; set; } = Colors.Transparent;
 
         /// <summary>
         /// 文本颜色
         /// </summary>
-        public Color FontColor { get; set; }
+        public Color FontColor { get; set; } = Colors.Blue;
 
         /// <summary>
         /// 文本大小
         /// </summary>
-        public int FontSize { get; set; }
+        public int FontSize { get; set; } = 14;
 
         /// <summary>
         /// 边框粗细，默认1
@@ -49,7 +49,7 @@ namespace BingWallpaper.Popup
         /// <summary>
         /// 高度，默认40
         /// </summary>
-        public int Height { get; set; } = 40;
+        public int Height { get; set; } = 30;
 
         /// <summary>
         /// 宽度，默认自动
@@ -70,10 +70,17 @@ namespace BingWallpaper.Popup
             var btn = new Button();
             btn.Content = ButtonContent;
             btn.Background = new SolidColorBrush(BackgroundColor);
-            btn.Padding = new System.Windows.Thickness(5, 5, 5, 5);
-            btn.Margin = new System.Windows.Thickness(5, 5, 5, 5);
+            btn.Padding = new System.Windows.Thickness(10, 5, 10, 5);
+            btn.Margin = new System.Windows.Thickness(10, 0, 0, 0);
             btn.Height = Height;
-            if(-1!= Width) btn.Width = Width;
+            if (Width != -1)
+                btn.Width = Width;
+            btn.FontSize = FontSize;
+            btn.Foreground = new SolidColorBrush(FontColor);
+            btn.BorderBrush = new SolidColorBrush(BorderColor);
+            btn.BorderThickness = new System.Windows.Thickness(BorderThickness);
+            btn.Margin = new System.Windows.Thickness(10, 0, 0, 0);
+            if (-1!= Width) btn.Width = Width;
 
             btn.Click += (sender, e) =>
             {

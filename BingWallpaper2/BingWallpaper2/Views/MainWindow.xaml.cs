@@ -1,6 +1,7 @@
 ﻿
 using BingWallpaper.Core;
 using BingWallpaper.Core.Model;
+using BingWallpaper.Popup;
 using BingWallpaper.Utilities;
 using System.ComponentModel;
 using System.Drawing;
@@ -127,6 +128,14 @@ namespace BingWallpaper
         private void btnSetWallpaper_Click(object sender, RoutedEventArgs e)
         {
             CoreEngine.Current.SetWallpaperAsync();
+            var btn = new UserButton(() =>
+            {
+
+            })
+            {
+                ButtonContent="好的"
+            };
+            Alert.Show("","设置成功", AlertTheme.Success,btn,new AlertConfig() {AlertShowDuration=10000 });
         }
 
         /// <summary>

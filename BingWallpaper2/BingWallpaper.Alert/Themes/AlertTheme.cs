@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BingWallpaper.Popup.Themes
+namespace BingWallpaper.Popup
 {
     /// <summary>
     /// 默认
@@ -17,30 +17,98 @@ namespace BingWallpaper.Popup.Themes
         /// <summary>
         /// 默认
         /// </summary>
-        public static AlertTheme Default => new AlertTheme(FromString16("#"), FromString16(""));
+        public static AlertTheme Default => new AlertTheme() {
+            PrimaryBackColor = FromString16("#FFFFFF"),
+            SecondaryBackColor= FromString16("#F4F4F4"),
+            TitleColor= FromString16("#444444"),
+            ContentColor = FromString16("#333333"),
+            PullBackColor= FromString16("#0078D7"),
+        };
+
+        /// <summary>
+        /// 提醒
+        /// </summary>
+        public static AlertTheme Remind => new AlertTheme()
+        {
+            PrimaryBackColor = FromString16("#5D7599"),
+            SecondaryBackColor = FromString16("#ABB6C8"),
+            TitleColor = FromString16("#DADADA"),
+            ContentColor = FromString16("#DADADA"),
+            PullBackColor = FromString16("#DADADA"),
+        };
+
+        /// <summary>
+        /// 成功
+        /// </summary>
+        public static AlertTheme Success => new AlertTheme()
+        {
+            PrimaryBackColor = FromString16("#80BEAF"),
+            SecondaryBackColor = FromString16("#83DDD1"),
+            TitleColor = FromString16("#FFFFFF"),
+            ContentColor = FromString16("#FFFFFF"),
+            PullBackColor = FromString16("#F5B994"),
+        };
+
+        /// <summary>
+        /// 警告
+        /// </summary>
+        public static AlertTheme Warning => new AlertTheme()
+        {
+            PrimaryBackColor = FromString16("#F7DB70"),
+            SecondaryBackColor = FromString16("#EABEBF"),
+            TitleColor = FromString16("#75CCE8"),
+            ContentColor = FromString16("#A5DEES"),
+            PullBackColor = FromString16("#75CCE8"),
+        };
+
+        /// <summary>
+        /// 错误
+        /// </summary>
+        public static AlertTheme Error => new AlertTheme()
+        {
+            PrimaryBackColor = FromString16("#DA2864"),
+            SecondaryBackColor = FromString16("#EC6091"),
+            TitleColor = FromString16("#8AE1E2"),
+            ContentColor = FromString16("#8AE1E2"),
+            PullBackColor = FromString16("#16A5A3"),
+        };
+        #endregion
+
+        #region 成员属性
+        /// <summary>
+        /// 主背景色
+        /// </summary>
+        public Color PrimaryBackColor { get; set; }
+
+        /// <summary>
+        /// 副背景色
+        /// </summary>
+        public Color SecondaryBackColor { get; set; }
+
+        /// <summary>
+        /// 标题颜色
+        /// </summary>
+        public Color TitleColor { get; set; }
+
+        /// <summary>
+        /// 内容颜色
+        /// </summary>
+        public Color ContentColor { get; set; }
+
+        /// <summary>
+        /// 收起按钮颜色
+        /// </summary>
+        public Color PullBackColor { get; set; }
+
+        /// <summary>
+        /// 收起按钮文字颜色
+        /// </summary>
+        internal Color _pullBackForeColor => GetContrastColor(PullBackColor);
 
         #endregion
-        /// <summary>
-        /// 弹框主题
-        /// </summary>
-        /// <param name="primaryColor"></param>
-        /// <param name="secondaryColor"></param>
-        public AlertTheme(Color primaryColor, Color secondaryColor)
-        {
-            PrimaryColor = primaryColor;
-            SecondaryColor = secondaryColor;
-        }
-        /// <summary>
-        /// 主色调
-        /// </summary>
-        public Color PrimaryColor { get; set; }
-
-        /// <summary>
-        /// 副色调
-        /// </summary>
-        public Color SecondaryColor { get; set; }
 
 
+        #region 成员方法
 
         /// <summary>
         /// 16进制字符串转Color对象
@@ -51,6 +119,7 @@ namespace BingWallpaper.Popup.Themes
         {
             return ColorTranslator.FromHtml(color);
         }
+
         /// <summary>
         /// 色值转Color对象
         /// </summary>
@@ -63,5 +132,17 @@ namespace BingWallpaper.Popup.Themes
         {
             return Color.FromArgb(A, R, G, B);
         }
+
+        public static System.Windows.Media.Color GetMediaColorFromDrawingColor(System.Drawing.Color color)
+        {
+            return System.Windows.Media.Color.FromArgb(color.A, color.R, color.G, color.B);
+        }
+
+        public static Color GetContrastColor(Color color)
+        {
+            var light = color.GetBrightness();
+            return light > 0.5 ? Color.Black : Color.White;
+        }
+        #endregion
     }
 }
