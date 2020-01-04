@@ -128,7 +128,6 @@ namespace BingWallpaper
         private void btnSetWallpaper_Click(object sender, RoutedEventArgs e)
         {
             CoreEngine.Current.SetWallpaperAsync();
-            Alert.Show("设置成功", AlertTheme.Info);
         }
 
         /// <summary>

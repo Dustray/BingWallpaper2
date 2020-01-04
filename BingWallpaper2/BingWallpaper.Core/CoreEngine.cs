@@ -1,5 +1,6 @@
 ﻿using BingWallpaper.Core.Model;
 using BingWallpaper.Core.Utilities;
+using BingWallpaper.Popup;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -79,16 +80,25 @@ namespace BingWallpaper.Core
         public void SetWallpaperAsync(bool forceFromWeb = false)
         {
             var locker = new object();
+            var isSuccess = false; ;
             using (var work = new BackgroundWorker())
             {
                 work.RunWorkerCompleted += new RunWorkerCompletedEventHandler((object work_sender, RunWorkerCompletedEventArgs work_e) =>
                 {
+                    if (isSuccess)
+                    {
+                        Alert.Show("设置成功", AlertTheme.Success);
+                    }
+                    else
+                    {
+                        Alert.Show("设置失败", AlertTheme.Error);
+                    }
                 });
                 work.DoWork += new DoWorkEventHandler((object work_sender, DoWorkEventArgs work_e) =>
                 {
                     lock(locker)
                     {
-                        new WallpaperManager().SetWallpaper(forceFromWeb);
+                        isSuccess= new WallpaperManager().SetWallpaper(forceFromWeb);
                     }
                 });
                 work.RunWorkerAsync();
