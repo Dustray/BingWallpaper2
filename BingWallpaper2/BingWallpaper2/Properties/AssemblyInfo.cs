@@ -12,7 +12,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("BingWallpaper2")]
-[assembly: AssemblyCopyright("Copyright ©  2019 dustray.cn")]
+[assembly: AssemblyCopyright("Copyright ©  2019-2020 dustray.cn")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -51,5 +51,5 @@ using System.Windows;
 //可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值
 //通过使用 "*"，如下所示:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.0.0.12")]
-[assembly: AssemblyFileVersion("2.0.0.12")]
+[assembly: AssemblyVersion("2.0.1.14")]
+[assembly: AssemblyFileVersion("2.0.1.14")]

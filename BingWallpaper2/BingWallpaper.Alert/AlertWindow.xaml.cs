@@ -39,6 +39,7 @@ namespace BingWallpaper.Popup
             {
                 //按钮栏高度为0
                 ButtonGroup.Height = 0;
+                ButtonGroup.Margin =new  Thickness(0);
             }
             else
             {
@@ -140,6 +141,16 @@ namespace BingWallpaper.Popup
                 timer.Dispose();
                 timer = null;
             }
+        }
+
+        private void btnClose_MouseEnter(object sender, MouseEventArgs e)
+        {
+            btnClose.Content = ((char)0xE96D).ToString() ;
+        }
+
+        private void btnClose_MouseLeave(object sender, MouseEventArgs e)
+        {
+            btnClose.Content = ((char)0xEF2D).ToString();
         }
     }
 }

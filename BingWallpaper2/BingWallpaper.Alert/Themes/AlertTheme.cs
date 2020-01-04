@@ -19,10 +19,22 @@ namespace BingWallpaper.Popup
         /// </summary>
         public static AlertTheme Default => new AlertTheme() {
             PrimaryBackColor = FromString16("#FFFFFF"),
-            SecondaryBackColor= FromString16("#F4F4F4"),
-            TitleColor= FromString16("#444444"),
+            SecondaryBackColor= FromString16("#F0F0F0"),
+            TitleColor= FromString16("#666666"),
             ContentColor = FromString16("#333333"),
             PullBackColor= FromString16("#0078D7"),
+        };
+
+        /// <summary>
+        /// Info
+        /// </summary>
+        public static AlertTheme Info => new AlertTheme()
+        {
+            PrimaryBackColor = FromString16("#007BFF"),
+            SecondaryBackColor = FromString16("#006BEF"),
+            TitleColor = FromString16("#DDDDDD"),
+            ContentColor = FromString16("#FFFFFF"),
+            PullBackColor = FromString16("#60ABFF"),
         };
 
         /// <summary>
@@ -30,8 +42,8 @@ namespace BingWallpaper.Popup
         /// </summary>
         public static AlertTheme Remind => new AlertTheme()
         {
-            PrimaryBackColor = FromString16("#5D7599"),
-            SecondaryBackColor = FromString16("#ABB6C8"),
+            PrimaryBackColor = FromString16("#6C757D"),
+            SecondaryBackColor = FromString16("#5C656D"),
             TitleColor = FromString16("#DADADA"),
             ContentColor = FromString16("#DADADA"),
             PullBackColor = FromString16("#DADADA"),
@@ -42,11 +54,11 @@ namespace BingWallpaper.Popup
         /// </summary>
         public static AlertTheme Success => new AlertTheme()
         {
-            PrimaryBackColor = FromString16("#80BEAF"),
-            SecondaryBackColor = FromString16("#83DDD1"),
+            PrimaryBackColor = FromString16("#28A745"),
+            SecondaryBackColor = FromString16("#189735"),
             TitleColor = FromString16("#FFFFFF"),
             ContentColor = FromString16("#FFFFFF"),
-            PullBackColor = FromString16("#F5B994"),
+            PullBackColor = FromString16("#78E795"),
         };
 
         /// <summary>
@@ -54,11 +66,11 @@ namespace BingWallpaper.Popup
         /// </summary>
         public static AlertTheme Warning => new AlertTheme()
         {
-            PrimaryBackColor = FromString16("#F7DB70"),
-            SecondaryBackColor = FromString16("#EABEBF"),
-            TitleColor = FromString16("#75CCE8"),
-            ContentColor = FromString16("#A5DEES"),
-            PullBackColor = FromString16("#75CCE8"),
+            PrimaryBackColor = FromString16("#FFC107"),
+            SecondaryBackColor = FromString16("#EFB107"),
+            TitleColor = FromString16("#777777"),
+            ContentColor = FromString16("#555555"),
+            PullBackColor = FromString16("#333333"),
         };
 
         /// <summary>
@@ -66,11 +78,11 @@ namespace BingWallpaper.Popup
         /// </summary>
         public static AlertTheme Error => new AlertTheme()
         {
-            PrimaryBackColor = FromString16("#DA2864"),
-            SecondaryBackColor = FromString16("#EC6091"),
-            TitleColor = FromString16("#8AE1E2"),
-            ContentColor = FromString16("#8AE1E2"),
-            PullBackColor = FromString16("#16A5A3"),
+            PrimaryBackColor = FromString16("#DC3545"),
+            SecondaryBackColor = FromString16("#CC2535"),
+            TitleColor = FromString16("#DDDDDD"),
+            ContentColor = FromString16("#FFFFFF"),
+            PullBackColor = FromString16("#FFDDDD"),
         };
         #endregion
 
@@ -133,6 +145,10 @@ namespace BingWallpaper.Popup
             return Color.FromArgb(A, R, G, B);
         }
 
+        public static System.Windows.Media.SolidColorBrush GetBrush(Color color)
+        {
+            return new System.Windows.Media.SolidColorBrush(GetMediaColorFromDrawingColor(color));
+        }
         public static System.Windows.Media.Color GetMediaColorFromDrawingColor(System.Drawing.Color color)
         {
             return System.Windows.Media.Color.FromArgb(color.A, color.R, color.G, color.B);

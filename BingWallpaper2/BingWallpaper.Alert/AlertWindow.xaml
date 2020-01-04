@@ -19,12 +19,11 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Border Name="brdCose" Grid.Row="0" Background="#FFDFDFDF">
-                <Button Name="btnClose" Width="150" BorderBrush="{x:Null}" BorderThickness="0" Content="&#x268A;" Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" FontSize="9" Click="BtnClose_Click"/>
-                
+                <Button Name="btnClose" Width="150" Content="&#xEF2D;" FontFamily="Segoe MDL2 Assets" BorderBrush="{x:Null}" BorderThickness="0" Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" FontSize="11" Click="BtnClose_Click" MouseEnter="btnClose_MouseEnter" MouseLeave="btnClose_MouseLeave" />
             </Border>
-            <TextBlock Name="tBlockAlertTitle" Text="标题标题"  Grid.Row="1" Padding="10 1 10 5" FontSize="16" TextWrapping="Wrap" Background="#FFDFDFDF"/>
+            <TextBlock Name="tBlockAlertTitle" Text="标题标题"  Grid.Row="1" Padding="10 1 10 5" FontSize="14" TextWrapping="Wrap" VerticalAlignment="Center" Background="#FFDFDFDF"/>
 
-            <TextBlock Name="tBlockAlertContent" Text="文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本" Grid.Row="2" Padding="10 5" FontSize="16" TextWrapping="Wrap"/>
+            <TextBlock Name="tBlockAlertContent" Text="文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本" Grid.Row="2" Padding="10" FontSize="16" TextWrapping="Wrap"/>
             <StackPanel Name="ButtonGroup" Grid.Row="3" Orientation="Horizontal" Margin="10 5 10 10" HorizontalAlignment="Right">
             </StackPanel>
         </Grid>

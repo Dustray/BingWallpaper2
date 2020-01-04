@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace BingWallpaper.Popup
 {
@@ -24,12 +24,12 @@ namespace BingWallpaper.Popup
         /// <summary>
         /// 背景颜色
         /// </summary>
-        public Color BackgroundColor { get; set; } = Colors.Transparent;
+        public Color BackgroundColor { get; set; } = Color.Transparent;
 
         /// <summary>
         /// 文本颜色
         /// </summary>
-        public Color FontColor { get; set; } = Colors.Blue;
+        public Color FontColor { get; set; } = Color.Blue;
 
         /// <summary>
         /// 文本大小
@@ -44,7 +44,7 @@ namespace BingWallpaper.Popup
         /// <summary>
         /// 边框颜色，默认透明
         /// </summary>
-        public Color BorderColor { get; set; } = Colors.Transparent;
+        public Color BorderColor { get; set; } = Color.Transparent;
 
         /// <summary>
         /// 高度，默认40
@@ -69,15 +69,15 @@ namespace BingWallpaper.Popup
         {
             var btn = new Button();
             btn.Content = ButtonContent;
-            btn.Background = new SolidColorBrush(BackgroundColor);
+            btn.Background = AlertTheme.GetBrush(BackgroundColor);
             btn.Padding = new System.Windows.Thickness(10, 5, 10, 5);
             btn.Margin = new System.Windows.Thickness(10, 0, 0, 0);
             btn.Height = Height;
             if (Width != -1)
                 btn.Width = Width;
             btn.FontSize = FontSize;
-            btn.Foreground = new SolidColorBrush(FontColor);
-            btn.BorderBrush = new SolidColorBrush(BorderColor);
+            btn.Foreground =  AlertTheme.GetBrush(FontColor);
+            btn.BorderBrush = AlertTheme.GetBrush(BorderColor);
             btn.BorderThickness = new System.Windows.Thickness(BorderThickness);
             btn.Margin = new System.Windows.Thickness(10, 0, 0, 0);
             if (-1!= Width) btn.Width = Width;
@@ -89,6 +89,11 @@ namespace BingWallpaper.Popup
             return btn;
         }
 
+        public void LoadAlertTheme(AlertTheme theme)
+        {
+            BorderColor=FontColor = theme.PullBackColor;
+
+        }
         #endregion
     }
 }

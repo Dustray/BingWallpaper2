@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("BingWallpaper2")]
-[assembly: AssemblyCopyright("Copyright ©  2019 dustray.cn")]
+[assembly: AssemblyCopyright("Copyright ©  2019-2020 dustray.cn")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
