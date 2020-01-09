@@ -1,5 +1,6 @@
 ﻿using BingWallpaper.Core.Utilities;
 using BingWallpaper.Models;
+using BingWallpaper.Utilities;
 using COSXML;
 using COSXML.Auth;
 using System;
@@ -41,6 +42,7 @@ namespace BingWallpaper
         /// </summary>
         public string Version => System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
+        public WatcherJobUtil FWatcher { get; private set; }
         #endregion
 
         #region 引擎方法
@@ -78,6 +80,9 @@ namespace BingWallpaper
             if (!File.Exists(fullPath)) return;
             GlobalConfig = await XMLUtility.LoadXMLAsync<UpdateModel>(fullPath);
             CreateCosXML();
+            //定时器
+            FWatcher = new WatcherJobUtil();
+            FWatcher.Start();
         }
 
         /// <summary>
