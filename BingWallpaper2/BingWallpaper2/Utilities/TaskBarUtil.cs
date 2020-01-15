@@ -4,26 +4,70 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 
 namespace BingWallpaper.Utilities
 {
-    public class TaskBarUtil
+    /// <summary>
+    /// 
+    /// </summary>
+    public class TaskBarUtil : IDisposable
     {
-        #region 成员属性
+        private MainWindow _mainWindow;
         //创建NotifyIcon对象 
-        NotifyIcon notifyicon = new NotifyIcon();
-        //创建托盘图标对象 
-        Icon ico = new Icon("logo.ico");
+        private NotifyIcon _notifyicon = new NotifyIcon();
         //创建托盘菜单对象 
-        ContextMenu notifyContextMenu = new ContextMenu();
+        private ContextMenuStrip _notifyContextMenu = new ContextMenuStrip();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mainWindow"></param>
+        public TaskBarUtil(MainWindow mainWindow)
+        {
+            _mainWindow = mainWindow;
+
+            _notifyicon.Text = "每日必应壁纸";
+            Icon ico = Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath); 
+            _notifyicon.Icon = ico;
+            _notifyicon.Visible = true; 
+            //_notifyicon.BalloonTipText = "每日必应壁纸1";
+            //_notifyicon.ShowBalloonTip(2000);
+            _notifyicon.MouseClick += notifyIcon_MouseClick;
+
+            var closeBtn = _notifyContextMenu.Items.Add("关闭");
+            closeBtn.Click += new EventHandler(Close);
+            _notifyicon.ContextMenuStrip = _notifyContextMenu;
+        }
+
+        #region 托盘图标事件
+
+        private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                if (_mainWindow.WindowState == WindowState.Minimized)
+                {
+                    _mainWindow.WindowState = WindowState.Normal;
+                }
+                _mainWindow.Visibility = Visibility.Visible;
+                _mainWindow.Activate();
+            }
+        }
+        private void Close(object sender, EventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
         #endregion
 
-        public TaskBarUtil()
+        /// <summary>
+        /// 释放
+        /// </summary>
+        public void Dispose()
         {
-            notifyicon.Text = "笑话";
-            notifyicon.Icon = ico;
-            notifyicon.Visible = true;
+            _notifyContextMenu?.Dispose();
+            _notifyicon?.Dispose();
         }
     }
 }

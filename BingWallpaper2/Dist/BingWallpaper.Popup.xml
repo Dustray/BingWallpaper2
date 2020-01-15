@@ -1,0 +1,267 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BingWallpaper.Popup</name>
+    </assembly>
+    <members>
+        <member name="M:BingWallpaper.Popup.Alert.Show(System.String)">
+            <summary>
+            显示弹框
+            </summary>
+            <param name="content">弹框主体内容</param>
+        </member>
+        <member name="M:BingWallpaper.Popup.Alert.Show(System.String,System.String)">
+            <summary>
+            显示弹框
+            </summary>
+            <param name="title">弹框标题</param>
+            <param name="content">弹框主体内容</param>
+        </member>
+        <member name="M:BingWallpaper.Popup.Alert.Show(System.String,BingWallpaper.Popup.AlertTheme)">
+            <summary>
+            显示弹框
+            </summary>
+            <param name="content">弹框主体内容</param>
+            <param name="AlertTheme">弹框类型</param>
+        </member>
+        <member name="M:BingWallpaper.Popup.Alert.Show(System.String,System.String,BingWallpaper.Popup.AlertTheme)">
+            <summary>
+            显示弹框
+            </summary>
+            <param name="title">弹框标题</param>
+            <param name="content">弹框主体内容</param>
+            <param name="AlertTheme">弹框类型</param>
+        </member>
+        <member name="M:BingWallpaper.Popup.Alert.Show(System.String,System.String,BingWallpaper.Popup.AlertTheme,BingWallpaper.Popup.AlertConfig)">
+            <summary>
+            显示弹框
+            </summary>
+            <param name="title">弹框标题</param>
+            <param name="content">弹框主体内容</param>
+            <param name="AlertTheme">弹框类型</param>
+            <param name="alertConfig">用户自定义配置</param>
+        </member>
+        <member name="M:BingWallpaper.Popup.Alert.Show(System.String,System.String,BingWallpaper.Popup.AlertTheme,BingWallpaper.Popup.UserButton)">
+            <summary>
+            显示弹框
+            </summary>
+            <param name="title">弹框标题</param>
+            <param name="content">弹框主体内容</param>
+            <param name="AlertTheme">弹框类型</param>
+            <param name="userButton">交互按钮</param>
+        </member>
+        <member name="M:BingWallpaper.Popup.Alert.Show(System.String,System.String,BingWallpaper.Popup.AlertTheme,BingWallpaper.Popup.UserButton,BingWallpaper.Popup.AlertConfig)">
+            <summary>
+            显示弹框
+            </summary>
+            <param name="title">弹框标题</param>
+            <param name="content">弹框主体内容</param>
+            <param name="AlertTheme">弹框类型</param>
+            <param name="userButton">交互按钮</param>
+            <param name="alertConfig">用户自定义配置</param>
+        </member>
+        <member name="M:BingWallpaper.Popup.Alert.Show(System.String,System.String,BingWallpaper.Popup.AlertTheme,BingWallpaper.Popup.UserButton,BingWallpaper.Popup.UserButton,BingWallpaper.Popup.AlertConfig)">
+            <summary>
+            显示弹框
+            </summary>
+            <param name="title">弹框标题</param>
+            <param name="content">弹框主体内容</param>
+            <param name="AlertTheme">弹框类型</param>
+            <param name="userButton1">交互按钮1</param>
+            <param name="userButton2">交互按钮2</param>
+            <param name="alertConfig">用户自定义配置</param>
+        </member>
+        <member name="M:BingWallpaper.Popup.Alert.Show(System.String,System.String,BingWallpaper.Popup.AlertTheme,System.Collections.Generic.List{BingWallpaper.Popup.UserButton},BingWallpaper.Popup.AlertConfig)">
+            <summary>
+            显示弹框
+            </summary>
+            <param name="title">弹框标题</param>
+            <param name="content">弹框主体内容</param>
+            <param name="AlertTheme">弹框类型</param>
+            <param name="userButtonList">交互按钮集合</param>
+            <param name="alertConfig">用户自定义配置</param>
+        </member>
+        <member name="P:BingWallpaper.Popup.AlertConfig.AnimationDuration">
+            <summary>
+            动画持续时间，默认100毫秒
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.Popup.AlertConfig.AlertShowDuration">
+            <summary>
+            Alert持续显示时间，计时关闭，默认3000毫秒
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.Popup.AlertConfig.OnlyOneWindowAllowed">
+            <summary>
+            每次只允许一个窗体弹出，默认false
+            </summary>
+        </member>
+        <member name="F:BingWallpaper.Popup.AlertType.Default">
+            <summary>
+            默认
+            </summary>
+        </member>
+        <member name="F:BingWallpaper.Popup.AlertType.Remind">
+            <summary>
+            提醒
+            </summary>
+        </member>
+        <member name="F:BingWallpaper.Popup.AlertType.Warning">
+            <summary>
+            警告
+            </summary>
+        </member>
+        <member name="F:BingWallpaper.Popup.AlertType.Error">
+            <summary>
+            错误
+            </summary>
+        </member>
+        <member name="T:BingWallpaper.Popup.AlertWindow">
+            <summary>
+            AlertWindow.xaml 的交互逻辑
+            </summary>
+            <summary>
+            AlertWindow
+            </summary>
+        </member>
+        <member name="M:BingWallpaper.Popup.AlertWindow.InitTheme(BingWallpaper.Popup.AlertTheme)">
+            <summary>
+            初始化UI
+            </summary>
+            <param name="alertType"></param>
+        </member>
+        <member name="M:BingWallpaper.Popup.AlertWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:BingWallpaper.Popup.AlertTheme">
+            <summary>
+            默认
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.Popup.AlertTheme.Default">
+            <summary>
+            默认
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.Popup.AlertTheme.Info">
+            <summary>
+            Info
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.Popup.AlertTheme.Remind">
+            <summary>
+            提醒
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.Popup.AlertTheme.Success">
+            <summary>
+            成功
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.Popup.AlertTheme.Warning">
+            <summary>
+            警告
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.Popup.AlertTheme.Error">
+            <summary>
+            错误
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.Popup.AlertTheme.PrimaryBackColor">
+            <summary>
+            主背景色
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.Popup.AlertTheme.SecondaryBackColor">
+            <summary>
+            副背景色
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.Popup.AlertTheme.TitleColor">
+            <summary>
+            标题颜色
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.Popup.AlertTheme.ContentColor">
+            <summary>
+            内容颜色
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.Popup.AlertTheme.PullBackColor">
+            <summary>
+            收起按钮颜色
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.Popup.AlertTheme._pullBackForeColor">
+            <summary>
+            收起按钮文字颜色
+            </summary>
+        </member>
+        <member name="M:BingWallpaper.Popup.AlertTheme.FromString16(System.String)">
+            <summary>
+            16进制字符串转Color对象
+            </summary>
+            <param name="color"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BingWallpaper.Popup.AlertTheme.FromArgb(System.Byte,System.Byte,System.Byte,System.Byte)">
+            <summary>
+            色值转Color对象
+            </summary>
+            <param name="A"></param>
+            <param name="R"></param>
+            <param name="G"></param>
+            <param name="B"></param>
+            <returns></returns>
+        </member>
+        <member name="P:BingWallpaper.Popup.UserButton.ButtonContent">
+            <summary>
+            按钮显示内容
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.Popup.UserButton.BackgroundColor">
+            <summary>
+            背景颜色
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.Popup.UserButton.FontColor">
+            <summary>
+            文本颜色
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.Popup.UserButton.FontSize">
+            <summary>
+            文本大小
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.Popup.UserButton.BorderThickness">
+            <summary>
+            边框粗细，默认1
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.Popup.UserButton.BorderColor">
+            <summary>
+            边框颜色，默认透明
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.Popup.UserButton.Height">
+            <summary>
+            高度，默认40
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.Popup.UserButton.Width">
+            <summary>
+            宽度，默认自动
+            </summary>
+        </member>
+        <member name="M:BingWallpaper.Popup.UserButton.GenerateControl">
+            <summary>
+            生成按钮控件
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

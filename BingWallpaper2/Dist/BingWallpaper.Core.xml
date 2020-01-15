@@ -232,6 +232,7 @@
             从本地或网络设置墙纸
             </summary>
             <param name="forceFromWeb">强制从网络获取</param>
+            <returns>是否设置成功</returns>
         </member>
         <member name="M:BingWallpaper.Core.WallpaperManager.GetWallpaperImage(System.Boolean)">
             <summary>

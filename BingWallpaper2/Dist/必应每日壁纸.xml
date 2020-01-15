@@ -86,6 +86,96 @@
             初始化腾讯云配置
             </summary>
         </member>
+        <member name="T:BingWallpaper.Utilities.TaskBarUtil">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BingWallpaper.Utilities.TaskBarUtil.#ctor(BingWallpaper.MainWindow)">
+            <summary>
+            
+            </summary>
+            <param name="mainWindow"></param>
+        </member>
+        <member name="M:BingWallpaper.Utilities.TaskBarUtil.Dispose">
+            <summary>
+            释放
+            </summary>
+        </member>
+        <member name="T:BingWallpaper.Utilities.WatcherJobUtil">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BingWallpaper.Utilities.WatcherJobUtil.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.Utilities.WatcherJobUtil.REG">
+            <summary>
+            任务调度注册对象
+            </summary>
+        </member>
+        <member name="M:BingWallpaper.Utilities.WatcherJobUtil.Start">
+            <summary>
+            启动
+            </summary>
+        </member>
+        <member name="M:BingWallpaper.Utilities.WatcherJobUtil.Stop">
+            <summary>
+            停止
+            </summary>
+        </member>
+        <member name="M:BingWallpaper.Utilities.WatcherJobUtil.RegistryTask">
+            <summary>
+            任务注册
+            </summary>
+        </member>
+        <member name="T:BingWallpaper.Utilities.RegeditUtil">
+            <summary>
+            注册表工具
+            </summary>
+        </member>
+        <member name="M:BingWallpaper.Utilities.RegeditUtil.SetWallpaperStyle(BingWallpaper.Core.Model.WallpaperModeType)">
+            <summary>
+            设置注册表壁纸样式
+            </summary>
+        </member>
+        <member name="M:BingWallpaper.Utilities.RegeditUtil.SetAutoRun(System.Boolean)">
+            <summary>
+            设置程序开机自动运行，添加进注册表
+            </summary>
+            <param name="autoRun"></param>
+        </member>
+        <member name="M:BingWallpaper.Utilities.RegeditUtil.GetAutoRun">
+            <summary>
+            查询注册表，获取程序是否开机自动运行
+            </summary>
+        </member>
+        <member name="T:BingWallpaper.Utilities.UpdateUtil">
+            <summary>
+            程序升级检查工具
+            </summary>
+        </member>
+        <member name="M:BingWallpaper.Utilities.UpdateUtil.FindNewUpdate">
+            <summary>
+            查找新版本更新文件路径
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:BingWallpaper.Utilities.WPFSupportFormat">
+            <summary>
+            WPF支持格式
+            </summary>
+        </member>
+        <member name="M:BingWallpaper.Utilities.WPFSupportFormat.ChangeBitmapToImageSource(System.Drawing.Bitmap)">
+            <summary>
+            将Bitmap转换为WPF支持的图片资源格式
+            </summary>
+            <param name="bitmap"></param>
+            <returns></returns>
+        </member>
         <member name="T:BingWallpaper.AboutWindow">
             <summary>
             About.xaml 的交互逻辑
@@ -179,50 +269,6 @@
             <summary>
             InitializeComponent
             </summary>
-        </member>
-        <member name="T:BingWallpaper.Utilities.RegeditUtil">
-            <summary>
-            注册表工具
-            </summary>
-        </member>
-        <member name="M:BingWallpaper.Utilities.RegeditUtil.SetWallpaperStyle(BingWallpaper.Core.Model.WallpaperModeType)">
-            <summary>
-            设置注册表壁纸样式
-            </summary>
-        </member>
-        <member name="M:BingWallpaper.Utilities.RegeditUtil.SetAutoRun(System.Boolean)">
-            <summary>
-            设置程序开机自动运行，添加进注册表
-            </summary>
-            <param name="autoRun"></param>
-        </member>
-        <member name="M:BingWallpaper.Utilities.RegeditUtil.GetAutoRun">
-            <summary>
-            查询注册表，获取程序是否开机自动运行
-            </summary>
-        </member>
-        <member name="T:BingWallpaper.Utilities.UpdateUtil">
-            <summary>
-            程序升级检查工具
-            </summary>
-        </member>
-        <member name="M:BingWallpaper.Utilities.UpdateUtil.FindNewUpdate">
-            <summary>
-            查找新版本更新文件路径
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="T:BingWallpaper.Utilities.WPFSupportFormat">
-            <summary>
-            WPF支持格式
-            </summary>
-        </member>
-        <member name="M:BingWallpaper.Utilities.WPFSupportFormat.ChangeBitmapToImageSource(System.Drawing.Bitmap)">
-            <summary>
-            将Bitmap转换为WPF支持的图片资源格式
-            </summary>
-            <param name="bitmap"></param>
-            <returns></returns>
         </member>
         <member name="T:BingWallpaper.App">
             <summary>

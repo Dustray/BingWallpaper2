@@ -35,11 +35,13 @@ namespace BingWallpaper.Utilities
                     tcsResult.SetResult((null, null));
                     return tcsResult.Task;
                 }
+                request.SetMaxKeys("10");
                 //执行请求
                 GetBucketResult result = SuperEngine.Current.CosXml.GetBucket(request);
                 //请求成功
                 var entityList = result.listBucket.contentsList;
-                foreach (var ett in entityList)
+                var list = entityList.OrderBy(a => a.lastModified).ToList();
+                foreach (var ett in list)
                 {
                     var fullPath = Path.Combine(fileHeadPath, ett.key);
                     var extension = Path.GetExtension(fullPath);

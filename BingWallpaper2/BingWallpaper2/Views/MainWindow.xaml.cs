@@ -20,14 +20,7 @@ namespace BingWallpaper
         private bool _doNotInvokeCheckMethod = true;
         private bool _isPackUp = true;
         private bool _isWindowNormal = true;
-        #region 成员属性
-        //创建NotifyIcon对象 
-        NotifyIcon notifyicon = new NotifyIcon();
-        //创建托盘图标对象 
-        Icon ico = new Icon("logo.ico");
-        //创建托盘菜单对象 
-        System.Windows.Controls.ContextMenu notifyContextMenu = new System.Windows.Controls.ContextMenu();
-        #endregion
+        private TaskBarUtil taskBarUtil;
         /// <summary>
         /// 主窗体
         /// </summary>
@@ -75,6 +68,9 @@ namespace BingWallpaper
             //ImgPreview.Source = new WPFSupportFormat().ChangeBitmapToImageSource( CoreEngine.Current.GetWallpaperImage());
             _doNotInvokeCheckMethod = false;
             PackUp(_isPackUp);
+
+            //设置托盘图标
+            taskBarUtil = new TaskBarUtil(this);
         }
 
         /// <summary>
@@ -107,6 +103,20 @@ namespace BingWallpaper
                 });
                 work.RunWorkerAsync();
             }
+        }
+
+        #endregion
+
+        #region 窗体事件
+
+        /// <summary>
+        /// 窗体关闭事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_Closed(object sender, System.EventArgs e)
+        {
+            taskBarUtil.Dispose();
         }
 
         #endregion
