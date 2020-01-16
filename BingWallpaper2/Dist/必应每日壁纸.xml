@@ -311,6 +311,13 @@
             检查更新
             </summary>
         </member>
+        <member name="M:BingWallpaper.MainWindow.Window_Closed(System.Object,System.EventArgs)">
+            <summary>
+            窗体关闭事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
         <member name="M:BingWallpaper.MainWindow.btnChoosePath_Click(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
             选择路径按钮点击事件
