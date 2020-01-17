@@ -15,6 +15,11 @@ namespace BingWallpaper.Utilities
     /// </summary>
     class RegeditUtil
     {
+        private  Dictionary<string, string[]> _aModel= new Dictionary<string, string[]>()
+        {
+            {"autostart", new string[]{ "BingWallpaperStart", "必应每日壁纸.exe" } },
+            {"autoset", new string[]{ "BingWallpaperAuto", "AutoRunning.exe" } }
+        };
         /// <summary>
         /// 设置注册表壁纸样式
         /// </summary>
@@ -78,16 +83,19 @@ namespace BingWallpaper.Utilities
         /// <summary>
         /// 设置程序开机自动运行，添加进注册表
         /// </summary>
+        /// <param name="key"></param>
         /// <param name="autoRun"></param>
-        public bool SetAutoRun(bool autoRun)
+        /// <returns></returns>
+        public bool SetAutoSet(string key,bool autoRun)
         {
+            var value = _aModel[key];
             RegistryKey reg = null;
             try
             {
-                var fileName = Path.Combine(Environment.CurrentDirectory, "AutoRunning.exe");
+                var fileName = Path.Combine(Environment.CurrentDirectory, value[1]);
                 if (!File.Exists(fileName)) return false;
 
-                string regName = "BingWallpaperAuto";
+                string regName = value[0];
                 reg = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
                 if (reg == null)
                 {
@@ -115,15 +123,16 @@ namespace BingWallpaper.Utilities
         /// <summary>
         /// 查询注册表，获取程序是否开机自动运行
         /// </summary>
-        public bool GetAutoRun()
+        public bool GetAutoSet(string key)
         {
+            var value = _aModel[key];
             RegistryKey reg = null;
             try
             {
-                var fileName = Path.Combine(Environment.CurrentDirectory, "AutoRunning.exe");
+                var fileName = Path.Combine(Environment.CurrentDirectory, value[1]);
                 if (!File.Exists(fileName)) return false;
 
-                string regName = "BingWallpaperAuto";
+                string regName = value[0];
                 reg = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
                 if (reg == null)
                 {
@@ -146,5 +155,7 @@ namespace BingWallpaper.Utilities
                 return false;
             }
         }
+
+
     }
 }

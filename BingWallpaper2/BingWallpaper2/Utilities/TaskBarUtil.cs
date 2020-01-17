@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BingWallpaper.Views;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -35,9 +36,17 @@ namespace BingWallpaper.Utilities
             //_notifyicon.BalloonTipText = "每日必应壁纸1";
             //_notifyicon.ShowBalloonTip(2000);
             _notifyicon.MouseClick += notifyIcon_MouseClick;
+            LoadMenu();
+        }
 
-            var closeBtn = _notifyContextMenu.Items.Add("关闭");
-            closeBtn.Click += new EventHandler(Close);
+        private void LoadMenu()
+        {
+            var settingBtn = _notifyContextMenu.Items.Add("设置");
+            settingBtn.Click += new EventHandler(OpenSettingWindow);
+
+            var closeBtn = _notifyContextMenu.Items.Add("退出");
+            closeBtn.Click += new EventHandler(Shutdown);
+
             _notifyicon.ContextMenuStrip = _notifyContextMenu;
         }
 
@@ -55,9 +64,14 @@ namespace BingWallpaper.Utilities
                 _mainWindow.Activate();
             }
         }
-        private void Close(object sender, EventArgs e)
+        private void Shutdown(object sender, EventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
+        }
+
+        private void OpenSettingWindow(object sender, EventArgs e)
+        {
+            new SettingWindow().Show();
         }
         #endregion
 

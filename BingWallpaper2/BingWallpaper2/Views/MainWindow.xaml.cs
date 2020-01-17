@@ -50,7 +50,7 @@ namespace BingWallpaper
 
             var path = CoreEngine.Current.AppSetting.GetImagePath();
             tbImageSavePath.Text = path;
-            ckbAutoRun.IsChecked = new RegeditUtil().GetAutoRun();
+            ckbAutoRun.IsChecked = new RegeditUtil().GetAutoSet("autoset");
             Bitmap bitmap = null;
             using (var work = new BackgroundWorker())
             {
@@ -181,14 +181,8 @@ namespace BingWallpaper
         private void ckbAutoRun_Checked(object sender, RoutedEventArgs e)
         {
             if (_doNotInvokeCheckMethod) return;
-            if ((bool)ckbAutoRun.IsChecked)
-            {
-                new RegeditUtil().SetAutoRun(true);//设置自动运行
-            }
-            else
-            {
-                new RegeditUtil().SetAutoRun(false);//设置不自动运行
-            }
+            new RegeditUtil().SetAutoSet("autoset", (bool)ckbAutoRun.IsChecked);//设置自动运行
+
         }
 
         /// <summary>
@@ -250,7 +244,15 @@ namespace BingWallpaper
         /// <param name="e"></param>
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            var justShutdown = CoreEngine.Current.AppSetting.GetCloseIsShutdown;
+            if (justShutdown)
+            {
+                Close();
+            }
+            else
+            {
+                this.Visibility = Visibility.Hidden;
+            }
         }
         /// <summary>
         /// 最大化按钮点击事件
@@ -317,7 +319,7 @@ namespace BingWallpaper
                 ctlEle.Visibility = isPackUp ? Visibility.Collapsed : Visibility.Visible;
             }
             BtnPackUp.Content = isPackUp ? ((char)0xF0D6).ToString() : ((char)0xF0D5).ToString();
-            BtnPackUp.ToolTip = isPackUp ? "展开":"收起";
+            BtnPackUp.ToolTip = isPackUp ? "展开" : "收起";
         }
         #endregion
 
