@@ -52,7 +52,7 @@ namespace BingWallpaper.Utilities
 
             .ToRunEvery(1)
             .Days()
-            .At(0, 5);//.At(9, 15);
+            .At(0, 10);//.At(9, 15);
         }
     }
 }

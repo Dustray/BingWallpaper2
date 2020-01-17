@@ -75,8 +75,27 @@ namespace BingWallpaper.Core.Utilities
             Settings.Default.Save();
         }
 
+        /// <summary>
+        /// 设置关闭按钮是否直接关闭程序
+        /// </summary>
+        public void SetCloseIsShutdown(bool flag)
+        {
+            Settings.Default.CloseJustClose = flag;
+            Settings.Default.Save();
+        }
+        /// <summary>
+        /// 获取关闭按钮是否直接关闭程序
+        /// </summary>
+        public bool GetCloseIsShutdown => Settings.Default.CloseJustClose;
 
-        private  WallpaperModeType GetModeType(int setting)
+        #region 私有方法
+
+        /// <summary>
+        /// 获取壁纸模式类型
+        /// </summary>
+        /// <param name="setting"></param>
+        /// <returns></returns>
+        private WallpaperModeType GetModeType(int setting)
         {
             switch (setting)
             {
@@ -97,6 +116,11 @@ namespace BingWallpaper.Core.Utilities
             }
         }
 
+        /// <summary>
+        /// 设置壁纸模式类型
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
         private  int SetModeType(WallpaperModeType type)
         {
             switch (type)
@@ -118,6 +142,11 @@ namespace BingWallpaper.Core.Utilities
             }
         }
 
+        /// <summary>
+        /// 获取壁纸尺寸类型
+        /// </summary>
+        /// <param name="setting"></param>
+        /// <returns></returns>
         private  ImageSizeType GetSizeType(int setting)
         {
             switch (setting)
@@ -133,7 +162,12 @@ namespace BingWallpaper.Core.Utilities
             }
         }
 
-        private  int SetSizeType(ImageSizeType type)
+        /// <summary>
+        /// 设置壁纸尺寸类型
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        private int SetSizeType(ImageSizeType type)
         {
             switch (type)
             {
@@ -147,5 +181,7 @@ namespace BingWallpaper.Core.Utilities
                     return SIZE_1080P;
             }
         }
+
+        #endregion
     }
 }

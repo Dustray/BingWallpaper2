@@ -58,5 +58,17 @@ namespace BingWallpaper.Core.Properties {
                 this["ImageSavePath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CloseJustClose {
+            get {
+                return ((bool)(this["CloseJustClose"]));
+            }
+            set {
+                this["CloseJustClose"] = value;
+            }
+        }
     }
 }

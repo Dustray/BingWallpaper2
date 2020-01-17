@@ -40,7 +40,7 @@ namespace BingWallpaper.Utilities
                 GetBucketResult result = SuperEngine.Current.CosXml.GetBucket(request);
                 //请求成功
                 var entityList = result.listBucket.contentsList;
-                var list = entityList.OrderBy(a => a.lastModified).ToList();
+                var list = entityList.OrderByDescending(a => a.lastModified).ToList();
                 foreach (var ett in list)
                 {
                     var fullPath = Path.Combine(fileHeadPath, ett.key);

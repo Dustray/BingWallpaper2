@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 
 namespace BingWallpaper.Popup
 {
@@ -77,9 +78,10 @@ namespace BingWallpaper.Popup
         /// <param name="alertConfig">用户自定义配置</param>
         public static void Show(string title, string content,AlertTheme AlertTheme,List<UserButton> userButtonList, AlertConfig alertConfig)
         {
-            
-
-            new AlertWindow(title, content, AlertTheme, userButtonList, alertConfig);
+            System.Windows.Application.Current.Dispatcher.Invoke((Action)(() =>
+            {
+                new AlertWindow(title, content, AlertTheme, userButtonList, alertConfig);
+            }));
         }
     }
 }
