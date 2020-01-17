@@ -1,7 +1,6 @@
 ﻿
 using BingWallpaper.Core;
 using BingWallpaper.Core.Model;
-using BingWallpaper.Popup;
 using BingWallpaper.Utilities;
 using System.ComponentModel;
 using System.Drawing;
@@ -186,6 +185,15 @@ namespace BingWallpaper
         }
 
         /// <summary>
+        /// 设置按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnOpenSetting_Click(object sender, RoutedEventArgs e)
+        {
+            new SettingWindow().Show();
+        }
+        /// <summary>
         /// 升级按钮点击事件
         /// </summary>
         /// <param name="sender"></param>
@@ -322,6 +330,5 @@ namespace BingWallpaper
             BtnPackUp.ToolTip = isPackUp ? "展开" : "收起";
         }
         #endregion
-
     }
 }

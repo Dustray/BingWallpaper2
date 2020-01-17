@@ -25,6 +25,9 @@
                     <Border Name="BrdAllRedPoint" Visibility="Hidden" Width="6" Height="6" Margin="6" CornerRadius="3" Background="Red" VerticalAlignment="Top" HorizontalAlignment="Right"></Border>
                 </Grid>
                 <Grid Margin="5 10">
+                    <Button Name="BtnOpenSetting" Content="&#xE115;" ToolTip="设置" Style="{StaticResource BtnInfoStyle}" Click="BtnOpenSetting_Click" />
+                </Grid>
+                <Grid Margin="5 10">
                     <Button Name="BtnOpenImageFolder" Content="&#xED25;" ToolTip="打开图片文件夹" Style="{StaticResource BtnInfoStyle}" Click="BtnOpenImageFolder_Click" />
                 </Grid>
                 <Grid Margin="5 10">

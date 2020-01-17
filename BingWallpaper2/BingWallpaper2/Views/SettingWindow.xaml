@@ -1,17 +1,18 @@
-﻿<Window x:Class="BingWallpaper.Views.SettingWindow"
+﻿<Window x:Class="BingWallpaper.SettingWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BingWallpaper.Views"
+        xmlns:local="clr-namespace:BingWallpaper"
         mc:Ignorable="d"
-        Title="SettingWindow" Height="450" Width="800" Loaded="Window_Loaded" Closed="Window_Closed" >
+        Title="SettingWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closed="Window_Closed" >
     <Grid >
         <StackPanel>
             <TextBlock Text="设置" FontSize="28" Margin="10"/>
             <StackPanel Margin="20,5,5,5">
-                <CheckBox Name="ckbAutoStart" Content="开机自动启动（主程序）" VerticalAlignment="Center" Margin="10" VerticalContentAlignment="Center" Background="Transparent" FontSize="14"  Foreground="#a000" Checked="ckBox_Checked" Unchecked="ckBox_Checked" Tag="autostart"/>
-                <CheckBox Name="ckbAutoSet" Content="开机自动设置" VerticalAlignment="Center" Margin="10" VerticalContentAlignment="Center" Background="Transparent" FontSize="14"  Foreground="#a000" Checked="ckBox_Checked" Unchecked="ckBox_Checked" Tag="autoset"/>
+                <CheckBox Name="ckbAutoStart" Content="开机自动启动（主程序）" VerticalAlignment="Center" Margin="10" VerticalContentAlignment="Center" Background="Transparent" FontSize="14"  Foreground="#a000" Checked="ckBoxAutoRun_Checked" Unchecked="ckBoxAutoRun_Checked" Tag="autostart"/>
+                <CheckBox Name="ckbAutoSet" Content="开机自动设置" VerticalAlignment="Center" Margin="10" VerticalContentAlignment="Center" Background="Transparent" FontSize="14"  Foreground="#a000" Checked="ckBoxAutoRun_Checked" Unchecked="ckBoxAutoRun_Checked" Tag="autoset"/>
+                <CheckBox Name="ckbQuitIsHidden" Content="点击关闭按钮最小化至托盘" VerticalAlignment="Center" Margin="10" VerticalContentAlignment="Center" Background="Transparent" FontSize="14"  Foreground="#a000" Checked="ckbQuitIsHidden_Checked" Unchecked="ckbQuitIsHidden_Checked"/>
             </StackPanel>
         </StackPanel>
     </Grid>

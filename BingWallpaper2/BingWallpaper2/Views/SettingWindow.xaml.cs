@@ -1,8 +1,9 @@
-﻿using BingWallpaper.Utilities;
+﻿using BingWallpaper.Core;
+using BingWallpaper.Utilities;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace BingWallpaper.Views
+namespace BingWallpaper
 {
     /// <summary>
     /// SettingWindow.xaml 的交互逻辑
@@ -23,6 +24,7 @@ namespace BingWallpaper.Views
 
             ckbAutoSet.IsChecked = new RegeditUtil().GetAutoSet("autoset");
             ckbAutoStart.IsChecked = new RegeditUtil().GetAutoSet("autostart");
+            ckbQuitIsHidden.IsChecked = !CoreEngine.Current.AppSetting.GetCloseIsShutdown;
             _doNotInvokeCheckMethod = false;
         }
 
@@ -52,12 +54,20 @@ namespace BingWallpaper.Views
         }
 
 
-        private void ckBox_Checked(object sender, RoutedEventArgs e)
+        private void ckBoxAutoRun_Checked(object sender, RoutedEventArgs e)
         {
             if (_doNotInvokeCheckMethod) return;
             var cb = sender as CheckBox;
             if (null == cb) return;
             new RegeditUtil().SetAutoSet(cb.Tag.ToString(), (bool)cb.IsChecked);//设置自动设置
+        }
+        
+        private void ckbQuitIsHidden_Checked(object sender, RoutedEventArgs e)
+        {
+            if (_doNotInvokeCheckMethod) return;
+            var cb = sender as CheckBox;
+            if (null == cb) return;
+            CoreEngine.Current.AppSetting.SetCloseIsShutdown(!(bool)cb.IsChecked);
         }
     }
 }
