@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BingWallpaper"
         mc:Ignorable="d"
-        Title="检查更新" Height="450" Width="800" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen">
+        Title="检查更新" Height="450" Width="800" MinHeight="450" MinWidth="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.3*"></RowDefinition>

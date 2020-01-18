@@ -119,7 +119,6 @@ namespace BingWallpaper.Popup
 
         #endregion
 
-
         #region 成员方法
 
         /// <summary>

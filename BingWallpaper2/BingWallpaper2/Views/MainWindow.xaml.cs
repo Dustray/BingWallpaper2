@@ -37,7 +37,7 @@ namespace BingWallpaper
         /// </summary>
         private void InitializeUI()
         {
-            Title = $"每日必应壁纸2 version_{SuperEngine.Current.Version}（预览版）";
+            //Title = $"每日必应壁纸2 version_{SuperEngine.Current.Version}（预览版）";
 
             cbImageSize.ItemsSource = CoreEngine.Current.ImageSizeList;
             cbImageSize.DisplayMemberPath = "Name";
@@ -49,7 +49,6 @@ namespace BingWallpaper
 
             var path = CoreEngine.Current.AppSetting.GetImagePath();
             tbImageSavePath.Text = path;
-            ckbAutoRun.IsChecked = new RegeditUtil().GetAutoSet("autoset");
             Bitmap bitmap = null;
             using (var work = new BackgroundWorker())
             {
@@ -170,18 +169,6 @@ namespace BingWallpaper
             var item = (WallpaperStyleModel)cbWallpaperStyle.SelectedItem;
             CoreEngine.Current.AppSetting.SetStyleMode(item.Type);
             new RegeditUtil().SetWallpaperStyle(item.Type);
-        }
-
-        /// <summary>
-        /// 自动运行选择框事件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ckbAutoRun_Checked(object sender, RoutedEventArgs e)
-        {
-            if (_doNotInvokeCheckMethod) return;
-            new RegeditUtil().SetAutoSet("autoset", (bool)ckbAutoRun.IsChecked);//设置自动运行
-
         }
 
         /// <summary>

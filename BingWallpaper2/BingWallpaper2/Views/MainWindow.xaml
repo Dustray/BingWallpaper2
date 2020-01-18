@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BingWallpaper"
         mc:Ignorable="d"
-        Title="每日必应壁纸" Height="450" Width="800" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen" WindowStyle="None" StateChanged="Window_StateChanged" Closed="Window_Closed" >
+        Title="每日必应壁纸" Height="450" Width="800" MinHeight="450" MinWidth="800" WindowChrome.WindowChrome="{DynamicResource WindowChromeKey}"  WindowStartupLocation="CenterScreen" WindowStyle="None" StateChanged="Window_StateChanged" Closed="Window_Closed" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
@@ -21,14 +21,14 @@
             </Grid.ColumnDefinitions>
             <StackPanel Name="SpToolBar" Orientation="Horizontal" >
                 <Grid Margin="10 10 5 10" Tag="UnPack">
-                    <Button Name="BtnPackUp" Content="&#xE96F;" ToolTip="收起" Style="{StaticResource BtnInfoStyle}" Click="BtnPackUp_Click" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                    <Button Name="BtnPackUp" Content="&#xF0D5;" ToolTip="收起" Style="{StaticResource BtnInfoStyle}" Click="BtnPackUp_Click" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
                     <Border Name="BrdAllRedPoint" Visibility="Hidden" Width="6" Height="6" Margin="6" CornerRadius="3" Background="Red" VerticalAlignment="Top" HorizontalAlignment="Right"></Border>
                 </Grid>
                 <Grid Margin="5 10">
-                    <Button Name="BtnOpenSetting" Content="&#xE115;" ToolTip="设置" Style="{StaticResource BtnInfoStyle}" Click="BtnOpenSetting_Click" />
+                    <Button Name="BtnOpenImageFolder" Content="&#xED25;" ToolTip="打开图片文件夹" Style="{StaticResource BtnInfoStyle}" Click="BtnOpenImageFolder_Click" />
                 </Grid>
                 <Grid Margin="5 10">
-                    <Button Name="BtnOpenImageFolder" Content="&#xED25;" ToolTip="打开图片文件夹" Style="{StaticResource BtnInfoStyle}" Click="BtnOpenImageFolder_Click" />
+                    <Button Name="BtnOpenSetting" Content="&#xE115;" ToolTip="设置" Style="{StaticResource BtnInfoStyle}" Click="BtnOpenSetting_Click" />
                 </Grid>
                 <Grid Margin="5 10">
                     <Button Name="BtnUpdate" Content="&#xE74A;" Style="{StaticResource BtnInfoStyle}" Click="BtnUpdate_Click" />
@@ -81,9 +81,15 @@
                     <ComboBoxItem Content="居中" Tag="5"/>
                     <ComboBoxItem Content="跨区" Tag="6"/>-->
                 </ComboBox>
-                <CheckBox Name="ckbAutoRun" Grid.Row="1" Grid.Column="3" Margin="3,3,3,6" Content="开机自动设置" VerticalAlignment="Center" HorizontalAlignment="Right" VerticalContentAlignment="Center" Background="Transparent" FontSize="14"  Foreground="#a000" Checked="ckbAutoRun_Checked" Unchecked="ckbAutoRun_Checked"/>
                 <Button Name="btnSetWallpaper" Grid.Row="1" Grid.Column="4" Margin="3,3,6,6" Cursor="Hand" Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Content="设为壁纸" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" FontSize="14" Click="btnSetWallpaper_Click" />
             </Grid>
         </Border>
     </Grid>
+    <Window.Resources>
+        <WindowChrome x:Key="WindowChromeKey">
+            <WindowChrome.ResizeBorderThickness>
+                <Thickness>0</Thickness>
+            </WindowChrome.ResizeBorderThickness>
+        </WindowChrome>
+    </Window.Resources>
 </Window>
