@@ -13,13 +13,15 @@ namespace BingWallpaper
     /// </summary>
     public partial class App : Application
     {
-        bool createdNew;
         protected override void OnStartup(StartupEventArgs e)
         {
-            System.Threading.Mutex mutex = new System.Threading.Mutex(true, "BingWallpaper", out createdNew);
-            if (!createdNew)
+            //命令模式修改设置
+            foreach (string arg in e.Args)
             {
-
+                if (arg == "--setautorun")
+                {
+                    Environment.Exit(1);
+                }
             }
         }
     }

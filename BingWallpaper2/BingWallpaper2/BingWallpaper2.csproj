@@ -106,6 +106,7 @@
     <Compile Include="Models\SecretEtt.cs" />
     <Compile Include="Models\UpdateModel.cs" />
     <Compile Include="SuperEngine.cs" />
+    <Compile Include="Utilities\SettingUtil.cs" />
     <Compile Include="Utilities\TaskBarUtil.cs" />
     <Compile Include="Utilities\WatcherJobUtil.cs" />
     <Compile Include="Views\AboutWindow.xaml.cs">
