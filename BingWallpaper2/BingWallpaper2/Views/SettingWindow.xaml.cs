@@ -69,5 +69,15 @@ namespace BingWallpaper
             if (null == cb) return;
             CoreEngine.Current.AppSetting.SetCloseIsShutdown(!(bool)cb.IsChecked);
         }
+
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void HeadBar_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 }

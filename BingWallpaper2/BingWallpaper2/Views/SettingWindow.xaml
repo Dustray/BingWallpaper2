@@ -5,10 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BingWallpaper"
         mc:Ignorable="d"
-        Title="SettingWindow" Height="450" Width="450" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded" Closed="Window_Closed" >
+        Title="SettingWindow" Height="450" Width="450" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" Loaded="Window_Loaded" Closed="Window_Closed" Background="#FDDD" >
     <Grid >
         <StackPanel>
-            <TextBlock Text="设置" FontSize="28" Margin="10"/>
+            <Grid Background="#3fff" Height="55" MouseLeftButtonDown="HeadBar_MouseLeftButtonDown" >
+            <TextBlock Text="设置" FontSize="28" Margin="10" HorizontalAlignment="Left"/>
+                <Grid Margin="10 " HorizontalAlignment="Right">
+                    <Button Name="BtnClose" Content="&#xEF2C;" ToolTip="关闭" Style="{StaticResource BtnInfoStyle}" Click="BtnClose_Click" />
+                </Grid>
+            </Grid>
             <StackPanel Margin="20,5,5,5">
                 <CheckBox Name="ckbAutoStart" Content="开机自动启动（主程序）" VerticalAlignment="Center" Margin="10" VerticalContentAlignment="Center" Background="Transparent" FontSize="14"  Foreground="#a000" Checked="ckBoxAutoRun_Checked" Unchecked="ckBoxAutoRun_Checked" Tag="autostart"/>
                 <CheckBox Name="ckbAutoSet" Content="开机自动设置壁纸" VerticalAlignment="Center" Margin="10" VerticalContentAlignment="Center" Background="Transparent" FontSize="14"  Foreground="#a000" Checked="ckBoxAutoRun_Checked" Unchecked="ckBoxAutoRun_Checked" Tag="autoset"/>

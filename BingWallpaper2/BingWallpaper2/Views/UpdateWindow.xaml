@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BingWallpaper"
         mc:Ignorable="d"
-        Title="检查更新" Height="450" Width="800" MinHeight="450" MinWidth="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="检查更新" Height="450" Width="800" MinHeight="450" MinWidth="800" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen">
     <Grid Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.3*"></RowDefinition>
+            <RowDefinition  Height="55"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="0.7*"></RowDefinition>
         </Grid.RowDefinitions>
@@ -17,7 +17,13 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBlock Name="TbTitle" Grid.Row="0" Grid.ColumnSpan="3" Text="更新进度" FontSize="25" Foreground="White" Margin="20 0 20 0" VerticalAlignment="Bottom" />
+
+        <Grid Grid.Row="0" Grid.ColumnSpan="3"  Background="#3fff" MouseLeftButtonDown="HeadBar_MouseLeftButtonDown" >
+            <TextBlock Name="TbTitle" Text="更新" FontSize="28"  Foreground="White" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Grid Margin="10 " HorizontalAlignment="Right">
+                <Button Name="BtnClose" Content="&#xEF2C;" ToolTip="关闭" Style="{StaticResource BtnInfoStyle}" Click="BtnClose_Click" />
+            </Grid>
+        </Grid>
         <TextBlock Name="TbMainContent" Grid.Row="1" Grid.ColumnSpan="3" Text="正在检查..." FontSize="120" Foreground="White" Margin="20 0 20 0" VerticalAlignment="Center"/>
         <Button Name="BtnDownload" Grid.Column="0" Grid.Row="2" Content="手动下载" FontSize="25" Foreground="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" BorderThickness="1" Margin="20" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="20 10" Background="{x:Null}" BorderBrush="{x:Null}" Click="BtnDownload_Click"  Cursor="Hand" />
         <Button Name="BtnOK" Grid.Column="1" Grid.Row="2" Content="重启以更新" FontSize="25" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" BorderThickness="1" Margin="20" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="20 10" Background="{x:Null}" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" Click="BtnOK_Click"  Visibility="Hidden" Cursor="Hand" />

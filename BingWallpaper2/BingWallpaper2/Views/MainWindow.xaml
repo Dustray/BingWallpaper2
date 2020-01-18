@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BingWallpaper"
         mc:Ignorable="d"
-        Title="每日必应壁纸" Height="450" Width="800" MinHeight="450" MinWidth="800" WindowChrome.WindowChrome="{DynamicResource WindowChromeKey}"  WindowStartupLocation="CenterScreen" WindowStyle="None" StateChanged="Window_StateChanged" Closed="Window_Closed" >
+        Title="每日必应壁纸" Height="450" Width="800" MinHeight="450" MinWidth="800" AllowsTransparency="True" WindowStartupLocation="CenterScreen" WindowStyle="None" StateChanged="Window_StateChanged" Closed="Window_Closed" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
@@ -14,12 +14,12 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Image Name="ImgPreview" Grid.Row="0" Grid.Column="0" Stretch="UniformToFill" MouseLeftButtonDown="ImgPreview_MouseLeftButtonDown" />
-        <Grid VerticalAlignment="Top">
+        <Grid VerticalAlignment="Top" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <StackPanel Name="SpToolBar" Orientation="Horizontal" >
+            <StackPanel Name="SpToolBar" Orientation="Horizontal">
                 <Grid Margin="10 10 5 10" Tag="UnPack">
                     <Button Name="BtnPackUp" Content="&#xF0D5;" ToolTip="收起" Style="{StaticResource BtnInfoStyle}" Click="BtnPackUp_Click" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
                     <Border Name="BrdAllRedPoint" Visibility="Hidden" Width="6" Height="6" Margin="6" CornerRadius="3" Background="Red" VerticalAlignment="Top" HorizontalAlignment="Right"></Border>
@@ -88,7 +88,7 @@
     <Window.Resources>
         <WindowChrome x:Key="WindowChromeKey">
             <WindowChrome.ResizeBorderThickness>
-                <Thickness>0</Thickness>
+                <Thickness>1</Thickness>
             </WindowChrome.ResizeBorderThickness>
         </WindowChrome>
     </Window.Resources>

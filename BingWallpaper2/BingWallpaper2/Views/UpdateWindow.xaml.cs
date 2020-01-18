@@ -67,7 +67,7 @@ namespace BingWallpaper
         /// </summary>
         private void ThereNoUpdate()
         {
-            TbTitle.Text = "恭喜呢";
+            TbTitle.Text = $"更新（当前{SuperEngine.Current.Version}）";
             TbMainContent.Text = "已是最新版";
             BtnCancel.Visibility = Visibility.Visible;
         }
@@ -158,6 +158,16 @@ namespace BingWallpaper
             var proc = new Process();
             proc.StartInfo.FileName = "https://github.com/Dustray/BingWallpaper2/releases";
             proc.Start();
+        }
+
+        private void HeadBar_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
