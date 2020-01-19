@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BingWallpaper.Core;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -70,19 +71,23 @@ namespace BingWallpaper.Utilities
         private void SetAutoStartupTrue()
         {
             new RegeditUtil().SetAutoSet("autostart", true);//设置自动设置
+            CoreEngine.Current.AppSetting.SetAutoStart(true);
         }
         private void SetAutoStartupFalse()
         {
             new RegeditUtil().SetAutoSet("autostart", false);//设置自动设置
+            CoreEngine.Current.AppSetting.SetAutoStart(false);
         }
 
         private void SetAutoSetTrue()
         {
             new RegeditUtil().SetAutoSet("autoset", true);//设置自动设置
+            CoreEngine.Current.AppSetting.SetAutoSet(true);
         }
         private void SetAutoSetFalse()
         {
             new RegeditUtil().SetAutoSet("autoset", false);//设置自动设置
+            CoreEngine.Current.AppSetting.SetAutoSet(false);
         }
         /// <summary>
         /// 释放

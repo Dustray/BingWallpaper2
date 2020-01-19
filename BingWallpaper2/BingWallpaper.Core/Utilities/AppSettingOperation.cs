@@ -88,6 +88,33 @@ namespace BingWallpaper.Core.Utilities
         /// </summary>
         public bool GetCloseIsShutdown => Settings.Default.CloseJustClose;
 
+
+        /// <summary>
+        /// 设置程序是否开机自动运行
+        /// </summary>
+        public void SetAutoStart(bool flag)
+        {
+            Settings.Default.AutoStart = flag;
+            Settings.Default.Save();
+        }
+        /// <summary>
+        /// 获取程序是否开机自动运行
+        /// </summary>
+        public bool GetAutoStart => Settings.Default.AutoStart;
+
+        /// <summary>
+        /// 设置程序是否开机自动设置壁纸
+        /// </summary>
+        public void SetAutoSet(bool flag)
+        {
+            Settings.Default.AutoSet = flag;
+            Settings.Default.Save();
+        }
+        /// <summary>
+        /// 设置程序是否开机自动设置壁纸
+        /// </summary>
+        public bool GetAutoSet => Settings.Default.AutoSet;
+
         #region 私有方法
 
         /// <summary>

@@ -22,8 +22,8 @@ namespace BingWallpaper
             InitializeComponent();
 
 
-            ckbAutoSet.IsChecked = new RegeditUtil().GetAutoSet("autoset");
-            ckbAutoStart.IsChecked = new RegeditUtil().GetAutoSet("autostart");
+            ckbAutoSet.IsChecked = CoreEngine.Current.AppSetting.GetAutoSet;//new RegeditUtil().GetAutoSet("autoset");
+            ckbAutoStart.IsChecked = CoreEngine.Current.AppSetting.GetAutoStart;// new RegeditUtil().GetAutoSet("autostart");
             ckbQuitIsHidden.IsChecked = !CoreEngine.Current.AppSetting.GetCloseIsShutdown;
             _doNotInvokeCheckMethod = false;
         }
