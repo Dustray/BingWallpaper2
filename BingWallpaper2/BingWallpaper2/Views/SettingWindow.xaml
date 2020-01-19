@@ -20,5 +20,6 @@
                 <CheckBox Name="ckbQuitIsHidden" Content="点击关闭按钮最小化至托盘" VerticalAlignment="Center" Margin="10" VerticalContentAlignment="Center" Background="Transparent" FontSize="14"  Foreground="#a000" Checked="ckbQuitIsHidden_Checked" Unchecked="ckbQuitIsHidden_Checked"/>
             </StackPanel>
         </StackPanel>
+        <Button x:Name="btnSave" Height="35" Width="70" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" Content="保 存" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Click="btnSave_Click" />
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BingWallpaper.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -15,14 +16,17 @@ namespace BingWallpaper
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            //命令模式修改设置
-            foreach (string arg in e.Args)
+            using (var orderUtil = AppStartUtil.CreateOrderCenter())
             {
-                if (arg == "--setautorun")
+                //命令模式修改设置
+                foreach (string arg in e.Args)
                 {
-                    Environment.Exit(1);
+                    //MessageBox.Show(arg);
+                    orderUtil.Run(arg);
+                        //Environment.Exit(1);
                 }
             }
+                
         }
     }
 }

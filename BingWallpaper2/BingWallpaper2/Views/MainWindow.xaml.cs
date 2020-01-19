@@ -180,13 +180,13 @@ namespace BingWallpaper
         private void BtnOpenSetting_Click(object sender, RoutedEventArgs e)
         {
             //创建启动对象
-             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
-             startInfo.UseShellExecute = true;
-             startInfo.WorkingDirectory = Environment.CurrentDirectory;
-             startInfo.FileName = System.Windows.Forms.Application.ExecutablePath;
-             //设置启动动作,确保以管理员身份运行
-                 startInfo.Verb = "runas";
-            System.Diagnostics.Process.Start(startInfo);
+            // System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            // startInfo.UseShellExecute = true;
+            // startInfo.WorkingDirectory = Environment.CurrentDirectory;
+            // startInfo.FileName = System.Windows.Forms.Application.ExecutablePath;
+            // //设置启动动作,确保以管理员身份运行
+            //     startInfo.Verb = "runas";
+            //System.Diagnostics.Process.Start(startInfo);
             new SettingWindow().Show();
         }
         /// <summary>

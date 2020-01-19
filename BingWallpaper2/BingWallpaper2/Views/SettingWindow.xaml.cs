@@ -56,10 +56,10 @@ namespace BingWallpaper
 
         private void ckBoxAutoRun_Checked(object sender, RoutedEventArgs e)
         {
-            if (_doNotInvokeCheckMethod) return;
-            var cb = sender as CheckBox;
-            if (null == cb) return;
-            new RegeditUtil().SetAutoSet(cb.Tag.ToString(), (bool)cb.IsChecked);//设置自动设置
+            //if (_doNotInvokeCheckMethod) return;
+            //var cb = sender as CheckBox;
+            //if (null == cb) return;
+            //new RegeditUtil().SetAutoSet(cb.Tag.ToString(), (bool)cb.IsChecked);//设置自动设置
         }
         
         private void ckbQuitIsHidden_Checked(object sender, RoutedEventArgs e)
@@ -78,6 +78,15 @@ namespace BingWallpaper
         private void HeadBar_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             DragMove();
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            var isAutoStart = (bool)ckbAutoStart.IsChecked? "ORDER_AutoStartupTrue" : "ORDER_AutoStartupFalse";
+            var isAutoSet = (bool)ckbAutoSet.IsChecked ? "ORDER_AutoSetTrue" : "ORDER_AutoSetFalse";
+
+            AppStartUtil.RunAsAdminWithOrder($"{isAutoStart} {isAutoSet} ORDER_Quit");
+            Close();
         }
     }
 }
