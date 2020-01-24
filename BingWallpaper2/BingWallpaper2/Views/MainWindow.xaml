@@ -13,7 +13,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Image Name="ImgPreview" Grid.Row="0" Grid.Column="0" Stretch="UniformToFill" MouseLeftButtonDown="ImgPreview_MouseLeftButtonDown" />
+        <Image Name="ImgPreview" Grid.Row="0" Grid.Column="0" Stretch="UniformToFill" MouseLeftButtonDown="ImgPreview_MouseLeftButtonDown" Source="pack://siteoforigin:,,,/Resources/BingWallpaperStart.jpg" />
         <Grid VerticalAlignment="Top" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>

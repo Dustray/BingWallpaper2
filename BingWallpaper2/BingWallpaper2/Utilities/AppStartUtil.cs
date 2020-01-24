@@ -89,6 +89,9 @@ namespace BingWallpaper.Utilities
             new RegeditUtil().SetAutoSet("autoset", false);//设置自动设置
             CoreEngine.Current.AppSetting.SetAutoSet(false);
         }
+
+        #endregion
+
         /// <summary>
         /// 释放
         /// </summary>
@@ -97,6 +100,5 @@ namespace BingWallpaper.Utilities
             _orderAction.Clear();
             _orderAction = null;
         }
-        #endregion
     }
 }

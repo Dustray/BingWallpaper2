@@ -72,7 +72,7 @@ namespace BingWallpaper
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            Close();    
         }
 
         private void HeadBar_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -82,10 +82,11 @@ namespace BingWallpaper
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            var isAutoStart = (bool)ckbAutoStart.IsChecked? "ORDER_AutoStartupTrue" : "ORDER_AutoStartupFalse";
+            var isAutoStart = (bool)ckbAutoStart.IsChecked ? "ORDER_AutoStartupTrue" : "ORDER_AutoStartupFalse";
             var isAutoSet = (bool)ckbAutoSet.IsChecked ? "ORDER_AutoSetTrue" : "ORDER_AutoSetFalse";
 
-            AppStartUtil.RunAsAdminWithOrder($"{isAutoStart} {isAutoSet} ORDER_Quit");
+            var result = AppStartUtil.RunAsAdminWithOrder($"{isAutoStart} {isAutoSet} ORDER_Quit");
+            
             Close();
         }
     }

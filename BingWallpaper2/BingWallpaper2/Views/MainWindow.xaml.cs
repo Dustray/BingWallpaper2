@@ -1,6 +1,7 @@
 ﻿
 using BingWallpaper.Core;
 using BingWallpaper.Core.Model;
+using BingWallpaper.Popup;
 using BingWallpaper.Utilities;
 using System;
 using System.ComponentModel;
@@ -55,6 +56,11 @@ namespace BingWallpaper
             {
                 work.RunWorkerCompleted += new RunWorkerCompletedEventHandler((object work_sender, RunWorkerCompletedEventArgs work_e) =>
                 {
+                    if (null == bitmap)
+                    {
+                        Alert.Show("获取图片资源失败", AlertTheme.Error);
+                        return;
+                    }
                     ImgPreview.Source = new WPFSupportFormat().ChangeBitmapToImageSource(bitmap);
                     bitmap?.Dispose();
                 });
