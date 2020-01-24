@@ -173,6 +173,7 @@ namespace BingWallpaper
         /// <param name="e"></param>
         private void cbWallpaperStyle_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
+            if (_doNotInvokeCheckMethod) return;
             var item = (WallpaperStyleModel)cbWallpaperStyle.SelectedItem;
             CoreEngine.Current.AppSetting.SetStyleMode(item.Type);
             new RegeditUtil().SetWallpaperStyle(item.Type);

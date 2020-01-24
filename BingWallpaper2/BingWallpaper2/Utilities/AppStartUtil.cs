@@ -12,13 +12,14 @@ namespace BingWallpaper.Utilities
     public class AppStartUtil:IDisposable
     {
         private Dictionary<string, Action> _orderAction = new Dictionary<string, Action>();
+        private int _exitCode = 0;
         private AppStartUtil()
         {
             _orderAction.Add("ORDER_AutoStartupTrue", SetAutoStartupTrue);
             _orderAction.Add("ORDER_AutoStartupFalse", SetAutoStartupFalse);
             _orderAction.Add("ORDER_AutoSetTrue", SetAutoSetTrue);
             _orderAction.Add("ORDER_AutoSetFalse", SetAutoSetFalse);
-            _orderAction.Add("ORDER_Quit", ()=> { Environment.Exit(0);});
+            _orderAction.Add("ORDER_Quit", ()=> { Environment.Exit(_exitCode);});
         }
         /// <summary>
         /// 创建命令实体
@@ -71,23 +72,27 @@ namespace BingWallpaper.Utilities
         private void SetAutoStartupTrue()
         {
             new RegeditUtil().SetAutoSet("autostart", true);//设置自动设置
-            CoreEngine.Current.AppSetting.SetAutoStart(true);
+            _exitCode = 1;
+            //CoreEngine.Current.AppSetting.SetAutoStart(true);
         }
         private void SetAutoStartupFalse()
         {
             new RegeditUtil().SetAutoSet("autostart", false);//设置自动设置
-            CoreEngine.Current.AppSetting.SetAutoStart(false);
+            _exitCode = 2;
+            //CoreEngine.Current.AppSetting.SetAutoStart(false);
         }
 
         private void SetAutoSetTrue()
         {
             new RegeditUtil().SetAutoSet("autoset", true);//设置自动设置
-            CoreEngine.Current.AppSetting.SetAutoSet(true);
+            _exitCode = 1;
+            //CoreEngine.Current.AppSetting.SetAutoSet(true);
         }
         private void SetAutoSetFalse()
         {
             new RegeditUtil().SetAutoSet("autoset", false);//设置自动设置
-            CoreEngine.Current.AppSetting.SetAutoSet(false);
+            _exitCode = 2;
+            //CoreEngine.Current.AppSetting.SetAutoSet(false);
         }
 
         #endregion

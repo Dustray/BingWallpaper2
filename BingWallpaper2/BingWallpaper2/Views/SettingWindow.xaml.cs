@@ -59,9 +59,38 @@ namespace BingWallpaper
             //if (_doNotInvokeCheckMethod) return;
             //var cb = sender as CheckBox;
             //if (null == cb) return;
-            //new RegeditUtil().SetAutoSet(cb.Tag.ToString(), (bool)cb.IsChecked);//设置自动设置
+
+            //var order = "";
+            //switch (cb.Tag.ToString())
+            //{
+            //    case "autostart":order= (bool)ckbAutoStart.IsChecked ? "ORDER_AutoStartupTrue" : "ORDER_AutoStartupFalse";
+            //        break;
+            //    case "autoset": order= (bool)ckbAutoSet.IsChecked ? "ORDER_AutoSetTrue" : "ORDER_AutoSetFalse";
+            //        break;
+            //}
+            //var result = AppStartUtil.RunAsAdminWithOrder($"{order} ORDER_Quit");
+            //var saveLastState = cb.IsChecked;
+            //if (-1 == result)
+            //{
+            //    cb.IsChecked = !saveLastState;
+            //    return;
+            //}
+            //cb.IsChecked = result==1 ? true:false;
+
+            ////new RegeditUtil().SetAutoSet(cb.Tag.ToString(), (bool)cb.IsChecked);//设置自动设置
+
+            //switch (cb.Tag.ToString())
+            //{
+            //    case "autostart":
+            //        CoreEngine.Current.AppSetting.SetAutoStart((bool)cb.IsChecked);
+            //        break;
+            //    case "autoset":
+            //        CoreEngine.Current.AppSetting.SetAutoSet((bool)cb.IsChecked);
+
+            //        break;
+            //}
         }
-        
+
         private void ckbQuitIsHidden_Checked(object sender, RoutedEventArgs e)
         {
             if (_doNotInvokeCheckMethod) return;
@@ -88,6 +117,44 @@ namespace BingWallpaper
             var result = AppStartUtil.RunAsAdminWithOrder($"{isAutoStart} {isAutoSet} ORDER_Quit");
             
             Close();
+        }
+
+        private void ckbAutoRun_Click(object sender, RoutedEventArgs e)
+        {
+            var cb = sender as CheckBox;
+            if (null == cb) return;
+
+            var order = "";
+            switch (cb.Tag.ToString())
+            {
+                case "autostart":
+                    order = (bool)ckbAutoStart.IsChecked ? "ORDER_AutoStartupTrue" : "ORDER_AutoStartupFalse";
+                    break;
+                case "autoset":
+                    order = (bool)ckbAutoSet.IsChecked ? "ORDER_AutoSetTrue" : "ORDER_AutoSetFalse";
+                    break;
+            }
+            var result = AppStartUtil.RunAsAdminWithOrder($"{order} ORDER_Quit");
+            var saveLastState = cb.IsChecked;
+            if (-1 == result)
+            {
+                cb.IsChecked = !saveLastState;
+                return;
+            }
+            cb.IsChecked = result == 1 ? true : false;
+
+            //new RegeditUtil().SetAutoSet(cb.Tag.ToString(), (bool)cb.IsChecked);//设置自动设置
+
+            switch (cb.Tag.ToString())
+            {
+                case "autostart":
+                    CoreEngine.Current.AppSetting.SetAutoStart((bool)cb.IsChecked);
+                    break;
+                case "autoset":
+                    CoreEngine.Current.AppSetting.SetAutoSet((bool)cb.IsChecked);
+
+                    break;
+            }
         }
     }
 }
