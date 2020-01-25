@@ -115,6 +115,20 @@ namespace BingWallpaper.Core.Utilities
         /// </summary>
         public bool GetAutoSet => Settings.Default.AutoSet;
 
+        /// <summary>
+        /// 获取程序是否第一次运行
+        /// </summary>
+        public bool GetAppFirstStart()
+        {
+            var re = Settings.Default.AppFirstStart;
+            if (re)
+            {
+                Settings.Default.AppFirstStart = false;
+                Settings.Default.Save();
+                return true;
+            }
+            return false;
+        }
         #region 私有方法
 
         /// <summary>

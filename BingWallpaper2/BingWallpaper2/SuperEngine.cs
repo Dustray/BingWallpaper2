@@ -41,6 +41,10 @@ namespace BingWallpaper
         /// 当前程序版本
         /// </summary>
         public string Version => System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        /// <summary>
+        /// 获取程序名称
+        /// </summary>
+        public string AppName => System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
 
         public WatcherJobUtil FWatcher { get; private set; }
         #endregion

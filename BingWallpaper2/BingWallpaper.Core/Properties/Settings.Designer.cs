@@ -94,5 +94,17 @@ namespace BingWallpaper.Core.Properties {
                 this["AutoSet"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AppFirstStart {
+            get {
+                return ((bool)(this["AppFirstStart"]));
+            }
+            set {
+                this["AppFirstStart"] = value;
+            }
+        }
     }
 }

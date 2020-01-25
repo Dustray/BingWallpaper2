@@ -1,5 +1,8 @@
 ﻿using BingWallpaper.Core;
+using BingWallpaper.Popup;
 using BingWallpaper.Utilities;
+using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -30,7 +33,7 @@ namespace BingWallpaper
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
+
         }
         /// <summary>
         /// 显示
@@ -101,7 +104,7 @@ namespace BingWallpaper
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
-            Close();    
+            Close();
         }
 
         private void HeadBar_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -115,7 +118,7 @@ namespace BingWallpaper
             var isAutoSet = (bool)ckbAutoSet.IsChecked ? "ORDER_AutoSetTrue" : "ORDER_AutoSetFalse";
 
             var result = AppStartUtil.RunAsAdminWithOrder($"{isAutoStart} {isAutoSet} ORDER_Quit");
-            
+
             Close();
         }
 
@@ -154,6 +157,19 @@ namespace BingWallpaper
                     CoreEngine.Current.AppSetting.SetAutoSet((bool)cb.IsChecked);
 
                     break;
+            }
+        }
+
+        private void btnCreateLik_Click(object sender, RoutedEventArgs e)
+        {
+            var re = LikUtil.FastCreate();
+            if (re)
+            {
+                Alert.Show("设置桌面快捷方式成功", AlertTheme.Success);
+            }
+            else
+            {
+                Alert.Show("桌面快捷方式已存在", AlertTheme.Warning);
             }
         }
     }

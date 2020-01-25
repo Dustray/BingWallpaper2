@@ -18,6 +18,7 @@
                 <CheckBox Name="ckbAutoStart" Content="开机自动启动（主程序）" VerticalAlignment="Center" Margin="10" VerticalContentAlignment="Center" Background="Transparent" FontSize="14"  Foreground="#a000" Checked="ckBoxAutoRun_Checked" Unchecked="ckBoxAutoRun_Checked" Tag="autostart" Click="ckbAutoRun_Click"/>
                 <CheckBox Name="ckbAutoSet" Content="开机自动设置壁纸" VerticalAlignment="Center" Margin="10" VerticalContentAlignment="Center" Background="Transparent" FontSize="14"  Foreground="#a000" Checked="ckBoxAutoRun_Checked" Unchecked="ckBoxAutoRun_Checked" Tag="autoset" Click="ckbAutoRun_Click"/>
                 <CheckBox Name="ckbQuitIsHidden" Content="点击关闭按钮最小化至托盘" VerticalAlignment="Center" Margin="10" VerticalContentAlignment="Center" Background="Transparent" FontSize="14"  Foreground="#a000" Checked="ckbQuitIsHidden_Checked" Unchecked="ckbQuitIsHidden_Checked"/>
+                <Button Name="btnCreateLik" Content="创建桌面快捷方式" HorizontalAlignment="Left" Margin="10" Padding="19 1" Background="Transparent" FontSize="14"  Foreground="#a000" Click="btnCreateLik_Click" />
             </StackPanel>
         </StackPanel>
         <Button x:Name="btnSave" Height="35" Width="70" Visibility="Collapsed" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" Content="保 存" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Click="btnSave_Click" />

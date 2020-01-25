@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("BingWallpaper.Popup")]
-[assembly: AssemblyDescription("获取每日必应壁纸作为电脑桌面壁纸，并支持开机自动设置。")]
+[assembly: AssemblyDescription("获取必应每日壁纸作为电脑桌面壁纸，并支持开机自动设置。")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("BingWallpaper2")]

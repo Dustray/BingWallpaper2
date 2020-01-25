@@ -8,7 +8,7 @@ using System.Windows;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("必应每日壁纸")]
-[assembly: AssemblyDescription("获取每日必应壁纸作为电脑桌面壁纸，并支持开机自动设置。")]
+[assembly: AssemblyDescription("获取必应每日壁纸作为电脑桌面壁纸，并支持开机自动设置。")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("BingWallpaper2")]
@@ -51,5 +51,5 @@ using System.Windows;
 //可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值
 //通过使用 "*"，如下所示:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.0.1.28")]
-[assembly: AssemblyFileVersion("2.0.1.28")]
+[assembly: AssemblyVersion("2.0.1.30")]
+[assembly: AssemblyFileVersion("2.0.1.30")]

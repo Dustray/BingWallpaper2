@@ -26,7 +26,11 @@ namespace BingWallpaper
                         //Environment.Exit(1);
                 }
             }
-                
+            var isFirstRun = Core.CoreEngine.Current.AppSetting.GetAppFirstStart();
+            if (isFirstRun)
+            {
+                var re = LikUtil.FastCreate();
+            }
         }
     }
 }
