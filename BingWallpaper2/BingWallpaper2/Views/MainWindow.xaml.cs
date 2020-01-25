@@ -5,6 +5,7 @@ using BingWallpaper.Popup;
 using BingWallpaper.Utilities;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows;
@@ -228,7 +229,17 @@ namespace BingWallpaper
             about.Owner = this;
             about.Show();
         }
-
+        /// <summary>
+        /// 反馈按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnFeedback_Click(object sender, RoutedEventArgs e)
+        {
+            var proc = new Process();
+            proc.StartInfo.FileName = "https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAO__cwTRKlUOUFMOVJHRlhTMDhZUDRRU05YMzlHOTFDNy4u";
+            proc.Start();
+        }
         /// <summary>
         /// 收起/展开按钮点击事件
         /// </summary>
@@ -333,5 +344,6 @@ namespace BingWallpaper
             BtnPackUp.ToolTip = isPackUp ? "展开" : "收起";
         }
         #endregion
+
     }
 }

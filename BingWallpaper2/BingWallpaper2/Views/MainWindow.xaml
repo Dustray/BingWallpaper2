@@ -37,6 +37,9 @@
                 <Grid Margin="5 10">
                     <Button Name="BtnAbout" Content="&#xE11B;" ToolTip="关于" Style="{StaticResource BtnInfoStyle}" Click="BtnAbout_Click" />
                 </Grid>
+                <Grid Margin="5 10">
+                    <Button Name="BtnFeedback" Content="&#xED15;" ToolTip="反馈" Style="{StaticResource BtnInfoStyle}" Click="BtnFeedback_Click" />
+                </Grid>
             </StackPanel>
             <StackPanel Name="SpToolBar2" Orientation="Horizontal" Grid.Column="1" FlowDirection="RightToLeft">
                 <Grid Margin="10 10 5 10">
