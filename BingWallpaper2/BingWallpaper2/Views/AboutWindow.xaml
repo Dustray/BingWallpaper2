@@ -9,11 +9,11 @@
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="55"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="60"></RowDefinition>
         </Grid.RowDefinitions>
-        <Border Grid.Row="0" Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" MouseLeftButtonDown="HeadBar_MouseLeftButtonDown">
+        <!--<Border Grid.Row="0" Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" MouseLeftButtonDown="HeadBar_MouseLeftButtonDown">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="20" Color="#6888" Direction="270" ShadowDepth="1" />
             </Border.Effect>
@@ -21,7 +21,14 @@
                 <TextBlock Text="&#xF1AD;" FontFamily="Segoe MDL2 Assets" Margin="0 0 10 0" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" FontSize="35"/>
                 <TextBlock Text="关于" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" FontSize="25"/>
             </StackPanel>
-        </Border>
+        </Border>-->
+
+        <Grid Grid.Row="0" Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Height="55" MouseLeftButtonDown="HeadBar_MouseLeftButtonDown" >
+            <TextBlock Text="关于" FontSize="28" Margin="10" HorizontalAlignment="Left" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
+            <Grid Margin="10 " HorizontalAlignment="Right">
+                <Button Name="BtnClose" Content="&#xEF2C;" ToolTip="关闭" Style="{StaticResource BtnInfoStyle}" Click="BtnClose_Click" />
+            </Grid>
+        </Grid>
         <Grid Grid.Row="1" Margin="20 10">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
@@ -42,7 +49,7 @@
             <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="18" Text="博客："/>
             <TextBlock Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="18" Text="https://dustray.cn/" Name="tbOpenBlog" MouseUp="tbOpenBlog_MouseUp" Cursor="Hand"/>
         </Grid>
-        <Button Name="BtnClose" Grid.Row="2" Content="关 闭" FontSize="15" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" Click="BtnClose_Click" Style="{StaticResource BtnBlueStyle}" />
+        <!--<Button Name="BtnClose" Grid.Row="2" Content="关 闭" FontSize="15" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" Click="BtnClose_Click" Style="{StaticResource BtnBlueStyle}" />-->
 
 
     </Grid>
