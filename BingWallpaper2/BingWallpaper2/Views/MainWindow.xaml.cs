@@ -240,6 +240,16 @@ namespace BingWallpaper
             proc.StartInfo.FileName = "https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAO__cwTRKlUOUFMOVJHRlhTMDhZUDRRU05YMzlHOTFDNy4u";
             proc.Start();
         }
+
+        /// <summary>
+        /// 下载按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnDownload_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
         /// <summary>
         /// 收起/展开按钮点击事件
         /// </summary>

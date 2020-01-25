@@ -28,17 +28,19 @@
                     <Button Name="BtnOpenImageFolder" Content="&#xED25;" ToolTip="打开图片文件夹" Style="{StaticResource BtnInfoStyle}" Click="BtnOpenImageFolder_Click" />
                 </Grid>
                 <Grid Margin="5 10">
+                    <Button Name="BtnDownload" Content="&#xE896;" ToolTip="下载" Style="{StaticResource BtnInfoStyle}" Click="BtnDownload_Click" />
+                </Grid>
+                <Grid Margin="5 10">
                     <Button Name="BtnOpenSetting" Content="&#xE115;" ToolTip="设置" Style="{StaticResource BtnInfoStyle}" Click="BtnOpenSetting_Click" />
                 </Grid>
                 <Grid Margin="5 10">
                     <Button Name="BtnUpdate" Content="&#xE74A;" Style="{StaticResource BtnInfoStyle}" Click="BtnUpdate_Click" />
-                    <Border Name="BrdUpdate" Visibility="Hidden" Width="6" Height="6" Margin="6" CornerRadius="3" Background="Red" VerticalAlignment="Top" HorizontalAlignment="Right"></Border>
+                    <Border Name="BrdUpdate" Visibility="Hidden" Width="20" Height="10" Margin="0" CornerRadius="5" Background="Red" VerticalAlignment="Top" HorizontalAlignment="Right">
+                        <TextBlock Text="NEW" Foreground="White" FontSize="6" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Border>
                 </Grid>
                 <Grid Margin="5 10">
                     <Button Name="BtnAbout" Content="&#xE11B;" ToolTip="关于" Style="{StaticResource BtnInfoStyle}" Click="BtnAbout_Click" />
-                </Grid>
-                <Grid Margin="5 10">
-                    <Button Name="BtnFeedback" Content="&#xED15;" ToolTip="反馈" Style="{StaticResource BtnInfoStyle}" Click="BtnFeedback_Click" />
                 </Grid>
             </StackPanel>
             <StackPanel Name="SpToolBar2" Orientation="Horizontal" Grid.Column="1" FlowDirection="RightToLeft">
@@ -50,6 +52,9 @@
                 </Grid>
                 <Grid Margin="5 10">
                     <Button Name="BtnMini" Content="&#xEF2D;" ToolTip="最小化" Style="{StaticResource BtnInfoStyle}" Click="BtnMini_Click"  />
+                </Grid>
+                <Grid Margin="5 10">
+                    <Button Name="BtnFeedback" Content="&#xED15;" ToolTip="反馈" Style="{StaticResource BtnInfoStyle}" Click="BtnFeedback_Click" />
                 </Grid>
             </StackPanel>
         </Grid>
