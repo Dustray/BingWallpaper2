@@ -21,7 +21,7 @@ namespace BingWallpaper.Utilities
         public static bool FastCreate()
         {
             var lu = new LikUtil();
-            var b1 = lu.CreateDeskTopLik(SuperEngine.Current.AppName, "获取每日必应壁纸作为电脑桌面壁纸，并支持开机自动设置。", Path.Combine(Environment.CurrentDirectory, $"{SuperEngine.Current.AppName}.exe"), "logo");
+            var b1 = lu.CreateDeskTopLik(SuperEngine.Current.AppName, "获取必应每日壁纸作为电脑桌面壁纸，并支持开机自动设置。", Path.Combine(Environment.CurrentDirectory, $"{SuperEngine.Current.AppName}.exe"), "logo");
             var b2 = lu.CreateDeskTopLik("一键设置壁纸", "一键设置必应每日壁纸", Path.Combine(Environment.CurrentDirectory, "AutoRunning.exe"), "autologo");
             return b1 || b2;
         }

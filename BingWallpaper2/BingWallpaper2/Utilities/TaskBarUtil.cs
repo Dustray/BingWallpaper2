@@ -28,11 +28,11 @@ namespace BingWallpaper.Utilities
         {
             _mainWindow = mainWindow;
 
-            _notifyicon.Text = "每日必应壁纸";
+            _notifyicon.Text = SuperEngine.Current.AppName;// "必应每日壁纸";
             Icon ico = Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath); 
             _notifyicon.Icon = ico;
             _notifyicon.Visible = true; 
-            //_notifyicon.BalloonTipText = "每日必应壁纸1";
+            //_notifyicon.BalloonTipText = "必应每日壁纸1";
             //_notifyicon.ShowBalloonTip(2000);
             _notifyicon.MouseClick += notifyIcon_MouseClick;
             LoadMenu();

@@ -26,7 +26,7 @@ namespace BingWallpaper
         public AboutWindow()
         {
             InitializeComponent();
-            tbVersion.Text = $"{SuperEngine.Current.Version}（预览版）";
+            tbVersion.Text = $"{SuperEngine.Current.Version}";
         }
 
         /// <summary>
