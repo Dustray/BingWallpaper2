@@ -248,7 +248,7 @@ namespace BingWallpaper
         /// <param name="e"></param>
         private void BtnDownload_Click(object sender, RoutedEventArgs e)
         {
-
+            new DownloadWindow().Show();
         }
         /// <summary>
         /// 收起/展开按钮点击事件

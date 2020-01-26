@@ -64,6 +64,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Utilities\AppSettingOperation.cs" />
+    <Compile Include="Utilities\BitmapUtil.cs" />
+    <Compile Include="Utilities\FileUtil.cs" />
     <Compile Include="Utilities\XMLUtility.cs" />
     <Compile Include="WallpaperManager.cs" />
   </ItemGroup>

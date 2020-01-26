@@ -14,9 +14,9 @@ namespace BingWallpaper.Core
         /// 获取图片路径
         /// </summary>
         /// <returns></returns>
-        public string GetBingURL()
+        public string GetBingURL(int days = 0)
         {
-            string InfoUrl = "http://cn.bing.com/HPImageArchive.aspx?idx=0&n=1";
+            string InfoUrl = $"http://cn.bing.com/HPImageArchive.aspx?idx={days}&n=1";
             string ImageUrl;
             try
             {
@@ -59,11 +59,11 @@ namespace BingWallpaper.Core
         /// </summary>
         /// <param name="forceFromWeb">强制从网络获取</param>
         /// <returns>是否设置成功</returns>
-        public bool SetWallpaper(bool forceFromWeb=false)
+        public bool SetWallpaper(bool forceFromWeb = false)
         {
             var imageFolderPath = CoreEngine.Current.AppSetting.GetImagePath();
             var imageFilePath = Path.Combine(imageFolderPath, $"bing{DateTime.Now.ToString("yyyyMMdd")}.jpg");
-            if (forceFromWeb||!File.Exists(imageFilePath))//本地不存在文件
+            if (forceFromWeb || !File.Exists(imageFilePath))//本地不存在文件
             {
                 var bingUrl = GetBingURL();
                 if (string.IsNullOrEmpty(bingUrl))
@@ -139,6 +139,35 @@ namespace BingWallpaper.Core
                 return bitmap;
             }
         }
+
+        /// <summary>
+        /// 下载壁纸
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public bool DownloadWallpaperImage(DateTime date, out string result)
+        {
+
+            var imageFolderPath = CoreEngine.Current.AppSetting.GetImagePath();
+            var imageFilePath = Path.Combine(imageFolderPath, $"bing{date.ToString("yyyyMMdd")}.jpg");
+            if (File.Exists(imageFilePath))//存在文件
+            {
+                result = "文件已存在";
+                return false;
+            }
+
+            var bingUrl = GetBingURL();
+            if (string.IsNullOrEmpty(bingUrl))
+            {
+                result = "接口连接失败";
+                return false;
+            }
+
+            result = "下载成功";
+            return true;
+        }
+
         #region 系统调用
         [DllImport("user32.dll", EntryPoint = "SystemParametersInfo")]
         public static extern int SystemParametersInfo(

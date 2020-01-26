@@ -1,0 +1,65 @@
+﻿<Window x:Class="BingWallpaper.DownloadWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BingWallpaper"
+        mc:Ignorable="d"
+        Title="DownloadWindow" Height="450" Width="800"  WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="55"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Background="#3aaa" Height="55" MouseLeftButtonDown="HeadBar_MouseLeftButtonDown" >
+            <TextBlock Text="批量下载" FontSize="28" Margin="10" HorizontalAlignment="Left"/>
+            <Grid Margin="10" HorizontalAlignment="Right">
+                <Button Name="BtnClose" Content="&#xEF2C;" ToolTip="关闭" Style="{StaticResource BtnInfoStyle}" Click="BtnClose_Click" />
+            </Grid>
+        </Grid>
+        <!--<ListBox x:Name="lbPic" Grid.Row="1" Grid.IsSharedSizeScope="True">
+            <ListBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="upload" Header="下载" Click="upload_Click"></MenuItem>
+                </ContextMenu>
+            </ListBox.ContextMenu>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid x:Name="ufg" Columns="4"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>-->
+        <Grid Grid.Row="1" Margin="10 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="下载日期区间："  VerticalAlignment="Center"  FontSize="16"/>
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <DatePicker  Name="dpStart" Cursor="Hand" VerticalAlignment="Center" FontSize="16"  Width="200" />
+                <TextBlock  Text="——"  VerticalAlignment="Center" Margin="10 0" />
+                <DatePicker  Name="dpEnd" Cursor="Hand" VerticalAlignment="Center" FontSize="16"  Width="200" />
+            </StackPanel>
+            <Button Grid.Column="2" Name="btnDownload" Content="开始下载" VerticalAlignment="Center" Width="100" Height="35" FontSize="16" Click="btnDownload_Click"/>
+        </Grid>
+        <Grid Grid.Row="2" >
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="70"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Name="tbPicCount" Grid.Column="0" Text="本地：0张" Margin="10" VerticalAlignment="Center" FontSize="16" Foreground="#888"/>
+            <ProgressBar Name="pgDownload" Grid.Column="1" VerticalAlignment="Center" Height="10" />
+            <TextBlock Name="tbProgress" Grid.Column="2" Text="0%"  VerticalAlignment="Center" Margin="10 0" HorizontalAlignment="Right"  FontSize="16" Foreground="#888"/>
+        </Grid>
+
+        <TextBox Name="tboxDetail" Grid.Row="3" Background="#3ddd" Margin="10 0 10 10" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="WrapWithOverflow"/>
+    </Grid>
+</Window>
