@@ -1,4 +1,5 @@
-﻿using BingWallpaper.Core.Utilities;
+﻿using BingWallpaper.Core;
+using BingWallpaper.Core.Utilities;
 using BingWallpaper.Popup;
 using BingWallpaper.Utilities;
 using System;
@@ -35,14 +36,15 @@ namespace BingWallpaper
 
         private void Init()
         {
-            dpStart.DisplayDateStart = new DateTime(2016, 3, 5);
+            dpStart.DisplayDateStart = DateTime.Now.AddDays(-6);
             dpStart.DisplayDateEnd = DateTime.Now;
-            dpEnd.DisplayDateStart = new DateTime(2016, 3, 5);
+            dpEnd.DisplayDateStart = DateTime.Now.AddDays(-6);
             dpEnd.DisplayDateEnd = DateTime.Now;
-            dpStart.SelectedDate = new DateTime(2016,3,5);
+            dpStart.SelectedDate = DateTime.Now.AddDays(-6);
             dpEnd.SelectedDate = DateTime.Now;
             var localImageCount = new FileUtil().GetLocalImagesUrl().Count;
             tbPicCount.Text = $"本地：{localImageCount}张";
+            tboxDetail.Text = "*由于Bing接口限制，仅支持下载七天内图片。\r\n";
         }
 
 
@@ -69,6 +71,30 @@ namespace BingWallpaper
             Close();
         }
 
+        /// <summary>
+        /// 下载按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDownload_Click(object sender, RoutedEventArgs e)
+        {
+            if (null == dpStart.SelectedDate || null == dpEnd.SelectedDate)
+            {
+                Alert.Show("警告", "日期不能为空", AlertTheme.Warning);
+                return;
+            }
+            var start = dpStart.SelectedDate.Value;
+            var end = dpEnd.SelectedDate.Value;
+            if (start > end)
+            {
+                Alert.Show("警告", "开始日期不能大于结束日期", AlertTheme.Warning);
+                return;
+            }
+            btnDownload.Content = "正在下载";
+            btnDownload.IsEnabled = false;
+            var t1 = new Task(() => Download(start, end));
+            t1.Start();
+        }
         #endregion
 
         #region 成员方法
@@ -80,7 +106,7 @@ namespace BingWallpaper
         /// <param name="e"></param>
         private void upload_Click(object sender, RoutedEventArgs e)
         {
-           // ListBoxItem lb = lbPic.SelectedItem as ListBoxItem;
+            // ListBoxItem lb = lbPic.SelectedItem as ListBoxItem;
             //StackPanel sp = (StackPanel)lb.Content;
             //System.Windows.Controls.Label lable = (System.Windows.Controls.Label)sp.Children[1];
             //System.Windows.MessageBox.Show(lable.Content.ToString());
@@ -104,9 +130,9 @@ namespace BingWallpaper
                 var sp = new StackPanel();
                 var image = new Image();
                 image.Stretch = Stretch.UniformToFill;
-                image.Source = wf.ChangeBitmapToImageSource(bUtil.Zip(new System.Drawing.Bitmap(list[i]),320,180));//new BitmapImage(new Uri(list[i]));
+                image.Source = wf.ChangeBitmapToImageSource(bUtil.Zip(new System.Drawing.Bitmap(list[i]), 320, 180));//new BitmapImage(new Uri(list[i]));
                 var lable = new Label();
-                lable.Content =  i+1;
+                lable.Content = i + 1;
                 sp.Children.Add(image);
                 sp.Children.Add(lable);
                 lbi.Content = sp;
@@ -121,32 +147,44 @@ namespace BingWallpaper
         /// </summary>
         /// <param name="file"></param>
         /// <param name="progress"></param>
-        public void ShowLog(string file,int progress)
+        public void ShowLog(string result, string file, int progress)
         {
             this.Dispatcher.Invoke(new Action(() =>
             {
-                tboxDetail.AppendText($"正在下载：{file}\r\n");
+                tboxDetail.AppendText($"{result}：{file}\r\n");
                 tboxDetail.ScrollToEnd();
                 pgDownload.Value = progress;
                 tbProgress.Text = $"{progress}%";
             }));
         }
 
-        #endregion
 
         /// <summary>
-        /// 下载按钮点击事件
+        /// 下载
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnDownload_Click(object sender, RoutedEventArgs e)
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        private void Download(DateTime start, DateTime end)
         {
-            if (dpStart.SelectedDate > dpEnd.SelectedDate)
-            {
-                Alert.Show("警告", "开始日期不要大于结束日期", AlertTheme.Warning);
-                return;
-            }
 
+            int interval = new TimeSpan(end.Ticks - start.Ticks).Days + 1;
+            float p = 1f;
+            for (DateTime date = start; date <= end; date = date.AddDays(1), p++)
+            {
+                var isSuccess = CoreEngine.Current.DownloadWallpaperImage(date, out string result);
+                var progress = Convert.ToInt32((p / interval) * 100);
+                ShowLog(result, $"{date.ToString("yyyyMMdd")}.jpg", progress);
+
+            }
+            this.Dispatcher.Invoke(new Action(() =>
+            {
+                btnDownload.Content = "开始下载";
+                btnDownload.IsEnabled = true;
+                Alert.Show("下载完成", AlertTheme.Success);
+            }));
         }
+        #endregion
+
+
     }
 }

@@ -156,14 +156,27 @@ namespace BingWallpaper.Core
                 result = "文件已存在";
                 return false;
             }
-
-            var bingUrl = GetBingURL();
+            int interval = new TimeSpan(DateTime.Now.Ticks - date.Ticks).Days;
+            var bingUrl = GetBingURL(interval);
             if (string.IsNullOrEmpty(bingUrl))
             {
                 result = "接口连接失败";
                 return false;
             }
-
+            var webreq = (HttpWebRequest)WebRequest.Create(bingUrl);
+            webreq.Method = "Get";
+            using (var webres = webreq.GetResponse())//GetResponse
+            {
+                using (var stream = webres.GetResponseStream())
+                {
+                    var bmpWallpaper = (Bitmap)Image.FromStream(stream);
+                    if (!Directory.Exists(imageFolderPath))
+                    {
+                        Directory.CreateDirectory(imageFolderPath);
+                    }
+                    bmpWallpaper.Save(imageFilePath, ImageFormat.Jpeg);
+                }
+            }
             result = "下载成功";
             return true;
         }

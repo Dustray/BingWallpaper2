@@ -96,9 +96,9 @@ namespace BingWallpaper.Core
                 });
                 work.DoWork += new DoWorkEventHandler((object work_sender, DoWorkEventArgs work_e) =>
                 {
-                    lock(locker)
+                    lock (locker)
                     {
-                        isSuccess= new WallpaperManager().SetWallpaper(forceFromWeb);
+                        isSuccess = new WallpaperManager().SetWallpaper(forceFromWeb);
                     }
                 });
                 work.RunWorkerAsync();
@@ -120,6 +120,11 @@ namespace BingWallpaper.Core
         public Bitmap GetWallpaperImage(bool forceFromWeb = false)
         {
             return new WallpaperManager().GetWallpaperImage(forceFromWeb);
+        }
+
+        public bool DownloadWallpaperImage(DateTime date, out string result)
+        {
+            return new WallpaperManager().DownloadWallpaperImage(date, out result);
         }
     }
 }

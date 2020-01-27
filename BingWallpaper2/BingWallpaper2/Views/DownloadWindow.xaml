@@ -60,6 +60,6 @@
             <TextBlock Name="tbProgress" Grid.Column="2" Text="0%"  VerticalAlignment="Center" Margin="10 0" HorizontalAlignment="Right"  FontSize="16" Foreground="#888"/>
         </Grid>
 
-        <TextBox Name="tboxDetail" Grid.Row="3" Background="#3ddd" Margin="10 0 10 10" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="WrapWithOverflow"/>
+        <TextBox Name="tboxDetail"  Grid.Row="3" FontSize="14" Background="#3ddd" Margin="10 0 10 10" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="WrapWithOverflow" Padding="5" TextBlock.LineHeight="20"/>
     </Grid>
 </Window>
