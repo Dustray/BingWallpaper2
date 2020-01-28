@@ -36,6 +36,7 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="70"></ColumnDefinition>
@@ -49,8 +50,10 @@
             <TextBlock Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="18" Text="Dustray"/>
             <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="18" Text="博客："/>
             <TextBlock Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="18" Text="https://dustray.cn/" Name="tbOpenBlog" MouseUp="tbOpenBlog_MouseUp" Cursor="Hand"/>
-            <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="18" Text="推荐："/>
-            <TextBlock Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="18" Text="https://vicold.com/" Name="tbOpenVicold" MouseUp="tbOpenVicold_MouseUp" Cursor="Hand"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="18" Text="QQ："/>
+            <TextBlock Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="18" Text="2045375553" Name="tbOpenQQ" MouseUp="tbOpenQQ_MouseUp" Cursor="Hand"/>
+            <TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="18" Text="推荐："/>
+            <TextBlock Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="18" Text="https://vicold.com/" Name="tbOpenVicold" MouseUp="tbOpenVicold_MouseUp" Cursor="Hand"/>
 
         </Grid>
         <!--<Button Name="BtnClose" Grid.Row="2" Content="关 闭" FontSize="15" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" Click="BtnClose_Click" Style="{StaticResource BtnBlueStyle}" />-->

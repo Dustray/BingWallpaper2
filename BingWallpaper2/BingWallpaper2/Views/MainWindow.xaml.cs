@@ -181,6 +181,7 @@ namespace BingWallpaper
             var sw = new SettingWindow();
             sw.Owner = this;
             sw.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            sw.ShowInTaskbar = false;
             sw.Show();
         }
         /// <summary>
@@ -193,6 +194,7 @@ namespace BingWallpaper
             var uw = new UpdateWindow();
             uw.Owner = this;
             uw.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            uw.ShowInTaskbar = false;
             uw.Show();
         }
 
@@ -217,6 +219,7 @@ namespace BingWallpaper
             var about = new AboutWindow();
             about.Owner = this;
             about.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            about.ShowInTaskbar = false;
             about.Show();
         }
         /// <summary>

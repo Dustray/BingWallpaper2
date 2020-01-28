@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BingWallpaper.Core;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -43,12 +44,15 @@ namespace BingWallpaper.Utilities
 
         private void LoadMenu()
         {
+
+            var setWpBtn = _notifyContextMenu.Items.Add("设置今日壁纸");
+            setWpBtn.Click += new EventHandler(SetWallpaper);
+
             var settingBtn = _notifyContextMenu.Items.Add("设置");
             settingBtn.Click += new EventHandler(OpenSettingWindow);
 
             var closeBtn = _notifyContextMenu.Items.Add("退出");
             closeBtn.Click += new EventHandler(Shutdown);
-
             _notifyicon.ContextMenuStrip = _notifyContextMenu;
         }
 
@@ -74,6 +78,11 @@ namespace BingWallpaper.Utilities
         private void OpenSettingWindow(object sender, EventArgs e)
         {
             new SettingWindow().Show();
+        }
+
+        private void SetWallpaper(object sender, EventArgs e)
+        {
+            CoreEngine.Current.SetWallpaperAsync();
         }
         #endregion
 

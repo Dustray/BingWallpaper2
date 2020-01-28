@@ -42,6 +42,18 @@ namespace BingWallpaper
             proc.Start();
         }
 
+        /// <summary>
+        /// 打开QQ按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tbOpenQQ_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            var proc = new Process();
+            proc.StartInfo.FileName = "tencent://message/?uin=2045375553&Site=必应每日壁纸&Menu=yes";
+            proc.Start();
+        }
+
 
         /// <summary>
         /// 打开导航网站按钮点击事件
