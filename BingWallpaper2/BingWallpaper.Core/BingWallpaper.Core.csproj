@@ -63,6 +63,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="Utilities\AppSettingOperation.cs" />
     <Compile Include="Utilities\BitmapUtil.cs" />
     <Compile Include="Utilities\FileUtil.cs" />

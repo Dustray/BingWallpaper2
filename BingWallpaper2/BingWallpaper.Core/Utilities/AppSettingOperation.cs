@@ -123,6 +123,7 @@ namespace BingWallpaper.Core.Utilities
             var re = Settings.Default.AppFirstStart;
             if (re)
             {
+                Settings.Default.Upgrade();
                 Settings.Default.AppFirstStart = false;
                 Settings.Default.Save();
                 return true;
