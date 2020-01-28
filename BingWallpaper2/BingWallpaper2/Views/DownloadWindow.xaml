@@ -16,7 +16,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Grid Background="#3aaa" Height="55" MouseLeftButtonDown="HeadBar_MouseLeftButtonDown" >
+        <Grid Background="#ccc" Height="55" MouseLeftButtonDown="HeadBar_MouseLeftButtonDown" >
             <TextBlock Text="批量下载" FontSize="28" Margin="10" HorizontalAlignment="Left"/>
             <Grid Margin="10" HorizontalAlignment="Right">
                 <Button Name="BtnClose" Content="&#xEF2C;" ToolTip="关闭" Style="{StaticResource BtnInfoStyle}" Click="BtnClose_Click" />

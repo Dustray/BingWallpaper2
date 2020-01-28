@@ -27,6 +27,7 @@ namespace BingWallpaper
         {
             InitializeComponent();
             tbVersion.Text = $"{SuperEngine.Current.Version}";
+            tbAppName.Text = $"{SuperEngine.Current.AppName}";
         }
 
         /// <summary>
@@ -38,6 +39,19 @@ namespace BingWallpaper
         {
             var proc = new Process();
             proc.StartInfo.FileName = "https://dustray.cn/";
+            proc.Start();
+        }
+
+
+        /// <summary>
+        /// 打开导航网站按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tbOpenVicold_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            var proc = new Process();
+            proc.StartInfo.FileName = "https://vicold.com/";
             proc.Start();
         }
 

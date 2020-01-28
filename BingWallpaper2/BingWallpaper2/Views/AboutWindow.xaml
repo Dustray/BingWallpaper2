@@ -11,7 +11,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="55"></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
         </Grid.RowDefinitions>
         <!--<Border Grid.Row="0" Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" MouseLeftButtonDown="HeadBar_MouseLeftButtonDown">
             <Border.Effect>
@@ -35,19 +35,23 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="70"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="18" Text="名称："/>
-            <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="18" Text="必应每日壁纸"/>
+            <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="18" Text="必应每日壁纸" Name="tbAppName"/>
             <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="18" Text="版本："/>
             <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="18" Text="2.0.0.0" Name="tbVersion"/>
             <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="18" Text="作者："/>
             <TextBlock Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="18" Text="Dustray"/>
             <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="18" Text="博客："/>
             <TextBlock Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="18" Text="https://dustray.cn/" Name="tbOpenBlog" MouseUp="tbOpenBlog_MouseUp" Cursor="Hand"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="18" Text="推荐："/>
+            <TextBlock Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="18" Text="https://vicold.com/" Name="tbOpenVicold" MouseUp="tbOpenVicold_MouseUp" Cursor="Hand"/>
+
         </Grid>
         <!--<Button Name="BtnClose" Grid.Row="2" Content="关 闭" FontSize="15" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" Click="BtnClose_Click" Style="{StaticResource BtnBlueStyle}" />-->
 

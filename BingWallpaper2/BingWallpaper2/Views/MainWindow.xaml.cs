@@ -178,7 +178,10 @@ namespace BingWallpaper
             // //设置启动动作,确保以管理员身份运行
             //     startInfo.Verb = "runas";
             //System.Diagnostics.Process.Start(startInfo);
-            new SettingWindow().Show();
+            var sw = new SettingWindow();
+            sw.Owner = this;
+            sw.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            sw.Show();
         }
         /// <summary>
         /// 升级按钮点击事件
@@ -187,7 +190,10 @@ namespace BingWallpaper
         /// <param name="e"></param>
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            new UpdateWindow().Show();
+            var uw = new UpdateWindow();
+            uw.Owner = this;
+            uw.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            uw.Show();
         }
 
         /// <summary>
@@ -210,6 +216,7 @@ namespace BingWallpaper
         {
             var about = new AboutWindow();
             about.Owner = this;
+            about.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             about.Show();
         }
         /// <summary>
@@ -231,7 +238,9 @@ namespace BingWallpaper
         /// <param name="e"></param>
         private void BtnDownload_Click(object sender, RoutedEventArgs e)
         {
-            new DownloadWindow().Show();
+            var dw = new DownloadWindow();
+           // dw.Owner = this;
+            dw.Show();
         }
         /// <summary>
         /// 收起/展开按钮点击事件
