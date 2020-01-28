@@ -9,6 +9,7 @@
                 <ResourceDictionary Source="Styles/CircleButton.xaml"/>
                 <ResourceDictionary Source="Styles/BlueButton.xaml"/>
                 <ResourceDictionary Source="Styles/LightButton.xaml"/>
+                <ResourceDictionary Source="Styles/SettingButton.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

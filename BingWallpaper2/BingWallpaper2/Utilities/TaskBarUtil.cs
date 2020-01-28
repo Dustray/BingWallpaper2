@@ -27,8 +27,11 @@ namespace BingWallpaper.Utilities
         public TaskBarUtil(MainWindow mainWindow)
         {
             _mainWindow = mainWindow;
-
-            _notifyicon.Text = SuperEngine.Current.AppName;// "必应每日壁纸";
+            var debug = "";
+#if DEBUG
+            debug = "（Debug）";
+#endif
+            _notifyicon.Text = $"{SuperEngine.Current.AppName} v{SuperEngine.Current.Version}{debug}";// "必应每日壁纸";
             Icon ico = Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath); 
             _notifyicon.Icon = ico;
             _notifyicon.Visible = true; 

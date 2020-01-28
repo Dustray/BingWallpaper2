@@ -50,8 +50,6 @@ namespace BingWallpaper
             cbWallpaperStyle.DisplayMemberPath = "Name";
             cbWallpaperStyle.SelectedIndex = CoreEngine.Current.WallpaperStyleList.ToList().FindIndex(s => s.Type == CoreEngine.Current.AppSetting.GetStyleMode);
 
-            var path = CoreEngine.Current.AppSetting.GetImagePath();
-            tbImageSavePath.Text = path;
             Bitmap bitmap = null;
             using (var work = new BackgroundWorker())
             {
@@ -130,21 +128,6 @@ namespace BingWallpaper
         #region 成员事件
 
         /// <summary>
-        /// 选择路径按钮点击事件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnChoosePath_Click(object sender, RoutedEventArgs e)
-        {
-            var browserDialog = new FolderBrowserDialog();
-            if (browserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                string chooseDir = browserDialog.SelectedPath.Trim();
-                tbImageSavePath.Text = chooseDir;
-                CoreEngine.Current.AppSetting.SetImagePath(chooseDir);
-            }
-        }
-        /// <summary>
         /// 设置壁纸按钮点击事件
         /// </summary>
         /// <param name="sender"></param>
@@ -214,7 +197,7 @@ namespace BingWallpaper
         /// <param name="e"></param>
         private void BtnOpenImageFolder_Click(object sender, RoutedEventArgs e)
         {
-            string v_OpenFolderPath = tbImageSavePath.Text;
+            string v_OpenFolderPath = CoreEngine.Current.AppSetting.GetImagePath();
             System.Diagnostics.Process.Start("explorer.exe", v_OpenFolderPath);
         }
 

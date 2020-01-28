@@ -1,8 +1,6 @@
 ﻿using BingWallpaper.Core;
 using BingWallpaper.Popup;
 using BingWallpaper.Utilities;
-using System;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -28,6 +26,9 @@ namespace BingWallpaper
             ckbAutoSet.IsChecked = CoreEngine.Current.AppSetting.GetAutoSet;//new RegeditUtil().GetAutoSet("autoset");
             ckbAutoStart.IsChecked = CoreEngine.Current.AppSetting.GetAutoStart;// new RegeditUtil().GetAutoSet("autostart");
             ckbQuitIsHidden.IsChecked = !CoreEngine.Current.AppSetting.GetCloseIsShutdown;
+            var path = CoreEngine.Current.AppSetting.GetImagePath();
+            tbImageSavePath.Text = path;
+            tbImageSavePath.ToolTip = path;
             _doNotInvokeCheckMethod = false;
         }
 
@@ -170,6 +171,23 @@ namespace BingWallpaper
             else
             {
                 Alert.Show("桌面快捷方式已存在", AlertTheme.Warning);
+            }
+        }
+
+        /// <summary>
+        /// 选择路径按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnChoosePath_Click(object sender, RoutedEventArgs e)
+        {
+            var browserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            if (browserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string chooseDir = browserDialog.SelectedPath.Trim();
+                tbImageSavePath.Text = chooseDir;
+                tbImageSavePath.ToolTip = chooseDir;
+                CoreEngine.Current.AppSetting.SetImagePath(chooseDir);
             }
         }
     }
