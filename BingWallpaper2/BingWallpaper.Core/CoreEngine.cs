@@ -73,6 +73,8 @@ namespace BingWallpaper.Core
         /// 应用设置
         /// </summary>
         public AppSettingOperation AppSetting { get; private set; } = new AppSettingOperation();
+
+        public string AppRootDirection { get; set; } = System.Windows.Forms.Application.StartupPath;
         /// <summary>
         /// 异步设置壁纸
         /// </summary>

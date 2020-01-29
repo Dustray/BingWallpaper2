@@ -1,4 +1,5 @@
-﻿using BingWallpaper.Core.Model;
+﻿using BingWallpaper.Core;
+using BingWallpaper.Core.Model;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -92,7 +93,7 @@ namespace BingWallpaper.Utilities
             RegistryKey reg = null;
             try
             {
-                var fileName = Path.Combine(Environment.CurrentDirectory, value[1]);
+                var fileName = Path.Combine(CoreEngine.Current.AppRootDirection, value[1]);
                 if (!File.Exists(fileName)) return false;
 
                 string regName = value[0];
@@ -129,7 +130,7 @@ namespace BingWallpaper.Utilities
             RegistryKey reg = null;
             try
             {
-                var fileName = Path.Combine(Environment.CurrentDirectory, value[1]);
+                var fileName = Path.Combine(CoreEngine.Current.AppRootDirection, value[1]);
                 if (!File.Exists(fileName)) return false;
 
                 string regName = value[0];
