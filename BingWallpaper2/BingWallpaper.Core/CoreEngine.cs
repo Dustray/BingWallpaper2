@@ -73,14 +73,22 @@ namespace BingWallpaper.Core
         /// 应用设置
         /// </summary>
         public AppSettingOperation AppSetting { get; private set; } = new AppSettingOperation();
-
+        /// <summary>
+        /// 程序根目录
+        /// </summary>
         public string AppRootDirection { get; set; } = System.Windows.Forms.Application.StartupPath;
+        /// <summary>
+        /// 日志管理器
+        /// </summary>
+        public readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         /// <summary>
         /// 异步设置壁纸
         /// </summary>
         /// <param name="forceFromWeb">强制从网络获取</param>
         public void SetWallpaperAsync(bool forceFromWeb = false)
         {
+            Current.Logger.Info($"设置桌面壁纸（异步）");
+
             var locker = new object();
             var isSuccess = false; ;
             using (var work = new BackgroundWorker())
@@ -90,10 +98,12 @@ namespace BingWallpaper.Core
                     if (isSuccess)
                     {
                         Alert.Show("设置成功", AlertTheme.Success);
+                        Current.Logger.Info($"设置桌面壁纸（异步）成功");
                     }
                     else
                     {
                         Alert.Show("设置失败", AlertTheme.Error);
+                        Current.Logger.Info($"设置桌面壁纸（异步）失败");
                     }
                 });
                 work.DoWork += new DoWorkEventHandler((object work_sender, DoWorkEventArgs work_e) =>
@@ -112,6 +122,7 @@ namespace BingWallpaper.Core
         /// <param name="forceFromWeb">强制从网络获取</param>
         public void SetWallpaper(bool forceFromWeb = false)
         {
+            Current.Logger.Info($"设置桌面壁纸");
             new WallpaperManager().SetWallpaper(forceFromWeb);
         }
         /// <summary>
@@ -121,11 +132,19 @@ namespace BingWallpaper.Core
         /// <returns></returns>
         public Bitmap GetWallpaperImage(bool forceFromWeb = false)
         {
+            Current.Logger.Info($"获取桌面壁纸Bitmap");
             return new WallpaperManager().GetWallpaperImage(forceFromWeb);
         }
 
+        /// <summary>
+        /// 下载壁纸图片
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
         public bool DownloadWallpaperImage(DateTime date, out string result)
         {
+            Current.Logger.Info($"下载桌面壁纸图片");
             return new WallpaperManager().DownloadWallpaperImage(date, out result);
         }
     }

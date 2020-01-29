@@ -27,15 +27,16 @@ namespace BingWallpaper.Utilities
         /// <param name="mainWindow"></param>
         public TaskBarUtil(MainWindow mainWindow)
         {
+            CoreEngine.Current.Logger.Info("设置任务栏托盘图标");
             _mainWindow = mainWindow;
             var debug = "";
 #if DEBUG
             debug = "（Debug）";
 #endif
             _notifyicon.Text = $"{SuperEngine.Current.AppName} v{SuperEngine.Current.Version}{debug}";// "必应每日壁纸";
-            Icon ico = Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath); 
+            Icon ico = Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath);
             _notifyicon.Icon = ico;
-            _notifyicon.Visible = true; 
+            _notifyicon.Visible = true;
             //_notifyicon.BalloonTipText = "必应每日壁纸1";
             //_notifyicon.ShowBalloonTip(2000);
             _notifyicon.MouseClick += notifyIcon_MouseClick;
@@ -60,6 +61,7 @@ namespace BingWallpaper.Utilities
 
         private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
         {
+            CoreEngine.Current.Logger.Info("任务栏图标点击：右键菜单");
             if (e.Button == MouseButtons.Left)
             {
                 if (_mainWindow.WindowState == WindowState.Minimized)
@@ -72,16 +74,19 @@ namespace BingWallpaper.Utilities
         }
         private void Shutdown(object sender, EventArgs e)
         {
+            CoreEngine.Current.Logger.Info("任务栏图标点击：退出");
             System.Windows.Application.Current.Shutdown();
         }
 
         private void OpenSettingWindow(object sender, EventArgs e)
         {
+            CoreEngine.Current.Logger.Info("任务栏图标点击：设置");
             new SettingWindow().Show();
         }
 
         private void SetWallpaper(object sender, EventArgs e)
         {
+            CoreEngine.Current.Logger.Info("任务栏图标点击：设置壁纸");
             CoreEngine.Current.SetWallpaperAsync();
         }
         #endregion

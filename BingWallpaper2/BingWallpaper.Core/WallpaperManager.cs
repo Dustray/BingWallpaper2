@@ -17,6 +17,7 @@ namespace BingWallpaper.Core
         public string GetBingURL(int days = 0)
         {
             string InfoUrl = $"http://cn.bing.com/HPImageArchive.aspx?idx={days}&n=1";
+            CoreEngine.Current.Logger.Info($"Bing查询接口：{InfoUrl}");
             string ImageUrl;
             try
             {
@@ -46,6 +47,8 @@ namespace BingWallpaper.Core
                 {
                     ImageUrl = ImageUrl.Replace("1920x1080", "1920x1200");
                 }
+                CoreEngine.Current.Logger.Info($"Bing获取到接口的壁纸链接：{ImageUrl}");
+
                 return ImageUrl;
             }
             catch
@@ -63,6 +66,7 @@ namespace BingWallpaper.Core
         {
             var imageFolderPath = CoreEngine.Current.AppSetting.GetImagePath();
             var imageFilePath = Path.Combine(imageFolderPath, $"bing{DateTime.Now.ToString("yyyyMMdd")}.jpg");
+            CoreEngine.Current.Logger.Info($"从本地或网络设置墙纸——强制从网络获取：{(forceFromWeb ? "是" : "否")}——文件名：bing{DateTime.Now.ToString("yyyyMMdd")}.jpg");
             if (forceFromWeb || !File.Exists(imageFilePath))//本地不存在文件
             {
                 var bingUrl = GetBingURL();
@@ -85,8 +89,9 @@ namespace BingWallpaper.Core
                         }
                     }
                 }
-                catch
+                catch (Exception e)
                 {
+                    CoreEngine.Current.Logger.Error(e, $"下载壁纸失败：网络连接失败");
                     return false;
                 }
             }
@@ -103,6 +108,7 @@ namespace BingWallpaper.Core
         {
             var imageFolderPath = CoreEngine.Current.AppSetting.GetImagePath();
             var imageFilePath = Path.Combine(imageFolderPath, $"bing{DateTime.Now.ToString("yyyyMMdd")}.jpg");
+            CoreEngine.Current.Logger.Info($"从本地或网络获取当天最新的图片Bitmap——强制从网络获取：{(forceFromWeb ? "是" : "否")}——文件名：bing{DateTime.Now.ToString("yyyyMMdd")}.jpg");
             if (forceFromWeb || !File.Exists(imageFilePath))//不存在文件
             {
                 var bingUrl = GetBingURL();
@@ -110,19 +116,27 @@ namespace BingWallpaper.Core
                     return null;
                 var webreq = (HttpWebRequest)WebRequest.Create(bingUrl);
                 webreq.Method = "Get";
-                using (var webres = webreq.GetResponse())//GetResponse
+                try
                 {
-                    using (var stream = webres.GetResponseStream())
+                    using (var webres = webreq.GetResponse())//GetResponse
                     {
-                        var bmpWallpaper = (Bitmap)Image.FromStream(stream);
-                        if (!Directory.Exists(imageFolderPath))
+                        using (var stream = webres.GetResponseStream())
                         {
-                            Directory.CreateDirectory(imageFolderPath);
-                        }
-                        bmpWallpaper.Save(imageFilePath, ImageFormat.Jpeg);
+                            var bmpWallpaper = (Bitmap)Image.FromStream(stream);
+                            if (!Directory.Exists(imageFolderPath))
+                            {
+                                Directory.CreateDirectory(imageFolderPath);
+                            }
+                            bmpWallpaper.Save(imageFilePath, ImageFormat.Jpeg);
 
-                        return bmpWallpaper;
+                            return bmpWallpaper;
+                        }
                     }
+                }
+                catch (Exception e)
+                {
+                    CoreEngine.Current.Logger.Error(e, $"下载壁纸失败：网络连接失败");
+                    return null;
                 }
             }
             else
@@ -132,8 +146,9 @@ namespace BingWallpaper.Core
                 {
                     bitmap = new Bitmap(imageFilePath);
                 }
-                catch
+                catch (Exception e)
                 {
+                    CoreEngine.Current.Logger.Error(e, $"获取本地Bitmap文件失败");
                     return null;//文件读取失败
                 }
                 return bitmap;
@@ -151,9 +166,11 @@ namespace BingWallpaper.Core
 
             var imageFolderPath = CoreEngine.Current.AppSetting.GetImagePath();
             var imageFilePath = Path.Combine(imageFolderPath, $"bing{date.ToString("yyyyMMdd")}.jpg");
+            CoreEngine.Current.Logger.Info($"下载壁纸——强制从网络获取——文件名：bing{DateTime.Now.ToString("yyyyMMdd")}.jpg");
             if (File.Exists(imageFilePath))//存在文件
             {
                 result = "文件已存在";
+                CoreEngine.Current.Logger.Info($"下载壁纸失败：文件已存在");
                 return false;
             }
             int interval = new TimeSpan(DateTime.Now.Ticks - date.Ticks).Days;
@@ -161,23 +178,34 @@ namespace BingWallpaper.Core
             if (string.IsNullOrEmpty(bingUrl))
             {
                 result = "接口连接失败";
+                CoreEngine.Current.Logger.Info($"下载壁纸失败：接口连接失败");
                 return false;
             }
             var webreq = (HttpWebRequest)WebRequest.Create(bingUrl);
             webreq.Method = "Get";
-            using (var webres = webreq.GetResponse())//GetResponse
+            try
             {
-                using (var stream = webres.GetResponseStream())
+                using (var webres = webreq.GetResponse())//GetResponse
                 {
-                    var bmpWallpaper = (Bitmap)Image.FromStream(stream);
-                    if (!Directory.Exists(imageFolderPath))
+                    using (var stream = webres.GetResponseStream())
                     {
-                        Directory.CreateDirectory(imageFolderPath);
+                        var bmpWallpaper = (Bitmap)Image.FromStream(stream);
+                        if (!Directory.Exists(imageFolderPath))
+                        {
+                            Directory.CreateDirectory(imageFolderPath);
+                        }
+                        bmpWallpaper.Save(imageFilePath, ImageFormat.Jpeg);
                     }
-                    bmpWallpaper.Save(imageFilePath, ImageFormat.Jpeg);
                 }
             }
+            catch (Exception e)
+            {
+                result = "下载壁纸失败";
+                CoreEngine.Current.Logger.Error(e, $"下载壁纸失败：网络连接失败");
+                return false;
+            }
             result = "下载成功";
+            CoreEngine.Current.Logger.Info($"下载壁纸成功：bing{DateTime.Now.ToString("yyyyMMdd")}.jpg");
             return true;
         }
 

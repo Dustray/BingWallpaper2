@@ -29,8 +29,13 @@ namespace BingWallpaper
         public MainWindow()
         {
             InitializeComponent();
+            CoreEngine.Current.Logger.Info("============主界面启动，UI初始化开始============");
             InitializeUI();
+            CoreEngine.Current.Logger.Info("============主界面启动，UI初始化结束============");
+
+            CoreEngine.Current.Logger.Info("============检查更新开始============");
             CheckUpdate();
+            CoreEngine.Current.Logger.Info("============检查更新结束============");
         }
 
         #region 初始化
@@ -57,9 +62,11 @@ namespace BingWallpaper
                 {
                     if (null == bitmap)
                     {
+                        CoreEngine.Current.Logger.Info("获取图片资源失败");
                         Alert.Show("获取图片资源失败", AlertTheme.Error);
                         return;
                     }
+                        CoreEngine.Current.Logger.Info("获取图片资源成功");
                     ImgPreview.Source = new WPFSupportFormat().ChangeBitmapToImageSource(bitmap);
                     bitmap?.Dispose();
                 });
@@ -98,10 +105,12 @@ namespace BingWallpaper
                     {
                         BrdUpdate.Visibility = Visibility.Visible;
                         BrdAllRedPoint.Visibility = Visibility.Visible;
+                        CoreEngine.Current.Logger.Info($"更新：有新版本（{updateVersion}）");
                         BtnUpdate.ToolTip = $"更新：有新版本（{updateVersion}）";
                     }
                     else
                     {
+                        CoreEngine.Current.Logger.Info("更新：已是最新版本");
                         BtnUpdate.ToolTip = "更新：已是最新版本";
                     }
                 });
