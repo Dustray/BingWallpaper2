@@ -69,6 +69,7 @@ namespace BingWallpaper.Core
             CoreEngine.Current.Logger.Info($"从本地或网络设置墙纸——强制从网络获取：{(forceFromWeb ? "是" : "否")}——文件名：bing{DateTime.Now.ToString("yyyyMMdd")}.jpg");
             if (forceFromWeb || !File.Exists(imageFilePath))//本地不存在文件
             {
+                CoreEngine.Current.Logger.Info($"本地未检测到图片，启用网络下载");
                 var bingUrl = GetBingURL();
                 if (string.IsNullOrEmpty(bingUrl))
                     return false;
@@ -95,7 +96,15 @@ namespace BingWallpaper.Core
                     return false;
                 }
             }
-            SystemParametersInfo(20, 1, imageFilePath, 1);
+            try
+            {
+                SystemParametersInfo(20, 1, imageFilePath, 1);
+            }
+            catch (Exception e)
+            {
+                CoreEngine.Current.Logger.Error(e, $"设置壁纸失败：系统接口调用错误");
+                return false;
+            }
             return true;
         }
 
@@ -111,6 +120,7 @@ namespace BingWallpaper.Core
             CoreEngine.Current.Logger.Info($"从本地或网络获取当天最新的图片Bitmap——强制从网络获取：{(forceFromWeb ? "是" : "否")}——文件名：bing{DateTime.Now.ToString("yyyyMMdd")}.jpg");
             if (forceFromWeb || !File.Exists(imageFilePath))//不存在文件
             {
+                CoreEngine.Current.Logger.Info($"本地未检测到图片，启用网络下载");
                 var bingUrl = GetBingURL();
                 if (string.IsNullOrEmpty(bingUrl))
                     return null;

@@ -1,4 +1,5 @@
-﻿using BingWallpaper.Core.Utilities;
+﻿using BingWallpaper.Core;
+using BingWallpaper.Core.Utilities;
 using BingWallpaper.Models;
 using BingWallpaper.Utilities;
 using COSXML;
@@ -80,13 +81,17 @@ namespace BingWallpaper
         /// </summary>
         private async void Initialization()
         {
-            var fullPath = Path.GetFullPath(@"Config\UpdateConfig.xml");
+            CoreEngine.Current.Logger.Info("主程序引擎：全局初始化开始");
+            var fullPath = Path.Combine(CoreEngine.Current.AppRootDirection,@"Config\UpdateConfig.xml");
+            CoreEngine.Current.Logger.Info($"主程序引擎：加载升级配置文件，路径：{fullPath}");
             if (!File.Exists(fullPath)) return;
             GlobalConfig = await XMLUtility.LoadXMLAsync<UpdateModel>(fullPath);
             CreateCosXML();
             //定时器
+            CoreEngine.Current.Logger.Info("主程序引擎：设置定时器");
             FWatcher = new WatcherJobUtil();
             FWatcher.Start();
+            CoreEngine.Current.Logger.Info("主程序引擎：全局初始化结束");
         }
 
         /// <summary>
@@ -94,6 +99,7 @@ namespace BingWallpaper
         /// </summary>
         private void CreateCosXML()
         {
+            CoreEngine.Current.Logger.Info($"主程序引擎：加载COS配置文件 CosXmlConfig");
             //初始化 CosXmlConfig 
             string appid = GlobalConfig.AppID;//设置腾讯云账户的账户标识 APPID
             string region = GlobalConfig.Region; //设置一个默认的存储桶地域
@@ -114,6 +120,7 @@ namespace BingWallpaper
             string secretKey = new SecretEtt().SecretKey; //"云 API 密钥 SecretKey";
             long durationSecond = 600;  //每次请求签名有效时长，单位为秒
             cosCredentialProvider = new DefaultQCloudCredentialProvider(secretId, secretKey, durationSecond);
+            CoreEngine.Current.Logger.Info($"主程序引擎：初始化COS");
 
             //初始化 CosXmlServer
             CosXml = new CosXmlServer(config, cosCredentialProvider);

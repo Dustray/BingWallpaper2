@@ -83,7 +83,7 @@ namespace BingWallpaper
             {
                 work.DoWork += new DoWorkEventHandler(async (object work_sender, DoWorkEventArgs work_e) =>
                 {
-                    string path = Path.GetFullPath(@"Temp\");
+                    string path = Path.Combine(Core.CoreEngine.Current.AppRootDirection,@"Temp\");
                     string filePath = Path.Combine(path, "newupdate.ztmp");
                     if (!Directory.Exists(path)) Directory.CreateDirectory(path);
                     // 设置参数
@@ -127,7 +127,7 @@ namespace BingWallpaper
             try
             {
                 Process m_Process = new Process();
-                m_Process.StartInfo.FileName = Path.GetFullPath($"Update.exe");
+                m_Process.StartInfo.FileName = Path.Combine(Core.CoreEngine.Current.AppRootDirection, $"Update.exe");
                 m_Process.Start();
                 Environment.Exit(0);
             }

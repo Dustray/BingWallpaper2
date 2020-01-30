@@ -66,7 +66,7 @@ namespace BingWallpaper
                         Alert.Show("获取图片资源失败", AlertTheme.Error);
                         return;
                     }
-                        CoreEngine.Current.Logger.Info("获取图片资源成功");
+                    CoreEngine.Current.Logger.Info("获取图片资源成功");
                     ImgPreview.Source = new WPFSupportFormat().ChangeBitmapToImageSource(bitmap);
                     bitmap?.Dispose();
                 });
@@ -95,6 +95,7 @@ namespace BingWallpaper
             {
                 work.DoWork += new DoWorkEventHandler(async (object work_sender, DoWorkEventArgs work_e) =>
                 {
+                    CoreEngine.Current.Logger.Info($"开始检查更新（异步）");
                     var update = await new UpdateUtil().FindNewUpdate();
                     updatePath = update.path;
                     updateVersion = update.version;
@@ -251,7 +252,7 @@ namespace BingWallpaper
         private void BtnDownload_Click(object sender, RoutedEventArgs e)
         {
             var dw = new DownloadWindow();
-           // dw.Owner = this;
+            // dw.Owner = this;
             dw.Show();
         }
         /// <summary>
