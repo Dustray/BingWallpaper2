@@ -11,6 +11,8 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace BingWallpaper
 {
@@ -66,7 +68,7 @@ namespace BingWallpaper
                         Alert.Show("获取图片资源失败", AlertTheme.Error);
                         return;
                     }
-                    CoreEngine.Current.Logger.Info("获取图片资源成功");
+                    CoreEngine.Current.Logger.Info("获取图片资源成功"); 
                     ImgPreview.Source = new WPFSupportFormat().ChangeBitmapToImageSource(bitmap);
                     bitmap?.Dispose();
                 });

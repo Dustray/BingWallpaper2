@@ -1,4 +1,5 @@
-﻿using BingWallpaper.Utilities;
+﻿using BingWallpaper.Popup;
+using BingWallpaper.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -75,7 +76,14 @@ namespace BingWallpaper
                 //MessageBox.Show("应用程序已经在运行中。。。");
                 Core.CoreEngine.Current.Logger.Info($"重复打开，应用程序已经在运行中");
                 HandleRunningInstance(process);
-                //System.Threading.Thread.Sleep(1000);  
+                //Alert.Show("", "当前已正在运行程序", AlertTheme.Warning, new AlertConfig()
+                //{
+                //    OnAlertCloseCallback = () =>
+                //    {
+                //        System.Environment.Exit(0);
+                //    }
+                //});
+                //System.Threading.Thread.Sleep(3000);  
                 System.Environment.Exit(0);
             }
         }
@@ -83,7 +91,7 @@ namespace BingWallpaper
         {
             ShowWindowAsync(instance.MainWindowHandle, SW_SHOWNOMAL);   //显示  
             SetForegroundWindow(instance.MainWindowHandle); //当到最前端  
-            
+
         }
         private static Process RunningInstance()
         {

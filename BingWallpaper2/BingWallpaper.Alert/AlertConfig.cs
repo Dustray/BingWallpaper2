@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace BingWallpaper.Popup
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class AlertConfig
     {
         /// <summary>
@@ -22,5 +25,10 @@ namespace BingWallpaper.Popup
         /// 每次只允许一个窗体弹出，默认false
         /// </summary>
         public bool OnlyOneWindowAllowed { get; set; } = false;
+
+        /// <summary>
+        /// 弹框关闭回调事件
+        /// </summary>
+        public Action OnAlertCloseCallback { get; set; }
     }
 }

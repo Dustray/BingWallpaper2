@@ -19,6 +19,14 @@ namespace BingWallpaper.Popup
         private int _timerTount = 0;
         private AlertConfig _alertConfig;
 
+        /// <summary>
+        /// 弹框窗体
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="content"></param>
+        /// <param name="alertType"></param>
+        /// <param name="userButtonList"></param>
+        /// <param name="alertConfig"></param>
         public AlertWindow(string title, string content, AlertTheme alertType, List<UserButton> userButtonList, AlertConfig alertConfig)
         {
             InitializeComponent();
@@ -128,12 +136,17 @@ namespace BingWallpaper.Popup
         {
             DoubleAnimation animation = new DoubleAnimation();
             animation.Duration = new Duration(TimeSpan.FromMilliseconds(_alertConfig.AnimationDuration));
-            animation.Completed += (s, a) => { Close(); Dispose(); };//动画执行完毕，关闭当前窗体
+            animation.Completed += (s, a) => {
+                _alertConfig.OnAlertCloseCallback?.Invoke();
+                Close();
+                Dispose(); 
+            };//动画执行完毕，关闭当前窗体
             animation.From = topPosition;
             animation.To = topPosition - ActualHeight;
             BeginAnimation(TopProperty, animation);
         }
         #endregion
+
         public void Dispose()
         {
             if (null != timer)
