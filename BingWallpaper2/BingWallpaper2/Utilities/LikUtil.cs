@@ -19,13 +19,13 @@ namespace BingWallpaper.Utilities
         /// 快速创建
         /// </summary>
         /// <returns></returns>
-        public static bool FastCreate()
+        public static bool FastCreate(bool forceCreate = false)
         {
             CoreEngine.Current.Logger.Info($"创建桌面快捷方式");
 
             var lu = new LikUtil();
-            var b1 = lu.CreateDeskTopLik(SuperEngine.Current.AppName, "获取必应每日壁纸作为电脑桌面壁纸，并支持开机自动设置。", Path.Combine(CoreEngine.Current.AppRootDirection, $"{SuperEngine.Current.AppName}.exe"), "logo");
-            var b2 = lu.CreateDeskTopLik("一键设置壁纸", "一键设置必应每日壁纸", Path.Combine(CoreEngine.Current.AppRootDirection, "AutoRunning.exe"), "autologo");
+            var b1 = lu.CreateDeskTopLik(SuperEngine.Current.AppName, "获取必应每日壁纸作为电脑桌面壁纸，并支持开机自动设置。", Path.Combine(CoreEngine.Current.AppRootDirection, $"{SuperEngine.Current.AppName}.exe"), "logo", forceCreate);
+            var b2 = lu.CreateDeskTopLik("一键设置壁纸", "一键设置必应每日壁纸", Path.Combine(CoreEngine.Current.AppRootDirection, "AutoRunning.exe"), "autologo", forceCreate);
             return b1 || b2;
         }
         /// <summary>
@@ -36,14 +36,14 @@ namespace BingWallpaper.Utilities
         /// <param name="targetFilePath">源文件路径</param>
         /// <param name="logoName">logo名称</param>
         /// <returns></returns>
-        public bool CreateDeskTopLik(string name,string description,string targetFilePath,string logoName)
+        public bool CreateDeskTopLik(string name, string description, string targetFilePath, string logoName, bool forceCreate)
         {
             #region 创建桌面快捷方式
             string deskTop = System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             string dirPath = CoreEngine.Current.AppRootDirection;
             string exePath = Assembly.GetExecutingAssembly().Location;
             //System.Diagnostics.FileVersionInfo exeInfo = System.Diagnostics.FileVersionInfo.GetVersionInfo(exePath);
-            if (System.IO.File.Exists($@"{deskTop}\{name}.lnk"))
+            if (!forceCreate && System.IO.File.Exists($@"{deskTop}\{name}.lnk"))
             {
                 //  System.IO.File.Delete(string.Format(@"{0}\快捷键名称.lnk",deskTop));//删除原来的桌面快捷键方式
                 return false;

@@ -39,7 +39,7 @@ namespace BingWallpaper
             if (isFirstRun)
             {
                 Core.CoreEngine.Current.Logger.Info($"程序安装或升级后第一次启动");
-                var re = LikUtil.FastCreate();
+                var re = LikUtil.FastCreate(true);
             }
         }
 
