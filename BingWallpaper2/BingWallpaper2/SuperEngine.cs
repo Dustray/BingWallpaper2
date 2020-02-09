@@ -47,7 +47,15 @@ namespace BingWallpaper
         /// </summary>
         public string AppName => System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
 
+        /// <summary>
+        /// 定时任务
+        /// </summary>
         public WatcherJobUtil FWatcher { get; private set; }
+
+        /// <summary>
+        /// 加载背景图片
+        /// </summary>
+        public Action ReloadBackground { get; set; }
         #endregion
 
         #region 引擎方法
@@ -71,7 +79,6 @@ namespace BingWallpaper
             }
             return false;
         }
-
         #endregion
 
         #region 私有方法

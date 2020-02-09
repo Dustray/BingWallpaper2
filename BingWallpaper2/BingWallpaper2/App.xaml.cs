@@ -84,6 +84,7 @@ namespace BingWallpaper
                 //    }
                 //});
                 //System.Threading.Thread.Sleep(3000);  
+                MessageBox.Show("程序已在运行中，请勿重复开启","提醒");
                 System.Environment.Exit(0);
             }
         }

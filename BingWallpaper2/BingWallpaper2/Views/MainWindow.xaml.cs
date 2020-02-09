@@ -31,6 +31,7 @@ namespace BingWallpaper
         public MainWindow()
         {
             InitializeComponent();
+            SuperEngine.Current.ReloadBackground = SetAppBackground;
             CoreEngine.Current.Logger.Info("============主界面启动，UI初始化开始============");
             InitializeUI();
             CoreEngine.Current.Logger.Info("============主界面启动，UI初始化结束============");
@@ -57,34 +58,42 @@ namespace BingWallpaper
             cbWallpaperStyle.DisplayMemberPath = "Name";
             cbWallpaperStyle.SelectedIndex = CoreEngine.Current.WallpaperStyleList.ToList().FindIndex(s => s.Type == CoreEngine.Current.AppSetting.GetStyleMode);
 
-            Bitmap bitmap = null;
-            using (var work = new BackgroundWorker())
-            {
-                work.RunWorkerCompleted += new RunWorkerCompletedEventHandler((object work_sender, RunWorkerCompletedEventArgs work_e) =>
-                {
-                    if (null == bitmap)
-                    {
-                        CoreEngine.Current.Logger.Info("获取图片资源失败");
-                        Alert.Show("获取图片资源失败", AlertTheme.Error);
-                        return;
-                    }
-                    CoreEngine.Current.Logger.Info("获取图片资源成功");
-                    tbImageCopyright.ToolTip = tbImageCopyright.Text = CoreEngine.Current.AppSetting.GetCopyright;
-                    ImgPreview.Source = new WPFSupportFormat().ChangeBitmapToImageSource(bitmap);
-                    bitmap?.Dispose();
-                });
-                work.DoWork += new DoWorkEventHandler((object work_sender, DoWorkEventArgs work_e) =>
-                {
-                    bitmap = CoreEngine.Current.GetWallpaperImage();
-                });
-                work.RunWorkerAsync();
-            }
+            SetAppBackground();
             //ImgPreview.Source = new WPFSupportFormat().ChangeBitmapToImageSource( CoreEngine.Current.GetWallpaperImage());
             _doNotInvokeCheckMethod = false;
             PackUp(_isPackUp);
 
             //设置托盘图标
             taskBarUtil = new TaskBarUtil(this);
+        }
+
+        private void SetAppBackground()
+        {
+            this.Dispatcher.Invoke(new Action(() =>
+            {
+                Bitmap bitmap = null;
+                using (var work = new BackgroundWorker())
+                {
+                    work.RunWorkerCompleted += new RunWorkerCompletedEventHandler((object work_sender, RunWorkerCompletedEventArgs work_e) =>
+                    {
+                        if (null == bitmap)
+                        {
+                            CoreEngine.Current.Logger.Info("获取图片资源失败");
+                            Alert.Show("获取图片资源失败", AlertTheme.Error);
+                            return;
+                        }
+                        CoreEngine.Current.Logger.Info("获取图片资源成功");
+                        tbImageCopyright.ToolTip = tbImageCopyright.Text = CoreEngine.Current.AppSetting.GetCopyright;
+                        ImgPreview.Source = new WPFSupportFormat().ChangeBitmapToImageSource(bitmap);
+                        bitmap?.Dispose();
+                    });
+                    work.DoWork += new DoWorkEventHandler((object work_sender, DoWorkEventArgs work_e) =>
+                    {
+                        bitmap = CoreEngine.Current.GetWallpaperImage();
+                    });
+                    work.RunWorkerAsync();
+                }
+            }));
         }
 
         /// <summary>
