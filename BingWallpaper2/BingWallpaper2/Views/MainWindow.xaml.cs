@@ -68,7 +68,8 @@ namespace BingWallpaper
                         Alert.Show("获取图片资源失败", AlertTheme.Error);
                         return;
                     }
-                    CoreEngine.Current.Logger.Info("获取图片资源成功"); 
+                    CoreEngine.Current.Logger.Info("获取图片资源成功");
+                    tbImageCopyright.ToolTip = tbImageCopyright.Text = CoreEngine.Current.AppSetting.GetCopyright;
                     ImgPreview.Source = new WPFSupportFormat().ChangeBitmapToImageSource(bitmap);
                     bitmap?.Dispose();
                 });

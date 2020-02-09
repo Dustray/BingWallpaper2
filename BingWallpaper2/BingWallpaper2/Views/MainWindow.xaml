@@ -58,6 +58,7 @@
                 </Grid>
             </StackPanel>
         </Grid>
+        <TextBlock Name="tbImageCopyright"  VerticalAlignment="Bottom" Margin="10 10 10 60" Foreground="#77ffffff" TextTrimming="CharacterEllipsis" />
         <Border VerticalAlignment="Bottom" Margin="10" CornerRadius="8" Background="#9fff">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="10" Color="#6888" Direction="270" ShadowDepth="1"/>

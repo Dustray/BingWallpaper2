@@ -13,6 +13,7 @@ namespace BingWallpaper.Core
         /// <summary>
         /// 获取图片路径
         /// </summary>
+        /// <param name="days">倒数第几天</param>
         /// <returns></returns>
         public string GetBingURL(int days = 0)
         {
@@ -32,13 +33,23 @@ namespace BingWallpaper.Core
                         XmlString = myStreamReader.ReadToEnd();
                     }
                 }
+                //===------
                 // 定义正则表达式用来匹配标签
                 Regex regImg = new Regex("<Url>(?<imgUrl>.*?)</Url>", RegexOptions.IgnoreCase);
                 // 搜索匹配的字符串
                 MatchCollection matches = regImg.Matches(XmlString);
                 // 取得匹配项列表
                 ImageUrl = "http://www.bing.com" + matches[0].Groups["imgUrl"].Value;
-
+                //===------
+                // 定义正则表达式用来匹配标签
+                Regex regCopyright = new Regex("<copyright>(?<imgCopyright>.*?)</copyright>", RegexOptions.IgnoreCase);
+                // 搜索匹配的字符串
+                MatchCollection matchesCopyright = regCopyright.Matches(XmlString);
+                // 取得匹配项列表
+                var copyright =  matchesCopyright[0].Groups["imgCopyright"].Value;
+                if(days==0)
+                    CoreEngine.Current.AppSetting.SetCopyright(copyright);
+                //===------
                 if (CoreEngine.Current.AppSetting.GetSizeMode == Model.ImageSizeType._720p)
                 {
                     ImageUrl = ImageUrl.Replace("1920x1080", "1366x768");
@@ -113,7 +124,7 @@ namespace BingWallpaper.Core
         /// </summary>
         /// <param name="forceFromWeb">强制从网络获取</param>
         /// <returns></returns>
-        public Bitmap GetWallpaperImage(bool forceFromWeb = false)
+        public Bitmap GetWallpaperImage( bool forceFromWeb = false)
         {
             var imageFolderPath = CoreEngine.Current.AppSetting.GetImagePath();
             var imageFilePath = Path.Combine(imageFolderPath, $"bing{DateTime.Now.ToString("yyyyMMdd")}.jpg");
@@ -123,7 +134,9 @@ namespace BingWallpaper.Core
                 CoreEngine.Current.Logger.Info($"本地未检测到图片，启用网络下载");
                 var bingUrl = GetBingURL();
                 if (string.IsNullOrEmpty(bingUrl))
+                {
                     return null;
+                }
                 var webreq = (HttpWebRequest)WebRequest.Create(bingUrl);
                 webreq.Method = "Get";
                 try
@@ -161,6 +174,7 @@ namespace BingWallpaper.Core
                     CoreEngine.Current.Logger.Error(e, $"获取本地Bitmap文件失败");
                     return null;//文件读取失败
                 }
+
                 return bitmap;
             }
         }

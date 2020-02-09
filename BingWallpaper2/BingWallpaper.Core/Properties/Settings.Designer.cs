@@ -106,5 +106,17 @@ namespace BingWallpaper.Core.Properties {
                 this["AppFirstStart"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TodayImageCopyright {
+            get {
+                return ((string)(this["TodayImageCopyright"]));
+            }
+            set {
+                this["TodayImageCopyright"] = value;
+            }
+        }
     }
 }

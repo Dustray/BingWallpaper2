@@ -130,7 +130,7 @@ namespace BingWallpaper.Core
         /// </summary>
         /// <param name="forceFromWeb">强制从网络获取</param>
         /// <returns></returns>
-        public Bitmap GetWallpaperImage(bool forceFromWeb = false)
+        public Bitmap GetWallpaperImage( bool forceFromWeb = false)
         {
             Current.Logger.Info($"获取桌面壁纸Bitmap");
             return new WallpaperManager().GetWallpaperImage(forceFromWeb);

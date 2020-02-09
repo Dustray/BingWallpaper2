@@ -130,6 +130,21 @@ namespace BingWallpaper.Core.Utilities
             }
             return false;
         }
+
+        /// <summary>
+        /// 获取图片信息
+        /// </summary>
+        public string GetCopyright => Settings.Default.TodayImageCopyright;
+
+        /// <summary>
+        /// 设置图片信息
+        /// </summary>
+        /// <param name="copyright"></param>
+        public void SetCopyright(string  copyright)
+        {
+            Settings.Default.TodayImageCopyright = copyright;
+            Settings.Default.Save();
+        }
         #region 私有方法
 
         /// <summary>
