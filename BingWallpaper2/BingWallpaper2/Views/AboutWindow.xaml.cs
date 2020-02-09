@@ -81,5 +81,12 @@ namespace BingWallpaper
         {
             DragMove();
         }
+
+        private void tbOpenGithub_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            var proc = new Process();
+            proc.StartInfo.FileName = "https://github.com/Dustray";
+            proc.Start();
+        }
     }
 }
