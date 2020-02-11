@@ -12,7 +12,7 @@ namespace BingWallpaperAuto
     {
         static void Main(string[] args)
         {
-            CoreEngine.Current.Logger.Info($"开机自动设置壁纸：当前日期{DateTime.Now}");
+            CoreEngine.Current.Logger.Info($"开机自动设置壁纸：开始【当前日期{DateTime.Now}】");
 
             try
             {
@@ -20,11 +20,10 @@ namespace BingWallpaperAuto
             }
             catch (Exception e)
             {
-                CoreEngine.Current.Logger.Error(e, $"开机自动设置壁纸失败");
+                CoreEngine.Current.Logger.Error(e, $"开机自动设置壁纸：失败");
                 //MessageBox.Show("失败" + e.ToString());
-                return;
             }
-            CoreEngine.Current.Logger.Info($"开机自动设置壁纸成功");
+            CoreEngine.Current.Logger.Info($"开机自动设置壁纸：结束");
         }
     }
 }

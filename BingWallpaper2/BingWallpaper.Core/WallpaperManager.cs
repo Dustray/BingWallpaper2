@@ -41,14 +41,18 @@ namespace BingWallpaper.Core
                 // 取得匹配项列表
                 ImageUrl = "http://www.bing.com" + matches[0].Groups["imgUrl"].Value;
                 //===------
-                // 定义正则表达式用来匹配标签
-                Regex regCopyright = new Regex("<copyright>(?<imgCopyright>.*?)</copyright>", RegexOptions.IgnoreCase);
-                // 搜索匹配的字符串
-                MatchCollection matchesCopyright = regCopyright.Matches(XmlString);
-                // 取得匹配项列表
-                var copyright =  matchesCopyright[0].Groups["imgCopyright"].Value;
-                if(days==0)
+                if (days == 0)//保存copyright
+                {
+                    CoreEngine.Current.Logger.Info("Bing查询接口：保存Image Copyright");
+                    // 定义正则表达式用来匹配标签
+                    Regex regCopyright = new Regex("<copyright>(?<imgCopyright>.*?)</copyright>", RegexOptions.IgnoreCase);
+                    // 搜索匹配的字符串
+                    MatchCollection matchesCopyright = regCopyright.Matches(XmlString);
+                    // 取得匹配项列表
+                    var copyright = matchesCopyright[0].Groups["imgCopyright"].Value;
                     CoreEngine.Current.AppSetting.SetCopyright(copyright);
+                    CoreEngine.Current.Logger.Info($"Bing查询接口：Copyright:{copyright}");
+                }
                 //===------
                 if (CoreEngine.Current.AppSetting.GetSizeMode == Model.ImageSizeType._720p)
                 {
