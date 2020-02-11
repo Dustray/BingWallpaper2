@@ -39,11 +39,13 @@ namespace BingWallpaper
             if (isFirstRun)
             {
                 Core.CoreEngine.Current.Logger.Info($"程序安装或升级后第一次启动");
+#if !DEBUG
                 var re = LikUtil.FastCreate(true);
+#endif
             }
         }
 
-        #region 检测程序是否重复执行
+#region 检测程序是否重复执行
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -111,6 +113,6 @@ namespace BingWallpaper
             return null;
         }
 
-        #endregion
+#endregion
     }
 }

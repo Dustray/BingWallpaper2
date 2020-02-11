@@ -55,7 +55,7 @@ namespace BingWallpaper
         /// <summary>
         /// 加载背景图片
         /// </summary>
-        public Action ReloadBackground { get; set; }
+        public Action<bool> ReloadBackground { get; set; }
         #endregion
 
         #region 引擎方法

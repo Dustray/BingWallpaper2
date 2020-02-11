@@ -71,7 +71,7 @@
                     <ColumnDefinition Width="150"></ColumnDefinition>
                     <ColumnDefinition Width="150"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="70"></ColumnDefinition>
                     <ColumnDefinition Width="110"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <ComboBox Name="cbImageSize" Grid.Row="0" Grid.Column="0" Margin="6,6,3,6" Background="#9fff" VerticalContentAlignment="Center" FontSize="14" SelectionChanged="cbImageSize_SelectionChanged">
@@ -87,6 +87,7 @@
                     <ComboBoxItem Content="居中" Tag="5"/>
                     <ComboBoxItem Content="跨区" Tag="6"/>-->
                 </ComboBox>
+                <Button Name="btnReflush" Grid.Row="0" Grid.Column="3" Margin="3,6,6,6" Cursor="Hand" Background="#9fff" Content="刷新" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" FontSize="14"  Click="btnReflush_Click"/>
                 <Button Name="btnSetWallpaper" Grid.Row="0" Grid.Column="4" Margin="3,6,6,6" Cursor="Hand" Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Content="设为壁纸" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" FontSize="14" Click="btnSetWallpaper_Click" />
             </Grid>
         </Border>

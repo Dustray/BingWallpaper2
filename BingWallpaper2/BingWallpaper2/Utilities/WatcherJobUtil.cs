@@ -45,7 +45,7 @@ namespace BingWallpaper.Utilities
         {
             REG.Schedule(() => {
                 CoreEngine.Current.SetWallpaperAsync();
-                SuperEngine.Current.ReloadBackground?.Invoke();
+                SuperEngine.Current.ReloadBackground?.Invoke(false);
             })
             //.ToRunOnceAt(0, 30)
             //.AndEvery(6)

@@ -67,7 +67,7 @@ namespace BingWallpaper
             taskBarUtil = new TaskBarUtil(this);
         }
 
-        private void SetAppBackground()
+        private void SetAppBackground(bool force = false)
         {
             this.Dispatcher.Invoke(new Action(() =>
             {
@@ -89,7 +89,7 @@ namespace BingWallpaper
                     });
                     work.DoWork += new DoWorkEventHandler((object work_sender, DoWorkEventArgs work_e) =>
                     {
-                        bitmap = CoreEngine.Current.GetWallpaperImage();
+                        bitmap = CoreEngine.Current.GetWallpaperImage(force);
                     });
                     work.RunWorkerAsync();
                 }
@@ -372,5 +372,16 @@ namespace BingWallpaper
         }
         #endregion
 
+        /// <summary>
+        /// 刷新按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnReflush_Click(object sender, RoutedEventArgs e)
+        {
+            CoreEngine.Current.Logger.Info("============刷新按钮点击，UI初始化开始============");
+            SetAppBackground(true);
+            CoreEngine.Current.Logger.Info("============刷新按钮点击，UI初始化结束============");
+        }
     }
 }

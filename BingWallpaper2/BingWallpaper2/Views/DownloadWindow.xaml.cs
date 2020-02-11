@@ -181,6 +181,8 @@ namespace BingWallpaper
                 btnDownload.Content = "开始下载";
                 btnDownload.IsEnabled = true;
                 Alert.Show("下载完成", AlertTheme.Success);
+                var localImageCount = new FileUtil().GetLocalImagesUrl().Count;
+                tbPicCount.Text = $"本地：{localImageCount}张";
             }));
         }
         #endregion
