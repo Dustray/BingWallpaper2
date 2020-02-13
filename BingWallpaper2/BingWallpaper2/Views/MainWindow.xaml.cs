@@ -67,7 +67,7 @@ namespace BingWallpaper
             taskBarUtil = new TaskBarUtil(this);
         }
 
-        private void SetAppBackground(bool force = false)
+        private void SetAppBackground(bool force = false,bool showSuccess = false)
         {
             this.Dispatcher.Invoke(new Action(() =>
             {
@@ -85,6 +85,10 @@ namespace BingWallpaper
                         CoreEngine.Current.Logger.Info("获取图片资源成功");
                         tbImageCopyright.ToolTip = tbImageCopyright.Text = CoreEngine.Current.AppSetting.GetCopyright;
                         ImgPreview.Source = new WPFSupportFormat().ChangeBitmapToImageSource(bitmap);
+                        if (showSuccess)
+                        {
+                            Alert.Show("获取图片资源成功", AlertTheme.Success);
+                        }
                         bitmap?.Dispose();
                     });
                     work.DoWork += new DoWorkEventHandler((object work_sender, DoWorkEventArgs work_e) =>
@@ -267,6 +271,18 @@ namespace BingWallpaper
             // dw.Owner = this;
             dw.Show();
         }
+
+        /// <summary>
+        /// 刷新按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnReflush_Click(object sender, RoutedEventArgs e)
+        {
+            CoreEngine.Current.Logger.Info("============刷新按钮点击，UI初始化开始============");
+            SetAppBackground(true, true);
+            CoreEngine.Current.Logger.Info("============刷新按钮点击，UI初始化结束============");
+        }
         /// <summary>
         /// 收起/展开按钮点击事件
         /// </summary>
@@ -372,16 +388,5 @@ namespace BingWallpaper
         }
         #endregion
 
-        /// <summary>
-        /// 刷新按钮点击事件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnReflush_Click(object sender, RoutedEventArgs e)
-        {
-            CoreEngine.Current.Logger.Info("============刷新按钮点击，UI初始化开始============");
-            SetAppBackground(true);
-            CoreEngine.Current.Logger.Info("============刷新按钮点击，UI初始化结束============");
-        }
     }
 }

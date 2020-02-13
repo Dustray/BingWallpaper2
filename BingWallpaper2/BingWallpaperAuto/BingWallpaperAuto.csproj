@@ -77,6 +77,10 @@
     <Content Include="logo.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BingWallpaper.Alert\BingWallpaper.Popup.csproj">
+      <Project>{1A9AB089-A9CC-45AF-BFC7-7643065290D1}</Project>
+      <Name>BingWallpaper.Popup</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BingWallpaper.Core\BingWallpaper.Core.csproj">
       <Project>{ACD252D2-B005-4CA4-8B2D-648E4128D099}</Project>
       <Name>BingWallpaper.Core</Name>
