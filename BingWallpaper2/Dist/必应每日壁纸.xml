@@ -69,6 +69,21 @@
             当前程序版本
             </summary>
         </member>
+        <member name="P:BingWallpaper.SuperEngine.AppName">
+            <summary>
+            获取程序名称
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.SuperEngine.FWatcher">
+            <summary>
+            定时任务
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.SuperEngine.ReloadBackground">
+            <summary>
+            加载背景图片
+            </summary>
+        </member>
         <member name="M:BingWallpaper.SuperEngine.IsVersionNewer(System.String)">
             <summary>
             是否存在更新
@@ -85,6 +100,56 @@
             <summary>
             初始化腾讯云配置
             </summary>
+        </member>
+        <member name="T:BingWallpaper.Utilities.AppStartUtil">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BingWallpaper.Utilities.AppStartUtil.CreateOrderCenter">
+            <summary>
+            创建命令实体
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BingWallpaper.Utilities.AppStartUtil.Run(System.String)">
+            <summary>
+            执行命令模式
+            </summary>
+            <param name="order"></param>
+        </member>
+        <member name="M:BingWallpaper.Utilities.AppStartUtil.RunAsAdminWithOrder(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="order"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BingWallpaper.Utilities.AppStartUtil.Dispose">
+            <summary>
+            释放
+            </summary>
+        </member>
+        <member name="T:BingWallpaper.Utilities.LikUtil">
+            <summary>
+            创建桌面快捷方式
+            </summary>
+        </member>
+        <member name="M:BingWallpaper.Utilities.LikUtil.FastCreate(System.Boolean)">
+            <summary>
+            快速创建
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BingWallpaper.Utilities.LikUtil.CreateDeskTopLik(System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            创建桌面快捷方式
+            </summary>
+            <param name="name">目标名称</param>
+            <param name="description">目标描述</param>
+            <param name="targetFilePath">源文件路径</param>
+            <param name="logoName">logo名称</param>
+            <returns></returns>
         </member>
         <member name="T:BingWallpaper.Utilities.TaskBarUtil">
             <summary>
@@ -142,13 +207,15 @@
             设置注册表壁纸样式
             </summary>
         </member>
-        <member name="M:BingWallpaper.Utilities.RegeditUtil.SetAutoRun(System.Boolean)">
+        <member name="M:BingWallpaper.Utilities.RegeditUtil.SetAutoSet(System.String,System.Boolean)">
             <summary>
             设置程序开机自动运行，添加进注册表
             </summary>
+            <param name="key"></param>
             <param name="autoRun"></param>
+            <returns></returns>
         </member>
-        <member name="M:BingWallpaper.Utilities.RegeditUtil.GetAutoRun">
+        <member name="M:BingWallpaper.Utilities.RegeditUtil.GetAutoSet(System.String)">
             <summary>
             查询注册表，获取程序是否开机自动运行
             </summary>
@@ -196,6 +263,20 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
+        <member name="M:BingWallpaper.AboutWindow.tbOpenQQ_MouseUp(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            打开QQ按钮点击事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:BingWallpaper.AboutWindow.tbOpenVicold_MouseUp(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            打开导航网站按钮点击事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
         <member name="M:BingWallpaper.AboutWindow.BtnClose_Click(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
             关闭窗体按钮点击事件
@@ -204,6 +285,102 @@
             <param name="e"></param>
         </member>
         <member name="M:BingWallpaper.AboutWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:BingWallpaper.DownloadWindow">
+            <summary>
+            DownloadWindow.xaml 的交互逻辑
+            </summary>
+            <summary>
+            DownloadWindow
+            </summary>
+        </member>
+        <member name="M:BingWallpaper.DownloadWindow.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BingWallpaper.DownloadWindow.HeadBar_MouseLeftButtonDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            左键拖动穿透
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:BingWallpaper.DownloadWindow.BtnClose_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            关闭按钮点击事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:BingWallpaper.DownloadWindow.btnDownload_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            下载按钮点击事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:BingWallpaper.DownloadWindow.upload_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            右键下载
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:BingWallpaper.DownloadWindow.ListLbi">
+            <summary>
+            ListBox添加item
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BingWallpaper.DownloadWindow.ShowLog(System.String,System.String,System.Int32)">
+            <summary>
+            更新日志
+            </summary>
+            <param name="file"></param>
+            <param name="progress"></param>
+        </member>
+        <member name="M:BingWallpaper.DownloadWindow.Download(System.DateTime,System.DateTime)">
+            <summary>
+            下载
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+        </member>
+        <member name="M:BingWallpaper.DownloadWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:BingWallpaper.SettingWindow">
+            <summary>
+            SettingWindow.xaml 的交互逻辑
+            </summary>
+            <summary>
+            SettingWindow
+            </summary>
+        </member>
+        <member name="M:BingWallpaper.SettingWindow.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BingWallpaper.SettingWindow.Show">
+            <summary>
+            显示
+            </summary>
+        </member>
+        <member name="M:BingWallpaper.SettingWindow.btnChoosePath_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            选择路径按钮点击事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:BingWallpaper.SettingWindow.InitializeComponent">
             <summary>
             InitializeComponent
             </summary>
@@ -278,6 +455,25 @@
             App
             </summary>
         </member>
+        <member name="M:BingWallpaper.App.OnStartup(System.Windows.StartupEventArgs)">
+            <summary>
+            程序启动
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:BingWallpaper.App.ShowWindowAsync(System.IntPtr,System.Int32)">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="M:BingWallpaper.App.SetForegroundWindow(System.IntPtr)">
+            <summary>  
+             该函数将创建指定窗口的线程设置到前台，并且激活该窗口。键盘输入转向该窗口，并为用户改各种可视的记号。  
+             系统给创建前台窗口的线程分配的权限稍高于其他线程。   
+            </summary>  
+            <param name="hWnd">将被激活并被调入前台的窗口句柄</param>  
+            <returns>如果窗口设入了前台，返回值为非零；如果窗口未被设入前台，返回值为零</returns>  
+        </member>
         <member name="M:BingWallpaper.App.InitializeComponent">
             <summary>
             InitializeComponent
@@ -318,13 +514,6 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:BingWallpaper.MainWindow.btnChoosePath_Click(System.Object,System.Windows.RoutedEventArgs)">
-            <summary>
-            选择路径按钮点击事件
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
-        </member>
         <member name="M:BingWallpaper.MainWindow.btnSetWallpaper_Click(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
             设置壁纸按钮点击事件
@@ -346,9 +535,9 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:BingWallpaper.MainWindow.ckbAutoRun_Checked(System.Object,System.Windows.RoutedEventArgs)">
+        <member name="M:BingWallpaper.MainWindow.BtnOpenSetting_Click(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
-            自动运行选择框事件
+            设置按钮点击事件
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
@@ -370,6 +559,27 @@
         <member name="M:BingWallpaper.MainWindow.BtnAbout_Click(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
             关于按钮点击事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:BingWallpaper.MainWindow.BtnFeedback_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            反馈按钮点击事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:BingWallpaper.MainWindow.BtnDownload_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            下载按钮点击事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:BingWallpaper.MainWindow.btnReflush_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            刷新按钮点击事件
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
@@ -441,6 +651,11 @@
             <summary>
               重写当前线程的 CurrentUICulture 属性
               重写当前线程的 CurrentUICulture 属性。
+            </summary>
+        </member>
+        <member name="P:BingWallpaper.Properties.Resources.BingWallpaperStart">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
             </summary>
         </member>
     </members>

@@ -216,10 +216,6 @@
       <Project>{1a9ab089-a9cc-45af-bfc7-7643065290d1}</Project>
       <Name>BingWallpaper.Popup</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BingWallpaper.Core\BingWallpaper.Core.csproj">
-      <Project>{ACD252D2-B005-4CA4-8B2D-648E4128D099}</Project>
-      <Name>BingWallpaper.Core</Name>
-    </ProjectReference>
     <PackageReference Include="FluentScheduler">
       <Version>5.3.0</Version>
     </PackageReference>
@@ -227,6 +223,10 @@
       <Version>4.6.8</Version>
     </PackageReference>
     <PackageReference Include="Tencent.QCloud.Cos.Sdk" Version="5.4.8" />
+    <ProjectReference Include="..\Centrum\BingWallpaper.Core\BingWallpaper.Core.csproj">
+      <Project>{acd252d2-b005-4ca4-8b2d-648e4128d099}</Project>
+      <Name>BingWallpaper.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\UpdateConfig.xml">

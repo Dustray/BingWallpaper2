@@ -81,8 +81,8 @@
       <Project>{1A9AB089-A9CC-45AF-BFC7-7643065290D1}</Project>
       <Name>BingWallpaper.Popup</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BingWallpaper.Core\BingWallpaper.Core.csproj">
-      <Project>{ACD252D2-B005-4CA4-8B2D-648E4128D099}</Project>
+    <ProjectReference Include="..\Centrum\BingWallpaper.Core\BingWallpaper.Core.csproj">
+      <Project>{acd252d2-b005-4ca4-8b2d-648e4128d099}</Project>
       <Name>BingWallpaper.Core</Name>
     </ProjectReference>
   </ItemGroup>
