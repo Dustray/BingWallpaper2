@@ -45,6 +45,8 @@ namespace BingWallpaper.Utilities
 
         private void LoadMenu()
         {
+            var imageFolderBtn = _notifyContextMenu.Items.Add("打开图片保存文件夹");
+            imageFolderBtn.Click += new EventHandler(OpenImageFolder);
 
             var setWpBtn = _notifyContextMenu.Items.Add("设置今日壁纸");
             setWpBtn.Click += new EventHandler(SetWallpaper);
@@ -89,6 +91,12 @@ namespace BingWallpaper.Utilities
             CoreEngine.Current.Logger.Info("任务栏图标点击：设置壁纸");
             CoreEngine.Current.SetWallpaperAsync();
         }
+        private void OpenImageFolder(object sender, EventArgs e)
+        {
+            string v_OpenFolderPath = CoreEngine.Current.AppSetting.GetImagePath();
+            System.Diagnostics.Process.Start("explorer.exe", v_OpenFolderPath);
+        }
+
         #endregion
 
         /// <summary>

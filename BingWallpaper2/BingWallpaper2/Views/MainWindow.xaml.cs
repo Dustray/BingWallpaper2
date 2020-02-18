@@ -58,7 +58,7 @@ namespace BingWallpaper
             cbWallpaperStyle.DisplayMemberPath = "Name";
             cbWallpaperStyle.SelectedIndex = CoreEngine.Current.WallpaperStyleList.ToList().FindIndex(s => s.Type == CoreEngine.Current.AppSetting.GetStyleMode);
 
-            SetAppBackground();
+            SetAppBackground(true,false);
             //ImgPreview.Source = new WPFSupportFormat().ChangeBitmapToImageSource( CoreEngine.Current.GetWallpaperImage());
             _doNotInvokeCheckMethod = false;
             PackUp(_isPackUp);
@@ -67,6 +67,11 @@ namespace BingWallpaper
             taskBarUtil = new TaskBarUtil(this);
         }
 
+        /// <summary>
+        /// 设置应用背景
+        /// </summary>
+        /// <param name="force">强制从网络获取</param>
+        /// <param name="showSuccess">显示获取成功弹框</param>
         private void SetAppBackground(bool force = false,bool showSuccess = false)
         {
             this.Dispatcher.Invoke(new Action(() =>
