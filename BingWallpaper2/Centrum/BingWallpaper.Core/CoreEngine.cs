@@ -90,7 +90,7 @@ namespace BingWallpaper.Core
             Current.Logger.Info($"设置桌面壁纸（异步）");
 
             var locker = new object();
-            var isSuccess = false; ;
+            var isSuccess = false;
             using (var work = new BackgroundWorker())
             {
                 work.RunWorkerCompleted += new RunWorkerCompletedEventHandler((object work_sender, RunWorkerCompletedEventArgs work_e) =>
@@ -130,7 +130,7 @@ namespace BingWallpaper.Core
         /// </summary>
         /// <param name="forceFromWeb">强制从网络获取</param>
         /// <returns></returns>
-        public Bitmap GetWallpaperImage( bool forceFromWeb = false)
+        public Bitmap GetWallpaperImage(bool forceFromWeb = false)
         {
             Current.Logger.Info($"获取桌面壁纸Bitmap");
             return new WallpaperManager().GetWallpaperImage(forceFromWeb);

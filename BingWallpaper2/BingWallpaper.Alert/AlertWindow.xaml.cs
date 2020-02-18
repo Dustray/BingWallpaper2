@@ -18,6 +18,7 @@ namespace BingWallpaper.Popup
         private Timer timer;
         private int _timerTount = 0;
         private AlertConfig _alertConfig;
+        private Action _onWindowCloseCallback;
 
         /// <summary>
         /// 弹框窗体
@@ -92,15 +93,22 @@ namespace BingWallpaper.Popup
                 animation.To = topPosition;
                 self.BeginAnimation(TopProperty, animation);//设定动画应用于窗体的Left属性
 
-                _timerTount = 0;
-                timer = new Timer();
-                timer.Enabled = true;
-                timer.Interval = 100;//执行间隔时间,单位为毫秒;此时时间间隔为1分钟  
-                timer.Elapsed += new ElapsedEventHandler(OnTimerCallback);
-                timer.Start();
+                if (-1 != _alertConfig.AlertShowDuration)//-1时永久显示
+                {
+                    _timerTount = 0;
+                    timer = new Timer();
+                    timer.Enabled = true;
+                    timer.Interval = 100;//执行间隔时间,单位为毫秒;此时时间间隔为1分钟  
+                    timer.Elapsed += new ElapsedEventHandler(OnTimerCallback);
+                    timer.Start();
+                }
             }
         }
 
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            _onWindowCloseCallback?.Invoke();
+        }
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
@@ -109,14 +117,43 @@ namespace BingWallpaper.Popup
 
         private void Window_MouseEnter(object sender, MouseEventArgs e)
         {
+            if (null == timer) return;
             timer.Enabled = false;
         }
 
         private void Window_MouseLeave(object sender, MouseEventArgs e)
         {
+            if (null == timer) return;
             timer.Enabled = true;
         }
 
+        /// <summary>
+        /// 关闭按钮鼠标进入事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnClose_MouseEnter(object sender, MouseEventArgs e)
+        {
+            btnClose.Content = ((char)0xE96D).ToString() ;
+        }
+
+        /// <summary>
+        /// 关闭按钮鼠标移出事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnClose_MouseLeave(object sender, MouseEventArgs e)
+        {
+            btnClose.Content = ((char)0xEF2D).ToString();
+        }
+        #endregion
+
+        #region 交互方法
+
+        public void SetOnWindowCloseCallback(Action onWindowCloseCallback)
+        {
+            _onWindowCloseCallback = onWindowCloseCallback;
+        }
         #endregion
 
         #region 自动关闭
@@ -132,6 +169,9 @@ namespace BingWallpaper.Popup
         {
             win.Dispatcher.Invoke(a);
         }
+        /// <summary>
+        /// 关闭窗体
+        /// </summary>
         public void CloseAlert()
         {
             DoubleAnimation animation = new DoubleAnimation();
@@ -156,14 +196,5 @@ namespace BingWallpaper.Popup
             }
         }
 
-        private void btnClose_MouseEnter(object sender, MouseEventArgs e)
-        {
-            btnClose.Content = ((char)0xE96D).ToString() ;
-        }
-
-        private void btnClose_MouseLeave(object sender, MouseEventArgs e)
-        {
-            btnClose.Content = ((char)0xEF2D).ToString();
-        }
     }
 }

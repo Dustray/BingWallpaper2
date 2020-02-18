@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BingWallpaper.Popup"
         mc:Ignorable="d"
-        Title="AlertWindow" Window.SizeToContent="Height" Width="500" Loaded="Window_Loaded"  Topmost="True"
+        Title="AlertWindow" Window.SizeToContent="Height" Width="500" Loaded="Window_Loaded" Closed="Window_Closed" Topmost="True"
         Background="{x:Null}" Visibility="Visible" AllowsTransparency="True" WindowStyle="None" MouseEnter="Window_MouseEnter" MouseLeave="Window_MouseLeave">
     <Border Name="MainBorder" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Margin="20 0 20 20" CornerRadius="0 0 10 10">
         <Border.Effect>

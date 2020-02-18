@@ -17,7 +17,7 @@ namespace BingWallpaper.Popup
         public long AnimationDuration { get; set; } = 100;
 
         /// <summary>
-        /// Alert持续显示时间，计时关闭，默认3000毫秒
+        /// Alert持续显示时间，计时关闭，默认3000毫秒，值为-1则永久显示
         /// </summary>
         public long AlertShowDuration { get; set; } = 3000;
 

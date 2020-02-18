@@ -11,20 +11,19 @@ namespace Update
     {
         static void Main(string[] args)
         {
+            var programPath = Application.StartupPath;
             var model = LoadConfig();
             if (null == model)
             {
                 MessageBox.Show("更新失败，未找到配置文件。");
                 return;
             }
-            var filePath = Path.GetFullPath(model.SourceFile/*@"Temp\newupdate.ztmp"*/);
+            var filePath = Path.Combine(programPath, model.SourceFile/*@"Temp\newupdate.ztmp"*/);
             if (!File.Exists(filePath))
             {
                 MessageBox.Show("更新失败，未找到更新文件。");
                 return;
             }
-            var programPath = Environment.CurrentDirectory;
-            var unzipPath = programPath;
             if (IntPtr.Size == 4)
             {
                 SevenZipExtractor.SetLibraryPath(model.dllx86/*@"x86\7z.dll"*/);
@@ -46,9 +45,9 @@ namespace Update
                         {
                             try
                             {
-                                tmp.ExtractFiles(unzipPath, tmp.ArchiveFileData[i].Index);
+                                tmp.ExtractFiles(programPath, tmp.ArchiveFileData[i].Index);
                             }
-                            catch
+                            catch(Exception e)
                             {
 
                             }
@@ -56,7 +55,7 @@ namespace Update
                         try
                         {
                             Process m_Process = new Process();
-                            m_Process.StartInfo.FileName = Path.GetFullPath(model.LauncherProgram/*$"BingWallpaper2.exe"*/);
+                            m_Process.StartInfo.FileName = Path.Combine(programPath, model.LauncherProgram/*$"BingWallpaper2.exe"*/);
                             m_Process.Start();
                             Environment.Exit(0);
                         }
@@ -88,7 +87,7 @@ namespace Update
             string line;
             try
             {
-                using (var file = new StreamReader(Path.Combine(@"Config\SevenZipConfig.cfg")))
+                using (var file = new StreamReader(Path.Combine(Application.StartupPath,@"Config\SevenZipConfig.cfg")))
                 {
                     while ((line = file.ReadLine()) != null)
                     {

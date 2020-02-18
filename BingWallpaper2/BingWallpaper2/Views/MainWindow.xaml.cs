@@ -154,9 +154,34 @@ namespace BingWallpaper
             taskBarUtil.Dispose();
         }
 
+
+        /// <summary>
+        /// 窗体状态变化事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_StateChanged(object sender, System.EventArgs e)
+        {
+            var w = sender as Window;
+            var state = w.WindowState;
+            if (state == WindowState.Normal)
+            {
+                BtnMaxi.Content = ((char)0xEF2E).ToString();
+                BtnMaxi.ToolTip = "最大化";
+                _isWindowNormal = true;
+            }
+            else if (state == WindowState.Maximized)
+            {
+                BtnMaxi.Content = ((char)0xEF2F).ToString();
+                BtnMaxi.ToolTip = "向下还原";
+                _isWindowNormal = false;
+            }
+        }
         #endregion
 
         #region 成员事件
+
+        #region 下方控件
 
         /// <summary>
         /// 设置壁纸按钮点击事件
@@ -193,6 +218,22 @@ namespace BingWallpaper
             CoreEngine.Current.AppSetting.SetStyleMode(item.Type);
             new RegeditUtil().SetWallpaperStyle(item.Type);
         }
+
+        /// <summary>
+        /// 刷新按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnReflush_Click(object sender, RoutedEventArgs e)
+        {
+            CoreEngine.Current.Logger.Info("============刷新按钮点击，UI初始化开始============");
+            SetAppBackground(true, true);
+            CoreEngine.Current.Logger.Info("============刷新按钮点击，UI初始化结束============");
+        }
+
+        #endregion
+
+        #region 左上方工具栏
 
         /// <summary>
         /// 设置按钮点击事件
@@ -253,17 +294,6 @@ namespace BingWallpaper
             about.ShowInTaskbar = false;
             about.Show();
         }
-        /// <summary>
-        /// 反馈按钮点击事件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnFeedback_Click(object sender, RoutedEventArgs e)
-        {
-            var proc = new Process();
-            proc.StartInfo.FileName = "https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAO__cwTRKlUOUFMOVJHRlhTMDhZUDRRU05YMzlHOTFDNy4u";
-            proc.Start();
-        }
 
         /// <summary>
         /// 下载按钮点击事件
@@ -276,19 +306,7 @@ namespace BingWallpaper
             // dw.Owner = this;
             dw.Show();
         }
-
-        /// <summary>
-        /// 刷新按钮点击事件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnReflush_Click(object sender, RoutedEventArgs e)
-        {
-            CoreEngine.Current.Logger.Info("============刷新按钮点击，UI初始化开始============");
-            SetAppBackground(true, true);
-            CoreEngine.Current.Logger.Info("============刷新按钮点击，UI初始化结束============");
-        }
-        /// <summary>
+/// <summary>
         /// 收起/展开按钮点击事件
         /// </summary>
         /// <param name="sender"></param>
@@ -298,15 +316,22 @@ namespace BingWallpaper
             PackUp(_isPackUp);
         }
 
+        #endregion
+
+        #region 右上方按钮
+
         /// <summary>
-        /// 背景图片拖拽事件
+        /// 反馈按钮点击事件
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ImgPreview_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void BtnFeedback_Click(object sender, RoutedEventArgs e)
         {
-            DragMove();
+            var proc = new Process();
+            proc.StartInfo.FileName = "https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAO__cwTRKlUOUFMOVJHRlhTMDhZUDRRU05YMzlHOTFDNy4u";
+            proc.Start();
         }
+
         /// <summary>
         /// 关闭按钮点击事件
         /// </summary>
@@ -324,6 +349,7 @@ namespace BingWallpaper
                 this.Visibility = Visibility.Hidden;
             }
         }
+
         /// <summary>
         /// 最大化按钮点击事件
         /// </summary>
@@ -350,31 +376,27 @@ namespace BingWallpaper
         {
             WindowState = WindowState.Minimized;
         }
+
+        #endregion
+
+        #region 其他
+
         /// <summary>
-        /// 窗体状态变化事件
+        /// 背景图片拖拽事件
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Window_StateChanged(object sender, System.EventArgs e)
+        private void ImgPreview_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            var w = sender as Window;
-            var state = w.WindowState;
-            if (state == WindowState.Normal)
-            {
-                BtnMaxi.Content = ((char)0xEF2E).ToString();
-                BtnMaxi.ToolTip = "最大化";
-                _isWindowNormal = true;
-            }
-            else if (state == WindowState.Maximized)
-            {
-                BtnMaxi.Content = ((char)0xEF2F).ToString();
-                BtnMaxi.ToolTip = "向下还原";
-                _isWindowNormal = false;
-            }
+            DragMove();
         }
+
+        #endregion
+
         #endregion
 
         #region 成员方法
+
         /// <summary>
         /// 工具栏收起/展开
         /// </summary>
@@ -391,6 +413,7 @@ namespace BingWallpaper
             BtnPackUp.Content = isPackUp ? ((char)0xF0D6).ToString() : ((char)0xF0D5).ToString();
             BtnPackUp.ToolTip = isPackUp ? "展开" : "收起";
         }
+
         #endregion
 
     }

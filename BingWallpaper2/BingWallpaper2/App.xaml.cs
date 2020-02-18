@@ -34,18 +34,18 @@ namespace BingWallpaper
                     orderUtil.Run(arg);
                 }
             }
+#if !DEBUG
             RunOrExit();
             var isFirstRun = Core.CoreEngine.Current.AppSetting.GetAppFirstStart();
             if (isFirstRun)
             {
                 Core.CoreEngine.Current.Logger.Info($"程序安装或升级后第一次启动");
-#if !DEBUG
                 var re = LikUtil.FastCreate(true);
-#endif
             }
+#endif
         }
 
-#region 检测程序是否重复执行
+        #region 检测程序是否重复执行
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -86,7 +86,7 @@ namespace BingWallpaper
                 //    }
                 //});
                 //System.Threading.Thread.Sleep(3000);  
-                MessageBox.Show("程序已在运行中，请勿重复开启","提醒");
+                MessageBox.Show("程序已在运行中，请勿重复开启", "提醒");
                 System.Environment.Exit(0);
             }
         }
@@ -113,6 +113,6 @@ namespace BingWallpaper
             return null;
         }
 
-#endregion
+        #endregion
     }
 }
