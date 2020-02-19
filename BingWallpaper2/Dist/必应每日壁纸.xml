@@ -502,6 +502,13 @@
             初始化界面
             </summary>
         </member>
+        <member name="M:BingWallpaper.MainWindow.SetAppBackground(System.Boolean,System.Boolean)">
+            <summary>
+            设置应用背景
+            </summary>
+            <param name="force">强制从网络获取</param>
+            <param name="showSuccess">显示获取成功弹框</param>
+        </member>
         <member name="M:BingWallpaper.MainWindow.CheckUpdate">
             <summary>
             检查更新
@@ -510,6 +517,13 @@
         <member name="M:BingWallpaper.MainWindow.Window_Closed(System.Object,System.EventArgs)">
             <summary>
             窗体关闭事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:BingWallpaper.MainWindow.Window_StateChanged(System.Object,System.EventArgs)">
+            <summary>
+            窗体状态变化事件
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
@@ -531,6 +545,13 @@
         <member name="M:BingWallpaper.MainWindow.cbWallpaperStyle_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
             <summary>
             壁纸模式选择事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:BingWallpaper.MainWindow.btnReflush_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            刷新按钮点击事件
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
@@ -563,23 +584,9 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:BingWallpaper.MainWindow.BtnFeedback_Click(System.Object,System.Windows.RoutedEventArgs)">
-            <summary>
-            反馈按钮点击事件
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
-        </member>
         <member name="M:BingWallpaper.MainWindow.BtnDownload_Click(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
             下载按钮点击事件
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
-        </member>
-        <member name="M:BingWallpaper.MainWindow.btnReflush_Click(System.Object,System.Windows.RoutedEventArgs)">
-            <summary>
-            刷新按钮点击事件
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
@@ -591,9 +598,9 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:BingWallpaper.MainWindow.ImgPreview_MouseLeftButtonDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+        <member name="M:BingWallpaper.MainWindow.BtnFeedback_Click(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
-            背景图片拖拽事件
+            反馈按钮点击事件
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
@@ -619,9 +626,9 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:BingWallpaper.MainWindow.Window_StateChanged(System.Object,System.EventArgs)">
+        <member name="M:BingWallpaper.MainWindow.ImgPreview_MouseLeftButtonDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
             <summary>
-            窗体状态变化事件
+            背景图片拖拽事件
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
