@@ -95,14 +95,18 @@ namespace BingWallpaper.Core
             {
                 work.RunWorkerCompleted += new RunWorkerCompletedEventHandler((object work_sender, RunWorkerCompletedEventArgs work_e) =>
                 {
+                    var alertConfig = new AlertConfig()
+                    {
+                        OnlyOneWindowAllowed = true
+                    };
                     if (isSuccess)
                     {
-                        Alert.Show("设置成功", AlertTheme.Success);
+                        Alert.Show("", "设置成功", AlertTheme.Success, alertConfig);
                         Current.Logger.Info($"设置桌面壁纸（异步）成功");
                     }
                     else
                     {
-                        Alert.Show("设置失败", AlertTheme.Error);
+                        Alert.Show("", "设置失败", AlertTheme.Error, alertConfig);
                         Current.Logger.Info($"设置桌面壁纸（异步）失败");
                     }
                 });

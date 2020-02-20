@@ -29,6 +29,9 @@ namespace BingWallpaper
             var path = CoreEngine.Current.AppSetting.GetImagePath();
             tbImageSavePath.Text = path;
             tbImageSavePath.ToolTip = path;
+            var time = CoreEngine.Current.AppSetting.GetAutoSetTime();
+            tboxSetHour.Text = time.hour.ToString();
+            tboxSetMinute.Text = time.minute.ToString();
             _doNotInvokeCheckMethod = false;
         }
 
@@ -189,6 +192,15 @@ namespace BingWallpaper
                 tbImageSavePath.ToolTip = chooseDir;
                 CoreEngine.Current.AppSetting.SetImagePath(chooseDir);
             }
+        }
+
+        private void btnSetTimeSave_Click(object sender, RoutedEventArgs e)
+        {
+            var hour = int.Parse(tboxSetHour.Text.ToString());
+            var minute = int.Parse(tboxSetMinute.Text.ToString());
+            CoreEngine.Current.AppSetting.SetAutoSetTime(hour, minute);
+            SuperEngine.Current.FWatcher.ResetTask();
+            Alert.Show("", "已保存", AlertTheme.Default, new AlertConfig() { OnlyOneWindowAllowed = true });
         }
     }
 }

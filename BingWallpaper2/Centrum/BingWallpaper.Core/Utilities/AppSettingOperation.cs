@@ -145,6 +145,43 @@ namespace BingWallpaper.Core.Utilities
             Settings.Default.TodayImageCopyright = copyright;
             Settings.Default.Save();
         }
+
+
+        /// <summary>
+        /// 获取自动设置壁纸时间
+        /// </summary>
+        public (int hour,int minute) GetAutoSetTime()
+        {
+            var timeStr = Settings.Default.AutoSetTime;
+            try
+            {
+                var hourStr = timeStr.Substring(0, 2);
+                var hour = int.Parse(hourStr);
+                var minuteStr = timeStr.Substring(2, 2);
+                var minute = int.Parse(minuteStr);
+                return (hour, minute);
+            }
+            catch(FormatException)
+            {
+                return (0, 5);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                return (0, 5);
+            }
+        }
+        /// <summary>
+        /// 设置自动设置壁纸时间
+        /// </summary>
+        /// <param name="hour"></param>
+        /// <param name="minute"></param>
+        public void SetAutoSetTime(int hour, int minute)
+        {
+            Settings.Default.AutoSetTime = $"{hour.ToString().PadLeft(2, '0')}{minute.ToString().PadLeft(2, '0')}";
+            Settings.Default.Save();
+        }
+
+
         #region 私有方法
 
         /// <summary>

@@ -103,6 +103,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CControls\NumberBox.cs" />
     <Compile Include="Models\SecretEtt.cs" />
     <Compile Include="Models\UpdateModel.cs" />
     <Compile Include="SuperEngine.cs" />

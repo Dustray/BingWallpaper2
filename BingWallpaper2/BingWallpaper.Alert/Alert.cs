@@ -92,11 +92,11 @@ namespace BingWallpaper.Popup
             {
                 return;
             }
-            //System.Windows.Application.Current.Dispatcher.Invoke((Action)(() =>
-            //{
-            _isWindowShowing = true;
-            new AlertWindow(title, content, AlertTheme, userButtonList, alertConfig).SetOnWindowCloseCallback(OnWindowClose);
-            //}));
+            System.Windows.Application.Current.Dispatcher.Invoke((Action)(() =>
+            {
+                _isWindowShowing = true;
+                new AlertWindow(title, content, AlertTheme, userButtonList, alertConfig).SetOnWindowCloseCallback(OnWindowClose);
+            }));
 
         }
 

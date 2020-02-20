@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BingWallpaper"
+        xmlns:ccontrols="clr-namespace:BingWallpaper.CControls"
         mc:Ignorable="d"
         Title="SettingWindow" Height="450" Width="450" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" Loaded="Window_Loaded" Closed="Window_Closed" Background="#FDDD" >
     <Grid >
@@ -23,13 +24,20 @@
                             <ColumnDefinition Width="70"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="C:\Program Files\BingWallpaper" TextTrimming="CharacterEllipsis"  VerticalAlignment="Center" Name="tbImageSavePath" FontSize="12" Foreground="#a000" />
-                        <Button Grid.Column="1" Name="btnChoosePath" Width="65" Content="选择目录" Style="{StaticResource SettingBtnStyle}" Cursor="Hand" HorizontalAlignment="Right" Click="btnChoosePath_Click" />
+                        <Button Grid.Column="1" Name="btnChoosePath" Width="65" Content="选择目录" Style="{StaticResource SettingBtnStyle}" HorizontalAlignment="Right" Click="btnChoosePath_Click" />
                     </Grid>
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <TextBlock Text="启动：" FontWeight="Bold"/>
                     <CheckBox Name="ckbAutoStart" Content="开机自动启动（主程序）" VerticalAlignment="Center" Margin="10" VerticalContentAlignment="Center" Background="Transparent" FontSize="14"  Foreground="#a000" Cursor="Hand" Checked="ckBoxAutoRun_Checked" Unchecked="ckBoxAutoRun_Checked" Tag="autostart" Click="ckbAutoRun_Click"/>
                     <CheckBox Name="ckbAutoSet" Content="开机自动设置壁纸" VerticalAlignment="Center" Margin="10" VerticalContentAlignment="Center" Background="Transparent" FontSize="14"  Foreground="#a000" Cursor="Hand" Checked="ckBoxAutoRun_Checked" Unchecked="ckBoxAutoRun_Checked" Tag="autoset" Click="ckbAutoRun_Click"/>
+                    <StackPanel  Margin="30 0" Orientation="Horizontal">
+                        <TextBlock Text="指定开机设置时间：" FontSize="14"  Foreground="#a000" VerticalAlignment="Center"/>
+                        <ccontrols:NumberBox x:Name="tboxSetHour" Text="0" FontSize="14"  Foreground="#a000" NumType="Int"  MaxValue="23" MinValue="0" VerticalContentAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" Width="25" Background="{x:Null}"/>
+                        <TextBlock Text=":" FontSize="14" Margin="2 0" Foreground="#a000" VerticalAlignment="Center"/>
+                        <ccontrols:NumberBox x:Name="tboxSetMinute" Text="5" FontSize="14"  Foreground="#a000" NumType="Int"  MaxValue="59" MinValue="0" VerticalContentAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" Width="25" Background="{x:Null}"/>
+                        <Button Name="btnSetTimeSave" Content="应用"  VerticalAlignment="Center" Margin="10 0" Width="50" Style="{StaticResource SettingBtnStyle}" Click="btnSetTimeSave_Click"/>
+                    </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <TextBlock Text="关闭：" FontWeight="Bold"/>
@@ -37,7 +45,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <TextBlock Text="其他：" FontWeight="Bold"/>
-                    <Button Name="btnCreateLik" Content="创建桌面快捷方式" HorizontalAlignment="Left" Margin="11 10 0 10" Width="130" Style="{StaticResource SettingBtnStyle}" Click="btnCreateLik_Click" Cursor="Hand"/>
+                    <Button Name="btnCreateLik" Content="创建桌面快捷方式" HorizontalAlignment="Left" Margin="11 10 0 10" Width="130" Style="{StaticResource SettingBtnStyle}" Click="btnCreateLik_Click"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>

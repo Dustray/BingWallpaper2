@@ -107,7 +107,7 @@ namespace BingWallpaper.Core
                 }
                 catch (Exception e)
                 {
-                    CoreEngine.Current.Logger.Error(e, $"下载壁纸失败：网络连接失败");
+                    CoreEngine.Current.Logger.Error(e, $"下载壁纸失败：{e.Message}");
                     return false;
                 }
             }

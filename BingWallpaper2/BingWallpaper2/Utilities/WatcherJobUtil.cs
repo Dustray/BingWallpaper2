@@ -25,17 +25,17 @@ namespace BingWallpaper.Utilities
         /// </summary>
         public void Start()
         {
-            RegistryTask();
             //Reset(); //注册重置任务事件
             JobManager.Initialize(REG);
             JobManager.Start();
+            RegistryTask();
         }
         /// <summary>
         /// 停止
         /// </summary>
         public void Stop()
         {
-            JobManager.StopAndBlock();
+            JobManager.Stop();
             JobManager.RemoveAllJobs();
         }
         /// <summary>
@@ -43,17 +43,23 @@ namespace BingWallpaper.Utilities
         /// </summary>
         private void RegistryTask()
         {
-            REG.Schedule(() => {
+            var time=CoreEngine.Current.AppSetting.GetAutoSetTime();
+            JobManager.AddJob(() => {
                 CoreEngine.Current.SetWallpaperAsync();
                 SuperEngine.Current.ReloadBackground?.Invoke(false,false);
-            })
+            }, (s) => s
             //.ToRunOnceAt(0, 30)
             //.AndEvery(6)
             //.Hours();
-
             .ToRunEvery(1)
             .Days()
-            .At(0, 5);//.At(9, 15);
+            .At(time.hour, time.minute));//.At(9, 15);
+        }
+
+        public void ResetTask()
+        {
+            Stop();
+            Start();
         }
     }
 }

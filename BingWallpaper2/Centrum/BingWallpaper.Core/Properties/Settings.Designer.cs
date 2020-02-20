@@ -118,5 +118,17 @@ namespace BingWallpaper.Core.Properties {
                 this["TodayImageCopyright"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0005")]
+        public string AutoSetTime {
+            get {
+                return ((string)(this["AutoSetTime"]));
+            }
+            set {
+                this["AutoSetTime"] = value;
+            }
+        }
     }
 }

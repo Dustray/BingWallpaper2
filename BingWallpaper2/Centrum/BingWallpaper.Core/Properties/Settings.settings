@@ -26,5 +26,8 @@
     <Setting Name="TodayImageCopyright" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="AutoSetTime" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0005</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
