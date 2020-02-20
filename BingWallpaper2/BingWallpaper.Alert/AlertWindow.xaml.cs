@@ -52,9 +52,17 @@ namespace BingWallpaper.Popup
             }
             else
             {
-                foreach( var btn in userButtonList)
+                foreach( var btnClass in userButtonList)
                 {
-                    ButtonGroup.Children.Add(btn.GenerateControl());
+                    var btn = btnClass.GenerateControl();
+                    if (btnClass.CloseAlertIfClick)
+                    {//点击按钮后关闭弹窗
+                        btn.Click +=(sender, e) =>{
+                            CloseAlert();
+                        };
+                    }
+                    ButtonGroup.Children.Add(btn);
+                    
                 }
             }
             _alertConfig = alertConfig ?? new AlertConfig() ;

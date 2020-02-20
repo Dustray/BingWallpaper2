@@ -4,17 +4,39 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace BingWallpaper.Popup
 {
+    /// <summary>
+    /// 用户按钮
+    /// </summary>
     public class UserButton
     {
         private Action _onBtnClickCallback;
+
+
+        /// <summary>
+        /// 构造方法
+        /// </summary>
+        /// <param name="action">按钮回调方法</param>
         public UserButton(Action action)
         {
             _onBtnClickCallback = action;
         }
+
+        /// <summary>
+        /// 构造方法
+        /// </summary>
+        /// <param name="content">按钮文本</param>
+        /// <param name="action">按钮回调方法</param>
+        public UserButton(string content,Action action)
+        {
+            ButtonContent = content;
+            _onBtnClickCallback = action;
+        }
+
         #region 成员属性
         /// <summary>
         /// 按钮显示内容
@@ -56,6 +78,10 @@ namespace BingWallpaper.Popup
         /// </summary>
         public int Width { get; set; } = -1;
 
+        /// <summary>
+        /// 点击按钮关闭弹框
+        /// </summary>
+        public bool CloseAlertIfClick { get; set; } = true;
 
         #endregion
 
@@ -81,7 +107,7 @@ namespace BingWallpaper.Popup
             btn.BorderThickness = new System.Windows.Thickness(BorderThickness);
             btn.Margin = new System.Windows.Thickness(10, 0, 0, 0);
             if (-1!= Width) btn.Width = Width;
-
+            btn.Cursor = System.Windows.Input.Cursors.Hand;
             btn.Click += (sender, e) =>
             {
                 _onBtnClickCallback?.Invoke();
@@ -89,6 +115,10 @@ namespace BingWallpaper.Popup
             return btn;
         }
 
+        /// <summary>
+        /// 应用指定弹窗主题
+        /// </summary>
+        /// <param name="theme"></param>
         public void LoadAlertTheme(AlertTheme theme)
         {
             BorderColor=FontColor = theme.PullBackColor;

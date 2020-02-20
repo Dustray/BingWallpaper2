@@ -1,6 +1,7 @@
 ﻿using BingWallpaper.Core;
 using BingWallpaper.Popup;
 using BingWallpaper.Utilities;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -173,7 +174,19 @@ namespace BingWallpaper
             }
             else
             {
-                Alert.Show("桌面快捷方式已存在", AlertTheme.Warning);
+                var btn = new UserButton("更新", () => { 
+                    var re2 = LikUtil.FastCreate(true);
+                    if (re2)
+                    {
+                        Alert.Show("更新桌面快捷方式成功", AlertTheme.Success);
+                    }
+                    else
+                    {
+                        Alert.Show("更新桌面快捷方式失败", AlertTheme.Error);
+                    }
+                });
+                btn.LoadAlertTheme(AlertTheme.Warning);
+                Alert.Show("", "桌面快捷方式已存在,是否强制更新快捷方式", AlertTheme.Warning, btn, new AlertConfig() { OnlyOneWindowAllowed = true });
             }
         }
 
