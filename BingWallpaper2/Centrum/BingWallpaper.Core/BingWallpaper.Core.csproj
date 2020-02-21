@@ -67,12 +67,16 @@
     <Compile Include="Utilities\AppSettingOperation.cs" />
     <Compile Include="Utilities\BitmapUtil.cs" />
     <Compile Include="Utilities\FileUtil.cs" />
+    <Compile Include="Utilities\NewAppSettingOperation.cs" />
     <Compile Include="Utilities\XMLUtility.cs" />
     <Compile Include="WallpaperManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <Content Include="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\Setting.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Properties\Settings.settings">

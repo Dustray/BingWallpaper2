@@ -58,7 +58,7 @@ namespace BingWallpaper
             cbWallpaperStyle.DisplayMemberPath = "Name";
             cbWallpaperStyle.SelectedIndex = CoreEngine.Current.WallpaperStyleList.ToList().FindIndex(s => s.Type == CoreEngine.Current.AppSetting.GetStyleMode);
 
-            SetAppBackground(true,false);
+            SetAppBackground();
             //ImgPreview.Source = new WPFSupportFormat().ChangeBitmapToImageSource( CoreEngine.Current.GetWallpaperImage());
             _doNotInvokeCheckMethod = false;
             PackUp(_isPackUp);

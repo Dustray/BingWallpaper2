@@ -72,7 +72,8 @@ namespace BingWallpaper.Core
         /// <summary>
         /// 应用设置
         /// </summary>
-        public AppSettingOperation AppSetting { get; private set; } = new AppSettingOperation();
+        //public AppSettingOperation AppSetting { get; private set; } = new AppSettingOperation();
+        public NewAppSettingOperation AppSetting { get; private set; } = new NewAppSettingOperation();
         /// <summary>
         /// 程序根目录
         /// </summary>
