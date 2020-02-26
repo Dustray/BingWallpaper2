@@ -96,12 +96,14 @@ namespace BingWallpaper.Core
                     {
                         using (var stream = webres.GetResponseStream())
                         {
-                            var bmpWallpaper = (Bitmap)Image.FromStream(stream);
-                            if (!Directory.Exists(imageFolderPath))
+                            using (var bmpWallpaper = (Bitmap)Image.FromStream(stream))
                             {
-                                Directory.CreateDirectory(imageFolderPath);
+                                if (!Directory.Exists(imageFolderPath))
+                                {
+                                    Directory.CreateDirectory(imageFolderPath);
+                                }
+                                bmpWallpaper.Save(imageFilePath, ImageFormat.Jpeg);
                             }
-                            bmpWallpaper.Save(imageFilePath, ImageFormat.Jpeg);
                         }
                     }
                 }
@@ -128,7 +130,7 @@ namespace BingWallpaper.Core
         /// </summary>
         /// <param name="forceFromWeb">强制从网络获取</param>
         /// <returns></returns>
-        public Bitmap GetWallpaperImage( bool forceFromWeb = false)
+        public Bitmap GetWallpaperImage(bool forceFromWeb = false)
         {
             var imageFolderPath = CoreEngine.Current.AppSetting.GetImagePath();
             var imageFilePath = Path.Combine(imageFolderPath, $"bing{DateTime.Now.ToString("yyyyMMdd")}.jpg");
@@ -150,13 +152,14 @@ namespace BingWallpaper.Core
                         using (var stream = webres.GetResponseStream())
                         {
                             var bmpWallpaper = (Bitmap)Image.FromStream(stream);
+
                             if (!Directory.Exists(imageFolderPath))
                             {
                                 Directory.CreateDirectory(imageFolderPath);
                             }
                             bmpWallpaper.Save(imageFilePath, ImageFormat.Jpeg);
-
                             return bmpWallpaper;
+
                         }
                     }
                 }
@@ -217,12 +220,14 @@ namespace BingWallpaper.Core
                 {
                     using (var stream = webres.GetResponseStream())
                     {
-                        var bmpWallpaper = (Bitmap)Image.FromStream(stream);
-                        if (!Directory.Exists(imageFolderPath))
+                        using (var bmpWallpaper = (Bitmap)Image.FromStream(stream))
                         {
-                            Directory.CreateDirectory(imageFolderPath);
+                            if (!Directory.Exists(imageFolderPath))
+                            {
+                                Directory.CreateDirectory(imageFolderPath);
+                            }
+                            bmpWallpaper.Save(imageFilePath, ImageFormat.Jpeg);
                         }
-                        bmpWallpaper.Save(imageFilePath, ImageFormat.Jpeg);
                     }
                 }
             }

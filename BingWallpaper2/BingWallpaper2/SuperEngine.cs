@@ -135,19 +135,5 @@ namespace BingWallpaper
 
         #endregion
 
-        #region 窗体创建方法
-
-        //private AboutWindow _aboutWindow;
-        //public void CreateAboutWindow()
-        //{
-        //    if (null != _aboutWindow) return;
-        //    _aboutWindow = new AboutWindow();
-        //    _aboutWindow.Owner = this;
-        //    _aboutWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-        //    _aboutWindow.ShowInTaskbar = false;
-        //    _aboutWindow.Show();
-        //}
-
-        #endregion
     }
 }
