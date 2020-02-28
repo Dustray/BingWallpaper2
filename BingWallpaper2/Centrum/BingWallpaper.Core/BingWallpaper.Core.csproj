@@ -91,12 +91,9 @@
     <PackageReference Include="NLog">
       <Version>4.6.8</Version>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\BingWallpaper.Alert\BingWallpaper.Popup.csproj">
-      <Project>{1a9ab089-a9cc-45af-bfc7-7643065290d1}</Project>
-      <Name>BingWallpaper.Popup</Name>
-    </ProjectReference>
+    <PackageReference Include="Vicold.Popup">
+      <Version>1.0.1.6</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

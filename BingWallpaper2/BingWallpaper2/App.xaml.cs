@@ -1,4 +1,4 @@
-﻿using BingWallpaper.Popup;
+﻿using Vicold.Popup;
 using BingWallpaper.Utilities;
 using System;
 using System.Collections.Generic;

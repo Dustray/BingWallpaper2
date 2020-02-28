@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Update", "Update\Update.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{6AF55256-811F-49F5-9565-19F9AF491D98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingWallpaper.Popup", "BingWallpaper.Alert\BingWallpaper.Popup.csproj", "{1A9AB089-A9CC-45AF-BFC7-7643065290D1}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Centrum", "Centrum", "{341B98AC-3F00-481D-975F-74449C3E1826}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingWallpaper.Core", "Centrum\BingWallpaper.Core\BingWallpaper.Core.csproj", "{ACD252D2-B005-4CA4-8B2D-648E4128D099}"
@@ -39,10 +37,6 @@ Global
 		{6AF55256-811F-49F5-9565-19F9AF491D98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AF55256-811F-49F5-9565-19F9AF491D98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AF55256-811F-49F5-9565-19F9AF491D98}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1A9AB089-A9CC-45AF-BFC7-7643065290D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1A9AB089-A9CC-45AF-BFC7-7643065290D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1A9AB089-A9CC-45AF-BFC7-7643065290D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1A9AB089-A9CC-45AF-BFC7-7643065290D1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ACD252D2-B005-4CA4-8B2D-648E4128D099}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ACD252D2-B005-4CA4-8B2D-648E4128D099}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ACD252D2-B005-4CA4-8B2D-648E4128D099}.Release|Any CPU.ActiveCfg = Release|Any CPU

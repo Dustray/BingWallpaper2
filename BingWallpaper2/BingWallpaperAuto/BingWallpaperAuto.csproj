@@ -47,9 +47,6 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.6.8\lib\net45\NLog.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -71,20 +68,23 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BingWallpaper.Alert\BingWallpaper.Popup.csproj">
-      <Project>{1A9AB089-A9CC-45AF-BFC7-7643065290D1}</Project>
-      <Name>BingWallpaper.Popup</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Centrum\BingWallpaper.Core\BingWallpaper.Core.csproj">
       <Project>{acd252d2-b005-4ca4-8b2d-648e4128d099}</Project>
       <Name>BingWallpaper.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NLog">
+      <Version>4.6.8</Version>
+    </PackageReference>
+    <PackageReference Include="Vicold.Popup">
+      <Version>1.0.1.6</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

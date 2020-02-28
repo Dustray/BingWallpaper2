@@ -1,5 +1,5 @@
 ﻿using BingWallpaper.Core;
-using BingWallpaper.Popup;
+using Vicold.Popup;
 using System;
 using System.Collections.Generic;
 using System.Linq;

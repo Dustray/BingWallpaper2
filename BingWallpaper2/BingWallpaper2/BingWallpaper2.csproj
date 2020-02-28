@@ -213,10 +213,9 @@
     <Resource Include="logo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BingWallpaper.Alert\BingWallpaper.Popup.csproj">
-      <Project>{1a9ab089-a9cc-45af-bfc7-7643065290d1}</Project>
-      <Name>BingWallpaper.Popup</Name>
-    </ProjectReference>
+    <PackageReference Include="Vicold.Popup">
+      <Version>1.0.1.6</Version>
+    </PackageReference>
     <PackageReference Include="FluentScheduler">
       <Version>5.3.0</Version>
     </PackageReference>

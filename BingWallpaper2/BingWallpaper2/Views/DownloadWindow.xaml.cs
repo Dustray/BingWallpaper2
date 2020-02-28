@@ -1,6 +1,6 @@
 ﻿using BingWallpaper.Core;
 using BingWallpaper.Core.Utilities;
-using BingWallpaper.Popup;
+using Vicold.Popup;
 using BingWallpaper.Utilities;
 using System;
 using System.Collections.Generic;
