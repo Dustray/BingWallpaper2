@@ -45,7 +45,6 @@ namespace BingWallpaper.Utilities
         {
             var time=CoreEngine.Current.AppSetting.GetAutoSetTime();
             JobManager.AddJob(() => {
-                CoreEngine.Current.SetWallpaperAsync();
                 SuperEngine.Current.ReloadBackground?.Invoke(false,false);
             }, (s) => s
             //.ToRunOnceAt(0, 30)
@@ -54,6 +53,16 @@ namespace BingWallpaper.Utilities
             .ToRunEvery(1)
             .Days()
             .At(time.hour, time.minute));//.At(9, 15);
+
+            JobManager.AddJob(() => {
+                CoreEngine.Current.SetWallpaperAsync();
+            }, (s) => s
+            //.ToRunOnceAt(0, 30)
+            //.AndEvery(6)
+            //.Hours();
+            .ToRunEvery(1)
+            .Days()
+            .At(time.hour, time.minute+2));//.At(9, 15);
         }
 
         public void ResetTask()
