@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("必应每日壁纸")]
 [assembly: AssemblyDescription("获取必应每日壁纸作为电脑桌面壁纸，并支持开机自动设置。")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Vicold")]
 [assembly: AssemblyProduct("BingWallpaper2")]
 [assembly: AssemblyCopyright("Copyright ©  2019-2020 dustray.cn")]
 [assembly: AssemblyTrademark("")]
